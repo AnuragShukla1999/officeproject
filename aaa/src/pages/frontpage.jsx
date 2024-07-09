@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
+import Nav from "@/components/Navbar"
+import { SignUp } from "./auth"
 
 
  export const Frontpage = () => {
     return (
         <>
-            <h1 className="text-5xl bg-gray-500">Front Page .......</h1>
+            {/* <Nav/> */}
 
-            <Link to={'/auth/sign-in'}>
-                Sign In
-            </Link>
+            <SignUp/>
         </>
     )
 }
