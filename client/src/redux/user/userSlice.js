@@ -72,7 +72,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    localstorage: localStorage.getItem("userdata") || null,
+    // localstorage: localStorage.getItem("userdata") || null,
+    token: localStorage.getItem('token'),
     isLoggedIn: false,
     userData: null,
 };
@@ -84,13 +85,17 @@ const userSlice = createSlice({
         login(state, action) {
             state.userData = action.payload;
             state.isLoggedIn = true;
-            localStorage.setItem('userdata', JSON.stringify(action.payload));
-            console.log(action.payload)
+            // localStorage.setItem('userdata', JSON.stringify(action.payload));
+            // console.log(action.payload)
+            state.token = action.payload.token;
+            localStorage.setItem('token', action.payload.token);
         },
         logout(state) {
             state.isLoggedIn = false;
-            state.userData = null;
-            localStorage.removeItem('userdata');
+            // state.userData = null;
+            // localStorage.removeItem('userdata');
+            state.token = null;
+            localStorage.removeItem('token');
         },
     },
 });
