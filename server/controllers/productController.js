@@ -28,7 +28,6 @@ export const UploadProductDetails = async (req, res) => {
 
 
 
-
 // update Details 
 export const updateProductDetails = async (req, res, next) => {
     if (req.users._id !== req.params.id) {

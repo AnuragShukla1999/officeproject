@@ -20,6 +20,12 @@ import { Reports } from './pages/SidebarPage/Reports';
 
 function App() {
 
+
+  const isLoggedInUser = localStorage.getItem('token');
+
+
+  console.log(isLoggedInUser);
+
   return (
     <>
       <BrowserRouter>
@@ -30,22 +36,23 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
 
           {/* private route */}
-          <Route path="/home" element={<PrivateRoute />}>
-            <Route element={<Home />} />
+          <Route element={<PrivateRoute />}>
+            <Route path='/home' element={<Home />} />
           </Route>
 
 
-          <Route path='/billing' element={<Billing/>} />
-          <Route path='/channel' element={<Channel/>} />
-          <Route path='/ndr' element={<NDR/>} />
-          <Route path='/orders' element={<Orders/>} />
-          <Route path='/ratecalculator' element={<RateCalculator/>} />
-          <Route path='/remittance' element={<Remittance/>} />
-          <Route path='/reports' element={<Reports/>} />
+
+          <Route path='/billing' element={<Billing />} />
+          <Route path='/channel' element={<Channel />} />
+          <Route path='/ndr' element={<NDR />} />
+          <Route path='/orders' element={<Orders />} />
+          <Route path='/ratecalculator' element={<RateCalculator />} />
+          <Route path='/remittance' element={<Remittance />} />
+          <Route path='/reports' element={<Reports />} />
 
           {/* <PrivateRoute path="/home" element={<Home/>} /> */}
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter >
     </>
   )
 }
