@@ -1,7 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-// import { useDispatch } from 'react-redux'
-// import { logoutSuccess } from '../redux/user/userSlice.js'
+import { useDispatch } from 'react-redux'
+import { logout } from '../redux/user/userSlice.js'
 
 
 const navigation = [
@@ -17,12 +17,12 @@ function classNames(...classes) {
 
 export default function Navbar() {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    // const handleLogout = () => {
-    //     dispatch(logoutSuccess());
-    //     console.log("Clicked logout button")
-    // }
+    const handleLogout = () => {
+        dispatch(logout());
+        console.log("Clicked logout button")
+    }
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -101,7 +101,7 @@ export default function Navbar() {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <button className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                  <button className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100" onClick={handleLogout}>
                     Sign out
                   </button>
                 </MenuItem>
