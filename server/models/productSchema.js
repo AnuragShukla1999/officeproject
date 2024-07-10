@@ -1,63 +1,118 @@
 import mongoose from "mongoose";
 
 
+// const productSchema = new mongoose.Schema({
+//     // Consignee Details
+//     consignee: {
+//         fullName: {
+//             type: String,
+//             required: true
+//         },
+//         mobileNo: {
+//             type: Number,
+//             required: true
+//         },
+//         email: {
+//             type: String
+//         }
+//     },
+
+//     // Customer Address
+//     customerAddress: {
+//         completeAddress: {
+//             type: String,
+//             required: true
+//         },
+//         pincode: {
+//             type: Number,
+//             required: true
+//         },
+//         state: {
+//             type: String
+//         },
+//         city: {
+//             type: String
+//         },
+//         landmark: {
+//             type: String
+//         }
+//     },
+
+
+
+//     // Order Details
+//     orderDetails: {
+//         orderId: {
+//             type: String,
+//             required: true
+//         },
+//         orderDate: {
+//             type: Date,
+//             required: true
+//         },
+//         paymentMode: {
+//             type: String, enum: ['upi', 'credit card', 'debit card', 'net banking']
+//         }
+//     }
+// },
+//     {
+//         timestamps: true
+//     });
+
+
+
+
+
+
+
 const productSchema = new mongoose.Schema({
-    // Consignee Details
-    consignee: {
-        fullName: {
-            type: String,
-            required: true
-        },
-        mobileNo: {
-            type: Number,
-            required: true
-        },
-        email: {
-            type: String
-        }
+    fullName: {
+        type: String,
+        required: true
     },
-
-    // Customer Address
-    customerAddress: {
-        completeAddress: {
-            type: String,
-            required: true
-        },
-        pincode: {
-            type: Number,
-            required: true
-        },
-        state: {
-            type: String
-        },
-        city: {
-            type: String
-        },
-        landmark: {
-            type: String
-        }
+    mobileNo: {
+        type: Number,
+        required: true
+    },
+    email: {
+        type: String
     },
 
 
 
-    // Order Details
-    orderDetails: {
-        orderId: {
-            type: String,
-            required: true
-        },
-        orderDate: {
-            type: Date,
-            required: true
-        },
-        paymentMode: {
-            type: String, enum: ['upi', 'credit card', 'debit card', 'net banking']
-        }
+    completeAddress: {
+        type: String,
+        required: true
+    },
+    pincode: {
+        type: Number,
+        required: true
+    },
+    state: {
+        type: String
+    },
+    city: {
+        type: String
+    },
+    landmark: {
+        type: String
+    },
+
+
+
+
+    orderId: {
+        type: String,
+        required: true
+    },
+    orderDate: {
+        type: Date,
+        required: true
+    },
+    paymentMode: {
+        type: String, enum: ['upi', 'credit card', 'debit card', 'net banking']
     }
-},
-    {
-        timestamps: true
-    });
+});
 
 
 const productModel = mongoose.model("productDetails", productSchema);
