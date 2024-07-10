@@ -1,7 +1,7 @@
 import productModel from "../models/productSchema.js"
 
 
-export const getProductDetails = async () => {
+export const getProductDetails = async (req, res) => {
     try {
         const allDetails = await productModel.find().sort({ createdAt : -1 });
 

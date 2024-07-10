@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import dbConnection from "./config/db.js";
 
 import authRouter from './routes/authRoute.js'
-import UploadProductDetails from "./routes/productRoute.js";
+import ProductRouter from "./routes/productRoute.js";
 
 dotenv.config();
 
@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 // api
 app.use('/api', authRouter);
-app.use('/api', UploadProductDetails);
+app.use('/api', ProductRouter);
 
 
 app.listen(process.env.PORT, () => {
