@@ -62,11 +62,21 @@ export const signin = async (req, res, next) => {
 
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+
+        // save user data to JSON file
+        // const userData = {
+        //     id: validUser._id,
+        //     email: validUser.email,
+        // }
+
+
+
         res.cookie('access token', token).json({
             message: "Sign in successfully",
             token,
             success: true
         });
+
     } catch (error) {
         next(error)
     }
