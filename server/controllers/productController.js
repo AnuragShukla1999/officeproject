@@ -54,6 +54,8 @@ export const UploadProductDetails = async (req, res) => {
 
         const savedProduct = await newProduct.save();
 
+        console.log(savedProduct)
+
         res.status(201).json({
             message: "Successfully Added Details"
         })

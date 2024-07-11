@@ -110,7 +110,51 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     paymentMode: {
-        type: String, enum: ['upi', 'credit card', 'debit card', 'net banking']
+        type: String,
+        enum: ['upi', 'credit card', 'debit card', 'net banking']
+    },
+
+
+    productName: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    orderValue: {
+        type: Number,
+        required: true
+    },
+    hsn: {
+        type: String,
+        required: true
+    },
+
+
+
+
+
+    physicalWeight: {
+        type: String,
+        required: true
+    },
+    length: {
+        type: String,
+        required: true
+    },
+    breadth: {
+        type: String,
+        required: true
+    },
+    height: {
+        type: String,
+        required: true
     }
 });
 
