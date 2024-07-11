@@ -7,6 +7,7 @@ import dbConnection from "./config/db.js";
 
 import authRouter from './routes/authRoute.js'
 import ProductRouter from "./routes/productRoute.js";
+import userRouter from "./routes/userRoute.js"
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 // api
 app.use('/api', authRouter);
 app.use('/api', ProductRouter);
+app.use('/api', userRouter);
 
 
 app.listen(process.env.PORT, () => {
