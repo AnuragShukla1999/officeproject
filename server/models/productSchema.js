@@ -111,7 +111,7 @@ const productSchema = new mongoose.Schema({
     },
     paymentMode: {
         type: String,
-        enum: ['upi', 'credit card', 'debit card', 'net banking']
+        enum: ['cod', 'prepaid']
     },
 
 
@@ -121,7 +121,7 @@ const productSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        required: true
+        enum: ['accessories', 'fashion and clothing', 'accessories', 'electronics', 'fmcg', 'footwear', 'toys', 'sports equipment', 'others', 'wellness', 'medicines']
     },
     quantity: {
         type: Number,
@@ -152,7 +152,13 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    height: {
+    heightheight: {
+        type: String,
+        required: true
+    },
+
+
+    pickupLocation: {
         type: String,
         required: true
     }

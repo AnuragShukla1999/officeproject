@@ -67,7 +67,7 @@ export const Form = () => {
 
             </div>
 
-            <div className="rounded-2xl z-10 absolute top-20 left-5 bg-white w-screen">
+            <div className="rounded-2xl z-10 absolute top-20 left-5 bg-transparent w-screen">
 
                 {/* Consignee Details */}
                 <div><h3>*All Fields Required</h3></div>
@@ -222,7 +222,7 @@ export const Form = () => {
 
                         <div className="flex flex-col gap-2">
                             <label>Category</label>
-                            <select name="paymentMode" onChange={handleChange}>
+                            <select name="category" onChange={handleChange}>
                                 <option value="accessories">Accessories</option>
                                 <option value="fashion and clothing">Fashion & Clothing</option>
                                 <option value="accessories">Beauty and & Stationary</option>
@@ -344,8 +344,8 @@ export const Form = () => {
 
                         <div className="flex flex-row">
                             <input
-                                type="number"
-                                name="length"
+                                type="text"
+                                name="pickupLocation"
                                 className="border-2 border-gray-500"
                                 required
                                 onChange={handleChange}

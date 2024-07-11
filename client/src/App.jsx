@@ -32,10 +32,11 @@ function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
 
-          {/* private route */}
+
           <Route element={<PrivateRoute />}>
             <Route path='/home' element={<Home />} />
           </Route>
+
 
           <Route path='/billing' element={isLoggedInUser ? <Billing /> : <SignIn />} />
           <Route path='/channel' element={isLoggedInUser ? <Channel /> : <SignIn />} />
@@ -46,6 +47,10 @@ function App() {
           <Route path='/reports' element={isLoggedInUser ? <Reports /> : <SignIn />} />
           <Route path='/profile/:id' element={isLoggedInUser ? <Profile /> : <SignIn />} />
           <Route path='/dashboard' element={isLoggedInUser ? <Dashboard/> : <SignIn />} />
+
+          {/* {
+            isLoggedInUser ? <Home/> : <SignIn/>
+          } */}
 
         </Routes>
       </BrowserRouter >
