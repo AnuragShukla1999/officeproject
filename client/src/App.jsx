@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
-// import Navbar from './component/Navbar';
 import { PrivateRoute } from './component/PrivateRoute';
 import { Home } from './pages/Home';
 import { Billing } from './pages/SidebarPage/Billing';
@@ -18,13 +17,9 @@ import { Reports } from './pages/SidebarPage/Reports';
 import { Profile } from './component/Profile';
 
 
-
 function App() {
 
-
   const isLoggedInUser = localStorage.getItem('token');
-
-
   console.log(isLoggedInUser);
 
   return (
@@ -41,18 +36,15 @@ function App() {
             <Route path='/home' element={<Home />} />
           </Route>
 
-            <Route path='/billing' element={<Billing />} />
-            <Route path='/channel' element={<Channel />} />
-            <Route path='/ndr' element={<NDR />} />
-            <Route path='/orders' element={<Orders />} />
-            <Route path='/ratecalculator' element={<RateCalculator />} />
-            <Route path='/remittance' element={<Remittance />} />
-            <Route path='/reports' element={<Reports />} />
-            <Route path='/profile' element={<Profile/>} />
-  
+          <Route path='/billing' element={isLoggedInUser ? <Billing /> : <SignIn />} />
+          <Route path='/channel' element={isLoggedInUser ? <Channel /> : <SignIn />} />
+          <Route path='/ndr' element={isLoggedInUser ? <NDR /> : <SignIn />} />
+          <Route path='/orders' element={isLoggedInUser ? <Orders /> : <SignIn />} />
+          <Route path='/ratecalculator' element={isLoggedInUser ? <RateCalculator /> : <SignIn />} />
+          <Route path='/remittance' element={isLoggedInUser ? <Remittance /> : <SignIn />} />
+          <Route path='/reports' element={isLoggedInUser ? <Reports /> : <SignIn />} />
+          <Route path='/profile/:id' element={isLoggedInUser ? <Profile /> : <SignIn />} />
 
-
-          {/* <PrivateRoute path="/home" element={<Home/>} /> */}
         </Routes>
       </BrowserRouter >
     </>

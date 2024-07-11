@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from 'react-router-dom';
-
-// import { setToken } from '../redux/user/userSlice.js'
 import { useDispatch } from "react-redux";
 import { login } from "../redux/user/userSlice.js";
 
@@ -14,21 +12,16 @@ export const SignIn = () => {
         password: ""
     });
 
-    // const [loading, setLoading] = useState(false);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
 
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
         console.log(e.target.value)
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-
 
         try {
             const res = await fetch('http://localhost:7000/api/signin', {
@@ -39,27 +32,8 @@ export const SignIn = () => {
 
             const resData = await res.json();
             console.log(resData);
-
-
-            // if (resData) {
-            //     dispatch(signInSuccess())
-            // }
-
-            // if (res.token) {
-            //     localStorage.setItem('token', res.token);
-            //     // dispatch(setToken(res.token));
-
-            // } else {
-            //     alert(res.message);
-            // }
-
-            // toast.success("Signed in successfully!");
-            // navigate('/home')
-
-
-
             if (res.ok) {
-                // localStorage.setItem('token', res.token);
+                
                 dispatch(login(resData));
                 toast.success("Signed in successfully!");
                 navigate('/home');
@@ -67,13 +41,12 @@ export const SignIn = () => {
                 toast.error("Sign in failed. Please check your credentials.");
             }
 
-
         } catch (error) {
             console.log('Error', error)
         }
     }
 
-    // const notify = () => toast('Here is your toast');
+   
 
     return (
         <>

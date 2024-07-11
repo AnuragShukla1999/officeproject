@@ -1,5 +1,6 @@
-import { useState, useEffect  } from "react"
-import { useSelector } from "react-redux"
+// import { useState, useEffect  } from "react"
+// import { useParams } from "react-router-dom";
+// import { useSelector } from "react-redux"
 
 
 
@@ -10,22 +11,32 @@ export const Profile = () => {
     // const { userData } = useSelector((state) => state.user)
 
 
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
 
-    const userId = "",
+    // // const userId = "668b9a2b28d4399d04a32bfe";
+
+    // const { id } = useParams();
 
 
-    const fetchUser = async () => {
-        try {
-            const res = await fetch('http://localhost:7000/api/')
-        } catch (error) {
-            
-        }
-    }
+    // const fetchUser = async () => {
+    //     try {
+    //         const res = await fetch(`http://localhost:7000/api/${id}/user`);
 
-    useEffect(() => {
+    //         if (!res.ok) {
+    //             throw new Error('Failed to fetch user');
+    //         }
+    //         const userData = await res.json();
 
-    })
+    //         setUser(userData.user)
+    //         console.log(userData);
+    //     } catch (error) {
+    //         console.error("Error", error)
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     fetchUser();
+    // })
 
     return (
         <div>
@@ -33,7 +44,7 @@ export const Profile = () => {
 
             <div>
                 <label>Name</label>
-                <label>{userData}</label>
+                {/* <label>{user}</label> */}
             </div>
         </div>
     )
