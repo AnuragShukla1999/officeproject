@@ -50,140 +50,150 @@ export const Form = () => {
     }
 
     return (
-        <div>
+        <div className="relative bg-gray-100">
+            <div className="h-32 bg-blue-600 w-screen sticky ">
 
-            {/* Consignee Details */}
-            <div className="m-4">
-                <h1 className="text-2xl mb-4">Consignee Details</h1>
-                <div className="flex flex-row gap-8">
-                    <div className="flex flex-col gap-2">
-                        <label>Costumer Full Name</label>
-                        <input
-                            type="text"
-                            name="fullName"
-                            className="border-2 border-gray-500"
-                            required
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>Mobile No</label>
-                        <input
-                            type="number"
-                            name="mobileNo"
-                            className="border-2 border-gray-500"
-                            required
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>Email Id</label>
-                        <input
-                            type="email"
-                            name="email"
-                            className="border-2 border-gray-500"
-                            onChange={handleChange}
-                        />
-                    </div>
-                </div>
             </div>
 
 
 
 
-            <div className="m-4">
-                <h1 className="text-2xl mb-4">Constumer Address</h1>
-                <div className="flex flex-row gap-8">
-                    <div className="flex flex-col gap-2">
-                        <label>Complete Address</label>
-                        <input
-                            type="text"
-                            name="completeAddress"
-                            className="border-2 border-gray-500"
-                            required
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>Pincode</label>
-                        <input
-                            type="number"
-                            name="pincode"
-                            className="border-2 border-gray-500"
-                            required
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>State</label>
-                        <input
-                            type="text"
-                            name="state"
-                            className="border-2 border-gray-500"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>City</label>
-                        <input
-                            type="text"
-                            name="city"
-                            className="border-2 border-gray-500"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>Famous Landmark</label>
-                        <input
-                            type="text"
-                            name="landmark"
-                            className="border-2 border-gray-500"
-                            onChange={handleChange}
-                        />
+            <div className="rounded-2xl z-10 absolute top-20 left-5 bg-white w-screen">
+
+                {/* Consignee Details */}
+                <div className="m-4">
+                    <div><h3>*All Fields Required</h3></div>
+                    <h1 className="text-2xl mb-4">Consignee Details</h1>
+                    <div className="flex flex-row gap-8">
+                        <div className="flex flex-col gap-2">
+                            <label>Costumer Full Name</label>
+                            <input
+                                type="text"
+                                name="fullName"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>Mobile No</label>
+                            <input
+                                type="number"
+                                name="mobileNo"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>Email Id</label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="border-2 border-gray-500"
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
 
-            <div className="m-4">
-                <h1 className="text-2xl mb-4">Order Details</h1>
-                <div className="flex flex-row gap-8">
-                    <div className="flex flex-col gap-2">
-                        <label>Order id</label>
-                        <input
-                            type="text"
-                            name="orderId"
-                            className="border-2 border-gray-500"
-                            required
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>Order Date</label>
-                        <input
-                            type="date"
-                            name="orderDate"
-                            className="border-2 border-gray-500"
-                            required
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <label>Payment Mode</label>
-                        <select name="paymentMode" onChange={handleChange}>
-                            <option value="upi">UPI</option>
-                            <option value="credit card">Credit Card</option>
-                            <option value="debit card">Debit Card</option>
-                            <option value="net banking">Net Banking</option>
-                        </select>
+
+                <div className="m-4">
+                    <h1 className="text-2xl mb-4">Constumer Address</h1>
+                    <div className="flex flex-row gap-8">
+                        <div className="flex flex-col gap-2">
+                            <label>Complete Address</label>
+                            <input
+                                type="text"
+                                name="completeAddress"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>Pincode</label>
+                            <input
+                                type="number"
+                                name="pincode"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>State</label>
+                            <input
+                                type="text"
+                                name="state"
+                                className="border-2 border-gray-500"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>City</label>
+                            <input
+                                type="text"
+                                name="city"
+                                className="border-2 border-gray-500"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>Famous Landmark</label>
+                            <input
+                                type="text"
+                                name="landmark"
+                                className="border-2 border-gray-500"
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
                 </div>
+
+
+
+                <div className="m-4">
+                    <h1 className="text-2xl mb-4">Order Details</h1>
+                    <div className="flex flex-row gap-8">
+                        <div className="flex flex-col gap-2">
+                            <label>Order id</label>
+                            <input
+                                type="text"
+                                name="orderId"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>Order Date</label>
+                            <input
+                                type="date"
+                                name="orderDate"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <label>Payment Mode</label>
+                            <select name="paymentMode" onChange={handleChange}>
+                                <option value="upi">UPI</option>
+                                <option value="credit card">Credit Card</option>
+                                <option value="debit card">Debit Card</option>
+                                <option value="net banking">Net Banking</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Save</button>
             </div>
-
-
-
-            <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl"  onClick={handleSubmit}>Save</button>
         </div>
     )
 }
