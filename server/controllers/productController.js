@@ -10,7 +10,7 @@ export const UploadProductDetails = async (req, res) => {
 
         const newProduct = new productModel({ fullName, mobileNo, email, completeAddress, pincode, state, city, landmark, orderId, orderDate, paymentMode });
 
-        // Save the product to the database
+        
         const savedProduct = await newProduct.save();
 
 

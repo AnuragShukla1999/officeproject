@@ -15,6 +15,7 @@ import { Orders } from './pages/SidebarPage/Orders';
 import { RateCalculator } from './pages/SidebarPage/RateCalculator';
 import { Remittance } from './pages/SidebarPage/Remittance';
 import { Reports } from './pages/SidebarPage/Reports';
+import { Profile } from './component/Profile';
 
 
 
@@ -40,15 +41,16 @@ function App() {
             <Route path='/home' element={<Home />} />
           </Route>
 
+            <Route path='/billing' element={<Billing />} />
+            <Route path='/channel' element={<Channel />} />
+            <Route path='/ndr' element={<NDR />} />
+            <Route path='/orders' element={<Orders />} />
+            <Route path='/ratecalculator' element={<RateCalculator />} />
+            <Route path='/remittance' element={<Remittance />} />
+            <Route path='/reports' element={<Reports />} />
+            <Route path='/profile' element={<Profile/>} />
+  
 
-
-          <Route path='/billing' element={<Billing />} />
-          <Route path='/channel' element={<Channel />} />
-          <Route path='/ndr' element={<NDR />} />
-          <Route path='/orders' element={<Orders />} />
-          <Route path='/ratecalculator' element={<RateCalculator />} />
-          <Route path='/remittance' element={<Remittance />} />
-          <Route path='/reports' element={<Reports />} />
 
           {/* <PrivateRoute path="/home" element={<Home/>} /> */}
         </Routes>

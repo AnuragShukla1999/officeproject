@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { MdEdit } from "react-icons/md";
@@ -73,7 +74,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
             const resData = await res.json();
             console.log(resData);
 
-            // Additional logic as needed, e.g., close modal on success
+            
             close();
         } catch (error) {
             console.log('Error', error);
@@ -510,8 +511,8 @@ export const Orders = () => {
 
 
     ///   Edit modal
-    const [editingDetail, setEditingDetail] = useState(null); // To store detail being edited
-    const [isEditing, setIsEditing] = useState(false); // Flag to indicate edit mode
+    const [editingDetail, setEditingDetail] = useState(null); 
+    const [isEditing, setIsEditing] = useState(false); 
 
     const openEditModal = (detail) => {
         setIsModalOpen(true);
@@ -527,6 +528,8 @@ export const Orders = () => {
         setIsModalOpen(false);
         setEditingDetail(null);
         setIsEditing(false);
+
+        console.log("Clicked in closeEditModal")
     };
 
     
@@ -623,7 +626,7 @@ export const Orders = () => {
                         <AddDetailsModal open={isModalOpen} close={closeModal} />
 
 
-                        <AddDetailsEditModal open={isModalOpen} close={closeModal} isEditing={isEditing} editingDetail={editingDetail} />
+                        <AddDetailsEditModal open={isModalOpen} close={closeEditModal} isEditing={isEditing} editingDetail={editingDetail} />
                     </div>
                 )
             }

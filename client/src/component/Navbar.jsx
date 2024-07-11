@@ -2,6 +2,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { logout } from '../redux/user/userSlice.js'
+import { useNavigate } from 'react-router-dom'
 
 
 const navigation = [
@@ -17,12 +18,24 @@ function classNames(...classes) {
 
 export default function Navbar() {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handleLogout = () => {
-        dispatch(logout());
-        console.log("Clicked logout button")
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('http://localhost:7000/api/logout')
+
+      console.log(res)
+      dispatch(logout());
+      navigate('/')
+
+    } catch (error) {
+      console.error("Error", error)
     }
+    dispatch(logout());
+    console.log("Clicked logout button")
+  }
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
