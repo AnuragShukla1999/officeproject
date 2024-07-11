@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState } from "react";
+import { FaPlus } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 export const Form = () => {
 
@@ -14,7 +16,17 @@ export const Form = () => {
         landmark: "",
         orderId: "",
         orderDate: "",
-        paymentMode: ""
+        paymentMode: "",
+        productName: "",
+        category: "",
+        quantity: "",
+        orderValue: "",
+        hsn: "",
+        physicalWeight: "",
+        length: "",
+        breadth: "",
+        heigth: "",
+        pickupLocation: ""
     });
 
 
@@ -55,15 +67,18 @@ export const Form = () => {
 
             </div>
 
-
-
-
             <div className="rounded-2xl z-10 absolute top-20 left-5 bg-white w-screen">
 
                 {/* Consignee Details */}
-                <div className="m-4">
-                    <div><h3>*All Fields Required</h3></div>
-                    <h1 className="text-2xl mb-4">Consignee Details</h1>
+                <div><h3>*All Fields Required</h3></div>
+
+
+                <div className="m-4 mt-10">
+                    <div className="flex flex-row gap-3 items-center ">
+                        <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">1</div>
+                        <div><h1 className="text-2xl">Consignee Details</h1></div>
+                    </div>
+
                     <div className="flex flex-row gap-8">
                         <div className="flex flex-col gap-2">
                             <label>Costumer Full Name</label>
@@ -100,8 +115,12 @@ export const Form = () => {
 
 
 
-                <div className="m-4">
-                    <h1 className="text-2xl mb-4">Constumer Address</h1>
+                <div className="m-4 mt-10">
+
+                    <div className="flex flex-row gap-3 items-center ">
+                        <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">2</div>
+                        <h1 className="text-2xl">Constumer Address</h1>
+                    </div>
                     <div className="flex flex-row gap-8">
                         <div className="flex flex-col gap-2">
                             <label>Complete Address</label>
@@ -155,8 +174,11 @@ export const Form = () => {
 
 
 
-                <div className="m-4">
-                    <h1 className="text-2xl mb-4">Order Details</h1>
+                <div className="m-4 mt-10 gap-8">
+                    <div className="flex flex-row gap-3 items-center ">
+                        <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">3</div>
+                        <h1 className="text-2xl">Order Details</h1>
+                    </div>
                     <div className="flex flex-row gap-8">
                         <div className="flex flex-col gap-2">
                             <label>Order id</label>
@@ -178,21 +200,175 @@ export const Form = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 border-1 border-black">
                             <label>Payment Mode</label>
                             <select name="paymentMode" onChange={handleChange}>
-                                <option value="upi">UPI</option>
-                                <option value="credit card">Credit Card</option>
-                                <option value="debit card">Debit Card</option>
-                                <option value="net banking">Net Banking</option>
+                                <option value="cod">COD</option>
+                                <option value="prepaid">Prepaid Card</option>
                             </select>
+                        </div>
+
+
+                        <div className="flex flex-col gap-2">
+                            <label>Product Name</label>
+                            <input
+                                type="text"
+                                name="product name"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label>Category</label>
+                            <select name="paymentMode" onChange={handleChange}>
+                                <option value="accessories">Accessories</option>
+                                <option value="fashion and clothing">Fashion & Clothing</option>
+                                <option value="accessories">Beauty and & Stationary</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fmcg">FMCG</option>
+                                <option value="footwear">Footwear</option>
+                                <option value="toys">Toys</option>
+                                <option value="sports equipment">Sports Equipment</option>
+                                <option value="others">Others</option>
+                                <option value="wellness">Wellness</option>
+                                <option value="medicines">Medicines</option>
+                            </select>
+                        </div>
+
+
+                        <div className="flex flex-col gap-2">
+                            <label>Quantity (In Numbers)</label>
+                            <input
+                                type="number"
+                                name="quantity"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+
+
+                        <div className="flex flex-col gap-2">
+                            <label>Order Value (In Numbers)</label>
+                            <input
+                                type="number"
+                                name="order value"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label>HSN</label>
+                            <input
+                                type="text"
+                                name="hsn"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+
+
+                    <button className="flex flex-row mt-5 items-center gap-2 bg-green-500 p-2 pr-3 pl-3 rounded-full text-sm text-white"> <div><FaPlus /></div> Add More Item</button>
+
+
+                    <div className="flex flex-row gap-8 mt-5">
+                        <div className="flex flex-col gap-2">
+                            <label>Physical Weight</label>
+                            <input
+                                type="text"
+                                name="physical weight"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+
+
+                        <div className="flex flex-col gap-2">
+                            <label>Length</label>
+                            <input
+                                type="number"
+                                name="length"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+
+
+                        <div className="flex flex-col gap-2">
+                            <label>Breadth</label>
+                            <input
+                                type="number"
+                                name="length"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+
+
+                        <div className="flex flex-col gap-2">
+                            <label>Height</label>
+                            <input
+                                type="number"
+                                name="length"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
                         </div>
                     </div>
                 </div>
 
 
 
-                <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Save</button>
+
+
+
+                <div className="m-4 mt-10 gap-8">
+                    <div className="flex flex-row gap-3 items-center ">
+                        <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">4</div>
+                        <h1 className="text-2xl">Pichup Location</h1>
+                    </div>
+
+
+                    <div className="flex flex-row gap-4 mt-5">
+                        <label>Search Pickup Location</label>
+
+                        <div className="flex flex-row">
+                            <input
+                                type="number"
+                                name="length"
+                                className="border-2 border-gray-500"
+                                required
+                                onChange={handleChange}
+                            />
+
+                            <div className="border-2 border-black flex items-center justify-center p-1">
+                                <FaSearch />
+                            </div>
+
+
+                        </div>
+
+
+                        <button className="flex flex-row items-center justify-center gap-2 bg-blue-950 text-white p-2 pr-3 pl-3 rounded-full text-sm">
+                            <FaPlus />
+                            Add Warehouse
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <button className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
             </div>
         </div>
     )
