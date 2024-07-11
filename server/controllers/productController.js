@@ -123,44 +123,58 @@ export const updateProductDetails = async (req, res) => {
     const productId = req.params.id; //  id is passed as a parameter in the URL
 
     try {
+        // const {
+        //     fullName,
+        //     mobileNo,
+        //     email,
+        //     completeAddress,
+        //     pincode,
+        //     state,
+        //     city,
+        //     landmark,
+        //     orderId,
+        //     orderDate,
+        //     paymentMode
+        // } = req.body;
+
+
         const {
-            fullName,
-            mobileNo,
-            email,
-            completeAddress,
-            pincode,
-            state,
-            city,
-            landmark,
-            orderId,
-            orderDate,
-            paymentMode
+            fullName
         } = req.body;
 
 
+        // const updatedProduct = await productModel.findByIdAndUpdate(productId, {
+        //     fullName,
+        //     mobileNo,
+        //     email,
+        //     completeAddress,
+        //     pincode,
+        //     state,
+        //     city,
+        //     landmark,
+        //     orderId,
+        //     orderDate,
+        //     paymentMode
+        // }, { new: true });
+
+
+
         const updatedProduct = await productModel.findByIdAndUpdate(productId, {
-            fullName,
-            mobileNo,
-            email,
-            completeAddress,
-            pincode,
-            state,
-            city,
-            landmark,
-            orderId,
-            orderDate,
-            paymentMode
+            fullName
         }, { new: true });
+
 
         if (!updatedProduct) {
             return res.status(404).json({ message: "Product not found" });
         }
+
 
         res.status(200).json({
             message: "Product details updated successfully",
             updatedProduct
         });
 
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Failed to update product details' });

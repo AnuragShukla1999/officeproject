@@ -111,7 +111,8 @@ const productSchema = new mongoose.Schema({
     },
     paymentMode: {
         type: String,
-        enum: ['cod', 'prepaid']
+        enum: ['cod', 'prepaid'],
+        required: true
     },
 
 
@@ -152,7 +153,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    heightheight: {
+    height: {
         type: String,
         required: true
     },

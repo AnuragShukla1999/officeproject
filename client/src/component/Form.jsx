@@ -213,7 +213,7 @@ export const Form = () => {
                             <label>Product Name</label>
                             <input
                                 type="text"
-                                name="product name"
+                                name="productName"
                                 className="border-2 border-gray-500"
                                 required
                                 onChange={handleChange}
@@ -254,7 +254,7 @@ export const Form = () => {
                             <label>Order Value (In Numbers)</label>
                             <input
                                 type="number"
-                                name="order value"
+                                name="orderValue"
                                 className="border-2 border-gray-500"
                                 required
                                 onChange={handleChange}
@@ -282,7 +282,7 @@ export const Form = () => {
                             <label>Physical Weight</label>
                             <input
                                 type="text"
-                                name="physical weight"
+                                name="physicalWeight"
                                 className="border-2 border-gray-500"
                                 required
                                 onChange={handleChange}
@@ -306,7 +306,7 @@ export const Form = () => {
                             <label>Breadth</label>
                             <input
                                 type="number"
-                                name="length"
+                                name="breadth"
                                 className="border-2 border-gray-500"
                                 required
                                 onChange={handleChange}
@@ -318,7 +318,7 @@ export const Form = () => {
                             <label>Height</label>
                             <input
                                 type="number"
-                                name="length"
+                                name="height"
                                 className="border-2 border-gray-500"
                                 required
                                 onChange={handleChange}

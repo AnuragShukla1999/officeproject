@@ -6,23 +6,25 @@ import { MdDelete } from "react-icons/md";
 
 
 
-
-
-
 // eslint-disable-next-line react/prop-types
 const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
+    // const initialFormData = {
+    //     fullName: '',
+    //     mobileNo: '',
+    //     email: '',
+    //     completeAddress: '',
+    //     pincode: '',
+    //     state: '',
+    //     city: '',
+    //     landmark: '',
+    //     orderId: '',
+    //     orderDate: '',
+    //     paymentMode: ''
+    // };
+
+
     const initialFormData = {
-        fullName: '',
-        mobileNo: '',
-        email: '',
-        completeAddress: '',
-        pincode: '',
-        state: '',
-        city: '',
-        landmark: '',
-        orderId: '',
-        orderDate: '',
-        paymentMode: ''
+        fullName: ''
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -31,21 +33,22 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
         if (isEditing && editingDetail) {
             setFormData({
                 fullName: editingDetail.fullName,
-                mobileNo: editingDetail.mobileNo,
-                email: editingDetail.email,
-                completeAddress: editingDetail.completeAddress,
-                pincode: editingDetail.pincode,
-                state: editingDetail.state,
-                city: editingDetail.city,
-                landmark: editingDetail.landmark,
-                orderId: editingDetail.orderId,
-                orderDate: editingDetail.orderDate,
-                paymentMode: editingDetail.paymentMode
+                // mobileNo: editingDetail.mobileNo,
+                // email: editingDetail.email,
+                // completeAddress: editingDetail.completeAddress,
+                // pincode: editingDetail.pincode,
+                // state: editingDetail.state,
+                // city: editingDetail.city,
+                // landmark: editingDetail.landmark,
+                // orderId: editingDetail.orderId,
+                // orderDate: editingDetail.orderDate,
+                // paymentMode: editingDetail.paymentMode
             });
         } else {
             setFormData(initialFormData);
         }
     }, [isEditing, editingDetail]);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -54,6 +57,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
             [name]: value
         });
     };
+
 
     const handleSub = async (e) => {
         e.preventDefault();
@@ -109,7 +113,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                             </div>
                            
 
-                            <div className="mb-4">
+                            {/* <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Mobile No:</label>
 
                                 <input 
@@ -238,7 +242,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     onChange={handleChange} 
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
                                 />
-                            </div>
+                            </div> */}
 
                             
 
@@ -511,11 +515,16 @@ export const Orders = () => {
 
 
     ///   Edit modal
+
+    const [isEditingModalOpen, setIsEditingModal] = useState(false);
+
+
     const [editingDetail, setEditingDetail] = useState(null); 
     const [isEditing, setIsEditing] = useState(false); 
 
+
     const openEditModal = (detail) => {
-        setIsModalOpen(true);
+        setIsEditingModal(true);
         if (detail) {
             setEditingDetail(detail);
             setIsEditing(true);
@@ -525,7 +534,7 @@ export const Orders = () => {
     };
 
     const closeEditModal = () => {
-        setIsModalOpen(false);
+        setIsEditingModal(false);
         setEditingDetail(null);
         setIsEditing(false);
 
@@ -626,7 +635,7 @@ export const Orders = () => {
                         <AddDetailsModal open={isModalOpen} close={closeModal} />
 
 
-                        <AddDetailsEditModal open={isModalOpen} close={closeEditModal} isEditing={isEditing} editingDetail={editingDetail} />
+                        <AddDetailsEditModal open={isEditingModalOpen} close={closeEditModal} isEditing={isEditing} editingDetail={editingDetail} />
                     </div>
                 )
             }
