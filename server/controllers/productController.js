@@ -157,8 +157,11 @@ export const updateProductDetails = async (req, res) => {
         //     paymentMode
         // }, { new: true });
 
-        
 
+
+
+
+        
 
 
         const updatedProduct = await productModel.findByIdAndUpdate(productId, {
