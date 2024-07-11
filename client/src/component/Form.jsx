@@ -25,7 +25,7 @@ export const Form = () => {
         physicalWeight: "",
         length: "",
         breadth: "",
-        heigth: "",
+        height: "",
         pickupLocation: ""
     });
 

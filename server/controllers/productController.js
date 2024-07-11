@@ -15,7 +15,17 @@ export const UploadProductDetails = async (req, res) => {
             landmark,
             orderId,
             orderDate,
-            paymentMode
+            paymentMode,
+            productName,
+            category,
+            quantity,
+            orderValue,
+            hsn,
+            physicalWeight,
+            length,
+            breadth,
+            height,
+            pickupLocation
         } = req.body;
 
         const newProduct = new productModel({
@@ -29,7 +39,17 @@ export const UploadProductDetails = async (req, res) => {
             landmark,
             orderId,
             orderDate,
-            paymentMode
+            paymentMode,
+            productName,
+            category,
+            quantity,
+            orderValue,
+            hsn,
+            physicalWeight,
+            length,
+            breadth,
+            height,
+            pickupLocation
         });
 
         const savedProduct = await newProduct.save();
