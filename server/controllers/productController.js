@@ -157,6 +157,8 @@ export const updateProductDetails = async (req, res) => {
         //     paymentMode
         // }, { new: true });
 
+        
+
 
 
         const updatedProduct = await productModel.findByIdAndUpdate(productId, {
@@ -174,7 +176,7 @@ export const updateProductDetails = async (req, res) => {
             updatedProduct
         });
 
-        
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Failed to update product details' });
