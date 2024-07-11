@@ -15,6 +15,7 @@ import { RateCalculator } from './pages/SidebarPage/RateCalculator';
 import { Remittance } from './pages/SidebarPage/Remittance';
 import { Reports } from './pages/SidebarPage/Reports';
 import { Profile } from './component/Profile';
+import { Dashboard } from './pages/SidebarPage/Dashboard';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path='/remittance' element={isLoggedInUser ? <Remittance /> : <SignIn />} />
           <Route path='/reports' element={isLoggedInUser ? <Reports /> : <SignIn />} />
           <Route path='/profile/:id' element={isLoggedInUser ? <Profile /> : <SignIn />} />
+          <Route path='/dashboard' element={isLoggedInUser ? <Dashboard/> : <SignIn />} />
 
         </Routes>
       </BrowserRouter >

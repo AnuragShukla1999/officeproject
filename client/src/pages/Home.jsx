@@ -4,7 +4,7 @@ import React from "react"
 import { Sidebar } from "../component/Sidebar";
 import { Form } from "../component/Form";
 import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
+// import Footer from "../component/Footer";
 // import { ProductForm } from "../component/ProductForm";
 // import { useSelector } from "react-redux"
 // import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ export const Home = () => {
                 <Form />
             </div>
 
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }
