@@ -1,4 +1,5 @@
 import productModel from "../models/productSchema.js"
+import productUpdateDetailsModel from "../models/productUpdateDetailsSchema.js";
 
 
 export const UploadProductDetails = async (req, res) => {
@@ -140,7 +141,7 @@ export const updateProductDetails = async (req, res) => {
         } = req.body;
 
 
-        const updatedProduct = await productModel.findByIdAndUpdate(productId, {
+        const updatedProduct = await productUpdateDetailsModel.findByIdAndUpdate(productId, {
             fullName,
             mobileNo,
             email,
