@@ -111,10 +111,6 @@ export const UploadProductDetails = async (req, res) => {
 
 
 
-
-
-
-
 export const updateProductDetails = async (req, res) => {
     const productId = req.params.id;
 
@@ -183,7 +179,6 @@ export const updateProductDetails = async (req, res) => {
         res.status(500).json({ message: 'Failed to update product details' });
     }
 };
-
 
 
 
