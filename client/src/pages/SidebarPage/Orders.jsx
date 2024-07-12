@@ -12,6 +12,7 @@ export const Orders = () => {
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     ///   Edit modal
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
     const [editingDetail, setEditingDetail] = useState(null);
@@ -49,6 +50,7 @@ export const Orders = () => {
     }
 
 
+    // for fetching the product Details Data
     useEffect(() => {
         const fetchDetails = async () => {
             try {
@@ -90,6 +92,8 @@ export const Orders = () => {
         }
     }
 
+
+    
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Orders</h1>
