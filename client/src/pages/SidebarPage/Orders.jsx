@@ -75,8 +75,6 @@ export const Orders = () => {
 
 
 
-
-
     // delete product details by id function
     const deleteProductDetailsById = async (e) => {
         try {
