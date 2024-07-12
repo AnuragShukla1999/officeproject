@@ -29,6 +29,7 @@ export const Form = () => {
         pickupLocation: ""
     });
 
+
     const handleChange = (e) => {
         setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
         console.log(e.target.value)
@@ -36,7 +37,6 @@ export const Form = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
 
         try {
             const res = await fetch('http://localhost:7000/api/productorderdetails', {
@@ -47,17 +47,13 @@ export const Form = () => {
                 body: JSON.stringify(productDetails),
                 credentials: 'include'
             });
-
-
             const resData = await res.json();
             console.log(resData);
-
-
-
         } catch (error) {
             console.log('Error', error)
         }
     }
+
 
     return (
         <div className="relative bg-gray-100 overflow:hidden formPage">
@@ -69,7 +65,6 @@ export const Form = () => {
 
                 {/* Consignee Details */}
                 <div><h3 className="text-white">*All Fields Required</h3></div>
-
 
                 <div className="m-4 mt-10">
                     <div className="flex flex-row gap-3 items-center ">
@@ -109,7 +104,6 @@ export const Form = () => {
                         </div>
                     </div>
                 </div>
-
 
 
 
@@ -272,7 +266,12 @@ export const Form = () => {
                     </div>
 
 
-                    <button className="flex flex-row mt-5 items-center gap-2 bg-green-500 p-2 pr-3 pl-3 rounded-full text-sm text-white"> <div><FaPlus /></div> Add More Item</button>
+                    <button className="flex flex-row mt-5 items-center gap-2 bg-green-500 p-2 pr-3 pl-3 rounded-full text-sm text-white">
+                        <div>
+                            <FaPlus />
+                        </div>
+                        Add More Item
+                    </button>
 
 
                     <div className="flex flex-row gap-8 mt-5">
@@ -326,16 +325,11 @@ export const Form = () => {
                 </div>
 
 
-
-
-
-
                 <div className="m-4 mt-10 gap-8">
                     <div className="flex flex-row gap-3 items-center ">
                         <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">4</div>
                         <h1 className="text-2xl">Pichup Location</h1>
                     </div>
-
 
                     <div className="flex flex-row gap-4 mt-5">
                         <label>Search Pickup Location</label>
@@ -352,10 +346,7 @@ export const Form = () => {
                             <div className="border-2 border-black flex items-center justify-center p-1">
                                 <FaSearch />
                             </div>
-
-
                         </div>
-
 
                         <button className="flex flex-row items-center justify-center gap-2 bg-blue-950 text-white p-2 pr-3 pl-3 rounded-full text-sm">
                             <FaPlus />
@@ -363,8 +354,6 @@ export const Form = () => {
                         </button>
                     </div>
                 </div>
-
-
 
                 <button className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
             </div>
