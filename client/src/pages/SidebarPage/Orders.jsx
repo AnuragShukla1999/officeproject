@@ -710,6 +710,25 @@ export const Orders = () => {
         fetchDetails();
     }, []);
 
+
+
+
+
+    // delete product details by id function
+    const deleteProductDetailsById = async (e) => {
+        try {
+            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${e._id}`);
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const resData = await res.json();
+            console.log(resData);
+            console.log("Click on delete button")
+        } catch (error) {
+            console.error("Error in deleting product by id", error);
+        }
+    }
+
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Orders</h1>
@@ -753,7 +772,7 @@ export const Orders = () => {
                                         <td className="border border-gray-800 px-4 py-2">
                                             <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
                                                 <MdEdit onClick={openEditModal} />
-                                                <MdDelete />
+                                                <MdDelete onClick={deleteProductDetailsById} />
                                             </div>
                                         </td>
                                     </tr>
