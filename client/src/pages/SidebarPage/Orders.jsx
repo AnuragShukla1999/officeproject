@@ -8,23 +8,28 @@ import { MdDelete } from "react-icons/md";
 
 // eslint-disable-next-line react/prop-types
 const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
-    // const initialFormData = {
-    //     fullName: '',
-    //     mobileNo: '',
-    //     email: '',
-    //     completeAddress: '',
-    //     pincode: '',
-    //     state: '',
-    //     city: '',
-    //     landmark: '',
-    //     orderId: '',
-    //     orderDate: '',
-    //     paymentMode: ''
-    // };
-
-
     const initialFormData = {
-        fullName: ''
+        fullName: "",
+        mobileNo: "",
+        email: "",
+        completeAddress: "",
+        pincode: "",
+        state: "",
+        city: "",
+        landmark: "",
+        orderId: "",
+        orderDate: "",
+        paymentMode: "",
+        productName: "",
+        category: "",
+        quantity: "",
+        orderValue: "",
+        hsn: "",
+        physicalWeight: "",
+        length: "",
+        breadth: "",
+        height: "",
+        pickupLocation: ""
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -33,16 +38,26 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
         if (isEditing && editingDetail) {
             setFormData({
                 fullName: editingDetail.fullName,
-                // mobileNo: editingDetail.mobileNo,
-                // email: editingDetail.email,
-                // completeAddress: editingDetail.completeAddress,
-                // pincode: editingDetail.pincode,
-                // state: editingDetail.state,
-                // city: editingDetail.city,
-                // landmark: editingDetail.landmark,
-                // orderId: editingDetail.orderId,
-                // orderDate: editingDetail.orderDate,
-                // paymentMode: editingDetail.paymentMode
+                mobileNo: editingDetail.mobileNo,
+                email: editingDetail.email,
+                completeAddress: editingDetail.completeAddress,
+                pincode: editingDetail.pincode,
+                state: editingDetail.state,
+                city: editingDetail.city,
+                landmark: editingDetail.landmark,
+                orderId: editingDetail.orderId,
+                orderDate: editingDetail.orderDate,
+                paymentMode: editingDetail.paymentMode,
+                productName: editingDetail.productName,
+                category: editingDetail.category,
+                quantity: editingDetail.quantity,
+                orderValue: editingDetail.orderValue,
+                hsn: editingDetail.hsn,
+                physicalWeight: editingDetail.physicalWeight,
+                length: editingDetail.length,
+                breadth: editingDetail.breadth,
+                height: editingDetail.height,
+                pickupLocation: editingDetail.pickupLocation
             });
         } else {
             setFormData(initialFormData);
@@ -56,6 +71,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
             ...formData,
             [name]: value
         });
+        console.log(e.target.value)
     };
 
 
@@ -108,120 +124,120 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                             </div>
 
 
-                            {/* <div className="mb-4">
+                            <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Mobile No:</label>
 
-                                <input 
-                                    type="number" 
-                                    id="mobileNo" 
-                                    name="mobileNo" 
-                                    value={formData.mobileNo} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="number"
+                                    id="mobileNo"
+                                    name="mobileNo"
+                                    value={formData.mobileNo}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Email Id:</label>
 
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    value={formData.email} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Complete Address:</label>
 
-                                <input 
-                                    type="text" 
-                                    id="completeAddress" 
-                                    name="completeAddress" 
-                                    value={formData.completeAddress} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="text"
+                                    id="completeAddress"
+                                    name="completeAddress"
+                                    value={formData.completeAddress}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Pincode:</label>
 
-                                <input 
-                                    type="number" 
-                                    id="pincode" 
-                                    name="pincode" 
-                                    value={formData.pincode} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="number"
+                                    id="pincode"
+                                    name="pincode"
+                                    value={formData.pincode}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">State:</label>
 
-                                <input 
-                                    type="text" 
-                                    id="state" 
-                                    name="state" 
-                                    value={formData.state} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="text"
+                                    id="state"
+                                    name="state"
+                                    value={formData.state}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">City:</label>
 
-                                <input 
-                                    type="text" 
-                                    id="city" 
-                                    name="city" 
-                                    value={formData.city} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    value={formData.city}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Famous Landmark:</label>
 
-                                <input 
-                                    type="text" 
-                                    id="landmark" 
-                                    name="landmark" 
-                                    value={formData.landmark} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="text"
+                                    id="landmark"
+                                    name="landmark"
+                                    value={formData.landmark}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Order id:</label>
 
-                                <input 
-                                    type="text" 
-                                    id="orderId" 
-                                    name="orderId" 
-                                    value={formData.orderId} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="text"
+                                    id="orderId"
+                                    name="orderId"
+                                    value={formData.orderId}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Order Date:</label>
 
-                                <input 
-                                    type="date" 
-                                    id="orderDate" 
-                                    name="orderDate" 
-                                    value={formData.orderDate} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="date"
+                                    id="orderDate"
+                                    name="orderDate"
+                                    value={formData.orderDate}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
                             </div>
 
@@ -229,17 +245,163 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                             <div className="mb-4">
                                 <label htmlFor="fullName" className="block text-gray-700 text-sm font-bold mb-2">Payment Mode:</label>
 
-                                <input 
-                                    type="text" 
-                                    id="paymentMode" 
-                                    name="paymentMode" 
-                                    value={formData.paymentMode} 
-                                    onChange={handleChange} 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required 
+                                <input
+                                    type="text"
+                                    id="paymentMode"
+                                    name="paymentMode"
+                                    value={formData.paymentMode}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
-                            </div> */}
+                            </div>
 
 
+                            <div className="mb-4">
+                                <label htmlFor="productName" className="block text-gray-700 text-sm font-bold mb-2">Product Name:</label>
+
+                                <input
+                                    type="text"
+                                    id="productName"
+                                    name="productName"
+                                    value={formData.productName}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+
+                            <div className="mb-4">
+                                <label htmlFor="category" className="block text-gray-700 text-sm font-bold mb-2">Category</label>
+                                <select name="category" onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                                    <option value="accessories">Accessories</option>
+                                    <option value="fashion and clothing">Fashion & Clothing</option>
+                                    <option value="accessories">Beauty and & Stationary</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="fmcg">FMCG</option>
+                                    <option value="footwear">Footwear</option>
+                                    <option value="toys">Toys</option>
+                                    <option value="sports equipment">Sports Equipment</option>
+                                    <option value="others">Others</option>
+                                    <option value="wellness">Wellness</option>
+                                    <option value="medicines">Medicines</option>
+                                </select>
+                            </div>
+
+
+                            <div className="mb-4">
+                                <label htmlFor="quantity" className="block text-gray-700 text-sm font-bold mb-2">Quantity (In Numbers):</label>
+
+                                <input
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    value={formData.quantity}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+                            <div className="mb-4">
+                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Order Value (In Numbers):</label>
+
+                                <input
+                                    type="number"
+                                    id="orderValue"
+                                    name="orderValue"
+                                    value={formData.orderValue}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+
+                            <div className="mb-4">
+                                <label htmlFor="hsn" className="block text-gray-700 text-sm font-bold mb-2">HSN:</label>
+
+                                <input
+                                    type="text"
+                                    id="hsn"
+                                    name="hsn"
+                                    value={formData.hsn}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+                            <div className="mb-4">
+                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Physical Weight:</label>
+
+                                <input
+                                    type="text"
+                                    id="physicalWeight"
+                                    name="physicalWeight"
+                                    value={formData.physicalWeight}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+
+                            <div className="mb-4">
+                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Length:</label>
+
+                                <input
+                                    type="number"
+                                    id="length"
+                                    name="length"
+                                    value={formData.length}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+                            <div className="mb-4">
+                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Breadth:</label>
+
+                                <input
+                                    type="number"
+                                    id="breadth"
+                                    name="breadth"
+                                    value={formData.breadth}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+                            <div className="mb-4">
+                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Height:</label>
+
+                                <input
+                                    type="number"
+                                    id="height"
+                                    name="height"
+                                    value={formData.height}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
+
+
+
+                            <div className="mb-4">
+                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Pickup Location:</label>
+
+                                <input
+                                    type="text"
+                                    id="pickupLocation"
+                                    name="pickupLocation"
+                                    value={formData.pickupLocation}
+                                    onChange={handleChange}
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                />
+                            </div>
 
                         </div>
                         <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -648,13 +810,13 @@ export const Orders = () => {
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    
+
     ///   Edit modal
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
     const [editingDetail, setEditingDetail] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    
-    
+
+
     const openEditModal = (detail) => {
         setIsEditingModal(true);
         if (detail) {
@@ -664,16 +826,16 @@ export const Orders = () => {
             setIsEditing(false);
         }
     };
-    
+
     const closeEditModal = () => {
         setIsEditingModal(false);
         setEditingDetail(null);
         setIsEditing(false);
         console.log("Clicked in closeEditModal")
     };
-    
-    
-    
+
+
+
     //// this is for AddDetails
     const [isModalOpen, setIsModalOpen] = useState(false);
 
