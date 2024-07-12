@@ -119,44 +119,55 @@ export const updateProductDetails = async (req, res) => {
     const productId = req.params.id;
 
     try {
-        // const {
-        //     fullName,
-        //     mobileNo,
-        //     email,
-        //     completeAddress,
-        //     pincode,
-        //     state,
-        //     city,
-        //     landmark,
-        //     orderId,
-        //     orderDate,
-        //     paymentMode
-        // } = req.body;
-
-
         const {
-            fullName
+            fullName,
+            mobileNo,
+            email,
+            completeAddress,
+            pincode,
+            state,
+            city,
+            landmark,
+            orderId,
+            orderDate,
+            paymentMode,
+            productName,
+            category,
+            quantity,
+            orderValue,
+            hsn,
+            physicalWeight,
+            length,
+            breadth,
+            height,
+            pickupLocation
         } = req.body;
 
 
-        // const updatedProduct = await productModel.findByIdAndUpdate(productId, {
-        //     fullName,
-        //     mobileNo,
-        //     email,
-        //     completeAddress,
-        //     pincode,
-        //     state,
-        //     city,
-        //     landmark,
-        //     orderId,
-        //     orderDate,
-        //     paymentMode
-        // }, { new: true });
-
-
         const updatedProduct = await productModel.findByIdAndUpdate(productId, {
-            fullName
+            fullName,
+            mobileNo,
+            email,
+            completeAddress,
+            pincode,
+            state,
+            city,
+            landmark,
+            orderId,
+            orderDate,
+            paymentMode,
+            productName,
+            category,
+            quantity,
+            orderValue,
+            hsn,
+            physicalWeight,
+            length,
+            breadth,
+            height,
+            pickupLocation
         }, { new: true });
+
 
         if (!updatedProduct) {
             return res.status(404).json({ message: "Product not found" });
