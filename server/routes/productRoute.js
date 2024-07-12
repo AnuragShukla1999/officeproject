@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post('/productorderdetails', UploadProductDetails);
 router.get('/getproductdetails', getProductDetails);
-router.put('/updateproductdetails', updateProductDetails);
+router.put('/updateproductdetails/:id', updateProductDetails);
 
 export default router;

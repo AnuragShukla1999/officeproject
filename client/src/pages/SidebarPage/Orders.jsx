@@ -78,7 +78,6 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
             const resData = await res.json();
             console.log(resData);
 
-
             close();
         } catch (error) {
             console.log('Error', error);
@@ -749,15 +748,15 @@ export const Orders = () => {
                         <table className="table-auto border-collapse border border-gray-200 w-full">
                             <thead>
                                 <tr className="bg-blue-400">
-                                    <th className="border border-gray-800 px-4 py-2">Costumer Full Name</th>
-                                    <th className="border border-gray-800 px-4 py-2">Mobile No</th>
-                                    <th className="border border-gray-800 px-4 py-2">Email Id</th>
-                                    <th className="border border-gray-800 px-4 py-2">Complete Address</th>
+                                    <th className="border border-gray-800 px-4 py-2">Order id</th>
+                                    <th className="border border-gray-800 px-4 py-2">Product Name</th>
+                                    <th className="border border-gray-800 px-4 py-2">Order Value</th>
+                                    <th className="border border-gray-800 px-4 py-2">Customer Details</th>
+                                    <th className="border border-gray-800 px-4 py-2">Billable Weight</th>
                                     <th className="border border-gray-800 px-4 py-2">Pincode</th>
                                     <th className="border border-gray-800 px-4 py-2">State</th>
-                                    <th className="border border-gray-800 px-4 py-2">City</th>
+                                    <th className="border border-gray-800 px-4 py-2">Shipping Details</th>
                                     <th className="border border-gray-800 px-4 py-2">Famous Landmark</th>
-                                    <th className="border border-gray-800 px-4 py-2">Order id</th>
                                     <th className="border border-gray-800 px-4 py-2">Order Date</th>
                                     <th className="border border-gray-800 px-4 py-2">Payment Mode</th>
                                     <th className="border border-gray-800 px-4 py-2">Update Datails</th>
@@ -767,15 +766,15 @@ export const Orders = () => {
 
                                 {productDetails.map((detail) => (
                                     <tr key={detail._id} className="bg-slate-200">
-                                        <td className="border border-gray-800 px-4 py-2">{detail.fullName}</td>
-                                        <td className="border border-gray-800 px-4 py-2">{detail.mobileNo}</td>
-                                        <td className="border border-gray-800 px-4 py-2">{detail.email}</td>
-                                        <td className="border border-gray-800 px-4 py-2">{detail.completeAddress}</td>
+                                        <td className="border border-gray-800 px-4 py-2">{detail.orderId}</td>
+                                        <td className="border border-gray-800 px-4 py-2">{detail.productName}</td>
+                                        <td className="border border-gray-800 px-4 py-2 flex flex-col"><div>₹{detail.orderValue}</div> <div>{detail.paymentMode}</div></td>
+                                        <td className="border border-gray-800 px-4 py-2"><div>{detail.fullName}</div>   <div>{detail.mobileNo}</div></td>
+                                        <td className="border border-gray-800 px-4 py-2">{detail.physicalWeight}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.pincode}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.state}</td>
-                                        <td className="border border-gray-800 px-4 py-2">{detail.city}</td>
+                                        <td className="border border-gray-800 px-4 py-2">{detail.pickupLocation}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.landmark}</td>
-                                        <td className="border border-gray-800 px-4 py-2">{detail.orderId}</td>
                                         <td className="border border-gray-800 px-4 py-2">{new Date(detail.orderDate).toLocaleDateString()}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.paymentMode}</td>
                                         <td className="border border-gray-800 px-4 py-2"><div className='flex flex-row gap-5 text-2xl items-center justify-center'><MdEdit onClick={openEditModal} />  <MdDelete /></div></td>
