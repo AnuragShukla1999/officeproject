@@ -6,12 +6,15 @@ import { MdDelete } from "react-icons/md";
 import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 import { AddDetailsModal } from '../../component/AddNewProduct';
 
+import { useParams } from 'react-router-dom';
 
 export const Orders = () => {
 
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
+    const params = useParams();
 
     ///   Edit modal
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
@@ -49,6 +52,17 @@ export const Orders = () => {
         setIsModalOpen(false)
     }
 
+
+    /// fetch product Details by id
+    const fetchProductDetailsById = async () => {
+        try {
+            const productId = params;
+
+            const res = await fetch('http://localhost:7000/api/getproductdetails')
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
 
     // for fetching the product Details Data
     useEffect(() => {
@@ -93,7 +107,7 @@ export const Orders = () => {
     }
 
 
-    
+
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Orders</h1>

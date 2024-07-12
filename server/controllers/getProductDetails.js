@@ -19,3 +19,30 @@ export const getProductDetails = async (req, res) => {
         })
     }
 };
+
+
+
+
+
+export const getProductDetailsById = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const singleProductDetail = await productModel.findById(id);
+
+        if (!singleProductDetail) {
+            return res.status(401).json({
+                message: "Product not found (id wise)"
+            })
+        }
+
+        res.status(201).json({
+            message: "Product founded (id wise)"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+            success: false
+        })
+    }
+}
