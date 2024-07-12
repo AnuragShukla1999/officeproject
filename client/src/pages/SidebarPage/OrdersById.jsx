@@ -70,7 +70,7 @@ export const OrdersById = () => {
     // delete product details by id function
     const deleteProductDetailsById = async (e) => {
         try {
-            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${e._id}`);
+            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }

@@ -129,7 +129,7 @@ export const Orders = () => {
                                         <td className="border border-gray-800 px-4 py-2">{detail.orderId}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.productName}</td>
                                         <td className="border border-gray-800 px-4 py-2 flex flex-col"><div>₹{detail.orderValue}</div> <div>{detail.paymentMode}</div></td>
-                                        <td className="border border-gray-800 px-4 py-2" > <Link to={'/ordersbyid/:productId'}><div>{detail.fullName}</div></Link>   <div>{detail.mobileNo}</div></td>
+                                        <td className="border border-gray-800 px-4 py-2" > <Link to={`/ordersbyid/${detail._id}`}><div>{detail.fullName}</div></Link>   <div>{detail.mobileNo}</div></td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.physicalWeight}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.pincode}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.state}</td>
