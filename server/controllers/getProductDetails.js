@@ -36,6 +36,8 @@ export const getProductDetailsById = async (req, res) => {
             })
         }
 
+        const { password: password, ...rest } = user._doc;
+
         res.status(201).json({
             message: "Product founded (id wise)"
         })
