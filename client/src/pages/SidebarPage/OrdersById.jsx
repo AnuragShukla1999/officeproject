@@ -6,13 +6,15 @@ import { MdDelete } from "react-icons/md";
 import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 import { AddDetailsModal } from '../../component/AddNewProduct';
 
+import { useParams } from 'react-router-dom';
 
-export const Orders = () => {
+export const OrdersById = () => {
 
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
 
 
+    const params = useParams();
 
     ///   Edit modal
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
@@ -51,31 +53,31 @@ export const Orders = () => {
     }
 
 
+
+
     // for fetching the product Details Data
     useEffect(() => {
-        const fetchDetails = async () => {
+        /// fetch product Details by id
+        const fetchProductDetailsById = async () => {
             try {
-                const res = await fetch('http://localhost:7000/api/getproductdetails');
+                const productId = params;
+
+                const res = await fetch(`http://localhost:7000/api/getproductdetails/${productId}`);
+
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await res.json();
                 console.log(data);
-                if (data.success && data.data.length > 0) {
-                    setProductDetails(data.data);
-                } else {
-                    console.error('Error fetching data:', data.message);
-                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
-        fetchDetails();
-        
-    }, []);
+        fetchProductDetailsById();
+    }, [params]);
 
 
 
@@ -88,6 +90,8 @@ export const Orders = () => {
             }
             const resData = await res.json();
             console.log(resData);
+
+            setProductDetails(resData.data)
             console.log("Click on delete button")
         } catch (error) {
             console.error("Error in deleting product by id", error);
@@ -166,4 +170,4 @@ export const Orders = () => {
     );
 };
 
-export default Orders;
+export default OrdersById;
