@@ -12,13 +12,13 @@ export const OrdersById = () => {
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
 
-
-    const params = useParams();
-
     ///   Edit modal
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
     const [editingDetail, setEditingDetail] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+    
+
+    const params = useParams();
 
 
     const openEditModal = (detail) => {
@@ -44,15 +44,17 @@ export const OrdersById = () => {
         /// fetch product Details by id
         const fetchProductDetailsById = async () => {
             try {
-                const productId = params;
+                // const productId = params;
 
-                const res = await fetch(`http://localhost:7000/api/getproductdetails/${productId}`);
+                const res = await fetch(`http://localhost:7000/api/getproductdetails/${params.productId}`);
 
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await res.json();
                 console.log(data);
+
+                setProductDetails(data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
@@ -61,7 +63,7 @@ export const OrdersById = () => {
         }
 
         fetchProductDetailsById();
-    }, [params]);
+    }, [params.productId]);
 
 
 
@@ -83,12 +85,11 @@ export const OrdersById = () => {
     }
 
 
-
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Orders</h1>
 
-            <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={openModal}>Add</button>
+            {/* <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={openModal}>Add</button> */}
             {
                 loading ? "Loading..........." : (
                     <div className="overflow-x-auto">
