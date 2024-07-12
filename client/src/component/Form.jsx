@@ -2,9 +2,9 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
+import '../utitity/style.css'
+
 export const Form = () => {
-
-
     const [productDetails, setProductDetails] = useState({
         fullName: "",
         mobileNo: "",
@@ -29,12 +29,10 @@ export const Form = () => {
         pickupLocation: ""
     });
 
-
     const handleChange = (e) => {
         setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
         console.log(e.target.value)
     };
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -62,15 +60,15 @@ export const Form = () => {
     }
 
     return (
-        <div className="relative bg-gray-100">
-            <div className="h-32 bg-blue-600 w-screen sticky ">
+        <div className="relative bg-gray-100 overflow:hidden formPage">
+            <div className="h-32 bg-blue-600 sticky ">
 
             </div>
 
-            <div className="rounded-2xl z-10 absolute top-20 left-5 bg-transparent w-screen">
+            <div className="rounded-2xl z-10 absolute top-20 left-5 bg-transparent ">
 
                 {/* Consignee Details */}
-                <div><h3>*All Fields Required</h3></div>
+                <div><h3 className="text-white">*All Fields Required</h3></div>
 
 
                 <div className="m-4 mt-10">
@@ -174,7 +172,7 @@ export const Form = () => {
 
 
 
-                <div className="m-4 mt-10 gap-8">
+                <div className="m-4 mt-10 gap-8 md:w-32">
                     <div className="flex flex-row gap-3 items-center ">
                         <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">3</div>
                         <h1 className="text-2xl">Order Details</h1>
