@@ -119,7 +119,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="fullName"
                                     value={formData.fullName}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                                 />
                             </div>
 
@@ -133,7 +133,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="mobileNo"
                                     value={formData.mobileNo}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                                 />
                             </div>
 
@@ -146,7 +146,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                                 />
                             </div>
 
@@ -159,7 +159,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="completeAddress"
                                     value={formData.completeAddress}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                                 />
                             </div>
 
@@ -172,7 +172,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="pincode"
                                     value={formData.pincode}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -185,7 +185,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="state"
                                     value={formData.state}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -198,7 +198,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="city"
                                     value={formData.city}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -211,7 +211,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="landmark"
                                     value={formData.landmark}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -224,7 +224,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="orderId"
                                     value={formData.orderId}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -237,7 +237,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="orderDate"
                                     value={formData.orderDate}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -251,7 +251,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="paymentMode"
                                     value={formData.paymentMode}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -265,7 +265,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="productName"
                                     value={formData.productName}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -298,7 +298,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="quantity"
                                     value={formData.quantity}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -312,7 +312,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="orderValue"
                                     value={formData.orderValue}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -327,7 +327,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="hsn"
                                     value={formData.hsn}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -341,7 +341,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="physicalWeight"
                                     value={formData.physicalWeight}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -356,7 +356,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="length"
                                     value={formData.length}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -370,7 +370,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="breadth"
                                     value={formData.breadth}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -384,7 +384,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="height"
                                     value={formData.height}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
@@ -399,7 +399,7 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                                     name="pickupLocation"
                                     value={formData.pickupLocation}
                                     onChange={handleChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                             </div>
 
