@@ -61,7 +61,6 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
 
     const handleSub = async (e) => {
         e.preventDefault();
-
         try {
             const url = isEditing ? `http://localhost:7000/api/updateproductdetails/${editingDetail._id}` : 'http://localhost:7000/api/productorderdetails';
             const method = isEditing ? 'PUT' : 'POST';
@@ -74,7 +73,6 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
                 body: JSON.stringify(formData),
                 credentials: 'include'
             });
-
             const resData = await res.json();
             console.log(resData);
 
@@ -83,8 +81,6 @@ const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
             console.log('Error', error);
         }
     };
-
-
 
 
     return (
@@ -295,24 +291,18 @@ const AddDetailsModal = ({ open, close }) => {
     });
 
 
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
             [name]: value
         });
-
-
         console.log(e.target.value);
     };
 
 
-
     const handleSub = async (e) => {
         e.preventDefault();
-
-
         try {
             const res = await fetch('http://localhost:7000/api/productorderdetails', {
                 method: "POST",
@@ -322,13 +312,8 @@ const AddDetailsModal = ({ open, close }) => {
                 body: JSON.stringify(formData),
                 credentials: 'include'
             });
-
-
             const resData = await res.json();
             console.log(resData);
-
-
-
         } catch (error) {
             console.log('Error', error)
         }
@@ -658,24 +643,18 @@ const AddDetailsModal = ({ open, close }) => {
 
 
 
-
 export const Orders = () => {
 
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-
+    
     ///   Edit modal
-
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
-
-
     const [editingDetail, setEditingDetail] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-
-
+    
+    
     const openEditModal = (detail) => {
         setIsEditingModal(true);
         if (detail) {
@@ -685,42 +664,37 @@ export const Orders = () => {
             setIsEditing(false);
         }
     };
-
+    
     const closeEditModal = () => {
         setIsEditingModal(false);
         setEditingDetail(null);
         setIsEditing(false);
-
         console.log("Clicked in closeEditModal")
     };
-
-
-
+    
+    
+    
     //// this is for AddDetails
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const openModal = () => {
         setIsModalOpen(true)
     };
-
 
     const closeModal = () => {
         setIsModalOpen(false)
     }
 
 
-
     useEffect(() => {
         const fetchDetails = async () => {
             try {
                 const res = await fetch('http://localhost:7000/api/getproductdetails');
-
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
                 }
-
                 const data = await res.json();
-
                 console.log(data);
-
                 if (data.success && data.data.length > 0) {
                     setProductDetails(data.data);
                 } else {
@@ -741,7 +715,6 @@ export const Orders = () => {
             <h1 className="text-2xl font-bold mb-4">Orders</h1>
 
             <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={openModal}>Add</button>
-
             {
                 loading ? "Loading..........." : (
                     <div className="overflow-x-auto">
@@ -762,8 +735,8 @@ export const Orders = () => {
                                     <th className="border border-gray-800 px-4 py-2">Update Datails</th>
                                 </tr>
                             </thead>
-                            <tbody>
 
+                            <tbody>
                                 {productDetails.map((detail) => (
                                     <tr key={detail._id} className="bg-slate-200">
                                         <td className="border border-gray-800 px-4 py-2">{detail.orderId}</td>
@@ -777,18 +750,29 @@ export const Orders = () => {
                                         <td className="border border-gray-800 px-4 py-2">{detail.landmark}</td>
                                         <td className="border border-gray-800 px-4 py-2">{new Date(detail.orderDate).toLocaleDateString()}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.paymentMode}</td>
-                                        <td className="border border-gray-800 px-4 py-2"><div className='flex flex-row gap-5 text-2xl items-center justify-center'><MdEdit onClick={openEditModal} />  <MdDelete /></div></td>
+                                        <td className="border border-gray-800 px-4 py-2">
+                                            <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
+                                                <MdEdit onClick={openEditModal} />
+                                                <MdDelete />
+                                            </div>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
 
 
+                        <AddDetailsModal
+                            open={isModalOpen}
+                            close={closeModal}
+                        />
 
-                        <AddDetailsModal open={isModalOpen} close={closeModal} />
-
-
-                        <AddDetailsEditModal open={isEditingModalOpen} close={closeEditModal} isEditing={isEditing} editingDetail={editingDetail} />
+                        <AddDetailsEditModal
+                            open={isEditingModalOpen}
+                            close={closeEditModal}
+                            isEditing={isEditing}
+                            editingDetail={editingDetail}
+                        />
                     </div>
                 )
             }
