@@ -16,7 +16,7 @@ export const OrdersById = () => {
     const [isEditingModalOpen, setIsEditingModal] = useState(false);
     const [editingDetail, setEditingDetail] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    
+
 
     const params = useParams();
 
@@ -52,9 +52,21 @@ export const OrdersById = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await res.json();
-                console.log(data);
+                console.log('Data received:', data); // Check what data looks like
 
-                setProductDetails(data)
+                // if (Array.isArray(data)) {
+                //     setProductDetails(data);
+                // } else {
+                //     setProductDetails([]); // Set empty array or handle differently if data structure is unexpected
+                // }
+
+
+                // Check if data.message exists and set productDetails accordingly
+                if (data.message) {
+                    setProductDetails([data.message]); // Assuming data.message is the object with details
+                } else {
+                    setProductDetails([]); // Handle case where data.message is not found
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
@@ -68,7 +80,7 @@ export const OrdersById = () => {
 
 
     // delete product details by id function
-    const deleteProductDetailsById = async (e) => {
+    const deleteProductDetailsById = async () => {
         try {
             const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
             if (!res.ok) {
