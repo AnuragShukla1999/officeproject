@@ -28,6 +28,7 @@ export const getProductDetailsById = async (req, res) => {
     try {
         const id = req.params.id;
 
+
         const singleProductDetail = await productModel.findById(id);
 
         if (!singleProductDetail) {
@@ -36,12 +37,14 @@ export const getProductDetailsById = async (req, res) => {
             })
         }
 
-        const { password: password, ...rest } = user._doc;
+       // const { password: password, ...rest } = user._doc;
 
         res.status(201).json({
-            message: "Product founded (id wise)"
+            message: singleProductDetail,
+            success:true
         })
     } catch (error) {
+        
         return res.status(500).json({
             message: error.message,
             success: false
