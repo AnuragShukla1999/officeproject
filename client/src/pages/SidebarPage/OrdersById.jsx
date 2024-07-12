@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
-import { AddDetailsModal } from '../../component/AddNewProduct';
 
 import { useParams } from 'react-router-dom';
 
@@ -38,21 +37,6 @@ export const OrdersById = () => {
         setIsEditing(false);
         console.log("Clicked in closeEditModal")
     };
-
-
-
-    //// this is for AddDetails
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => {
-        setIsModalOpen(true)
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false)
-    }
-
-
 
 
     // for fetching the product Details Data
@@ -150,12 +134,6 @@ export const OrdersById = () => {
                                 ))}
                             </tbody>
                         </table>
-
-
-                        <AddDetailsModal
-                            open={isModalOpen}
-                            close={closeModal}
-                        />
 
                         <AddDetailsEditModal
                             open={isEditingModalOpen}
