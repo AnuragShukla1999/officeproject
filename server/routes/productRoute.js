@@ -11,6 +11,6 @@ router.post('/productorderdetails', UploadProductDetails);
 router.get('/getproductdetails', getProductDetails);
 router.get('/getproductdetails/:id', getProductDetailsById);
 router.put('/updateproductdetails/:id', updateProductDetails);
-router.put('/deleteproductdetails/:id', updateProductDetails);
+router.delete('/deleteproductdetails/:id', updateProductDetails);
 
 export default router;
