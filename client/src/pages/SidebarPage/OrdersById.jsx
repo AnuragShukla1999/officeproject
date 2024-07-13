@@ -49,7 +49,10 @@ export const OrdersById = () => {
     // delete product details by id function
     const deleteProductDetailsById = async (productId) => {
         try {
-            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
+            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`, {
+                method: "DELETE"
+            });
+            
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -77,7 +80,7 @@ export const OrdersById = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await res.json();
-            console.log('Data received:', data); 
+            console.log('Data received:', data);
             // if (Array.isArray(data)) {
             //     setProductDetails(data);
             // } else {
@@ -85,7 +88,7 @@ export const OrdersById = () => {
             // }
 
             if (data.message) {
-                setProductDetails([data.message]); 
+                setProductDetails([data.message]);
             } else {
                 setProductDetails([]);
             }
@@ -97,7 +100,7 @@ export const OrdersById = () => {
     }
 
     // for fetching the product Details Data
-    useEffect(() => {   
+    useEffect(() => {
         fetchProductDetailsById();
     }, [params.productId]);
 
@@ -144,14 +147,14 @@ export const OrdersById = () => {
                                         <td className="border border-gray-800 px-4 py-2">
                                             <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
                                                 <MdEdit onClick={(e) => openEditModal(e)} />
-                                                <MdDelete onClick={(e) => deleteProductDetailsById(e)} />
+                                                <MdDelete onClick={() => deleteProductDetailsById(detail._id)} />
                                             </div>
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                        
+
                         <AddDetailsEditModal
                             open={isEditingModalOpen}
                             close={closeEditModal}
