@@ -144,8 +144,8 @@ export const OrdersById = () => {
                                         <td className="border border-gray-800 px-4 py-2">{detail.paymentMode}</td>
                                         <td className="border border-gray-800 px-4 py-2">
                                             <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
-                                                <MdEdit onClick={openEditModal} />
-                                                <MdDelete onClick={() => deleteProductDetailsById()} />
+                                                <MdEdit onClick={(e) => openEditModal(e)} />
+                                                <MdDelete onClick={(e) => deleteProductDetailsById(e)} />
                                             </div>
                                         </td>
                                     </tr>

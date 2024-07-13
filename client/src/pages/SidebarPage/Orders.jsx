@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
+// import { MdEdit } from "react-icons/md";
+// import { MdDelete } from "react-icons/md";
+// import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 import { AddDetailsModal } from '../../component/AddNewProduct';
 import { Link } from 'react-router-dom';
 
@@ -15,27 +15,27 @@ export const Orders = () => {
 
 
     ///   Edit modal
-    const [isEditingModalOpen, setIsEditingModal] = useState(false);
-    const [editingDetail, setEditingDetail] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
+    // const [isEditingModalOpen, setIsEditingModal] = useState(false);
+    // const [editingDetail, setEditingDetail] = useState(null);
+    // const [isEditing, setIsEditing] = useState(false);
 
 
-    const openEditModal = (detail) => {
-        setIsEditingModal(true);
-        if (detail) {
-            setEditingDetail(detail);
-            setIsEditing(true);
-        } else {
-            setIsEditing(false);
-        }
-    };
+    // const openEditModal = (detail) => {
+    //     setIsEditingModal(true);
+    //     if (detail) {
+    //         setEditingDetail(detail);
+    //         setIsEditing(true);
+    //     } else {
+    //         setIsEditing(false);
+    //     }
+    // };
 
-    const closeEditModal = () => {
-        setIsEditingModal(false);
-        setEditingDetail(null);
-        setIsEditing(false);
-        console.log("Clicked in closeEditModal")
-    };
+    // const closeEditModal = () => {
+    //     setIsEditingModal(false);
+    //     setEditingDetail(null);
+    //     setIsEditing(false);
+    //     console.log("Clicked in closeEditModal")
+    // };
 
 
 
@@ -80,19 +80,19 @@ export const Orders = () => {
 
 
     // delete product details by id function
-    const deleteProductDetailsById = async (e) => {
-        try {
-            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${e._id}`);
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const resData = await res.json();
-            console.log(resData);
-            console.log("Click on delete button")
-        } catch (error) {
-            console.error("Error in deleting product by id", error);
-        }
-    }
+    // const deleteProductDetailsById = async (e) => {
+    //     try {
+    //         const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${e._id}`);
+    //         if (!res.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+    //         const resData = await res.json();
+    //         console.log(resData);
+    //         console.log("Click on delete button")
+    //     } catch (error) {
+    //         console.error("Error in deleting product by id", error);
+    //     }
+    // }
 
 
 
@@ -118,7 +118,6 @@ export const Orders = () => {
                                     <th className="border border-gray-800 px-4 py-2">Famous Landmark</th>
                                     <th className="border border-gray-800 px-4 py-2">Order Date</th>
                                     <th className="border border-gray-800 px-4 py-2">Payment Mode</th>
-                                    <th className="border border-gray-800 px-4 py-2">Update Datails</th>
                                 </tr>
                             </thead>
 
@@ -136,12 +135,12 @@ export const Orders = () => {
                                         <td className="border border-gray-800 px-4 py-2">{detail.landmark}</td>
                                         <td className="border border-gray-800 px-4 py-2">{new Date(detail.orderDate).toLocaleDateString()}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.paymentMode}</td>
-                                        <td className="border border-gray-800 px-4 py-2">
+                                        {/* <td className="border border-gray-800 px-4 py-2">
                                             <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
                                                 <MdEdit onClick={openEditModal} />
                                                 <MdDelete onClick={deleteProductDetailsById} />
                                             </div>
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 ))}
                             </tbody>
@@ -153,12 +152,12 @@ export const Orders = () => {
                             close={closeModal}
                         />
 
-                        <AddDetailsEditModal
+                        {/* <AddDetailsEditModal
                             open={isEditingModalOpen}
                             close={closeEditModal}
                             isEditing={isEditing}
                             editingDetail={editingDetail}
-                        />
+                        /> */}
                     </div>
                 )
             }

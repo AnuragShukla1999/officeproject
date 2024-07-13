@@ -1,9 +1,16 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import toast from "react-hot-toast";
 
 // eslint-disable-next-line react/prop-types
 export const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) => {
+
+
+    const params = useParams();
+
     const initialFormData = {
         fullName: "",
         mobileNo: "",
@@ -74,7 +81,7 @@ export const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) =
     const handleSub = async (e) => {
         e.preventDefault();
         try {
-            const url = isEditing ? `http://localhost:7000/api/updateproductdetails/${editingDetail._id}` : 'http://localhost:7000/api/productorderdetails';
+            const url = isEditing ? `http://localhost:7000/api/updateproductdetails/${params.productId}` : 'http://localhost:7000/api/productorderdetails';
             const method = isEditing ? 'PUT' : 'POST';
 
             const res = await fetch(url, {
@@ -87,6 +94,8 @@ export const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) =
             });
             const resData = await res.json();
             console.log(resData);
+
+            toast.success("Product Details Updated");
 
             close();
         } catch (error) {
