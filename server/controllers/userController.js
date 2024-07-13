@@ -2,13 +2,13 @@ import authModel from "../models/authSchema.js";
 
 
 
-export const getUserById = async () => {
+export const getUserById = async (req, res) => {
     const userId = req.params.id;
 
     try {
         const user = await authModel.findById(userId);
         if (!user) {
-            return resizeBy.status(404).json({
+            return res.status(404).json({
                 message: "User not found"
             });
         }

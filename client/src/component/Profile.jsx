@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect  } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux"
 
@@ -19,8 +19,9 @@ export const Profile = () => {
                 throw new Error('Failed to fetch user');
             }
             const data = await res.json();
-            setUser(data)
             console.log(data);
+            const { name, email } = data;
+            setUser({ name, email });
         } catch (error) {
             console.error("Error", error);
         }
@@ -34,8 +35,18 @@ export const Profile = () => {
         <div>
             <h1>Profile</h1>
             <div>
-                <label>Name</label>
-                <label>{user}</label>
+                {user ? (
+                    <div>
+                        <label>Name: </label>
+                        <span>{user.name}</span>
+                        <br />
+                        <label>Email: </label>
+                        <span>{user.email}</span>
+                        {/* Add more fields as needed */}
+                    </div>
+                ) : (
+                    <p>Loading...</p>
+                )}
             </div>
         </div>
     )
