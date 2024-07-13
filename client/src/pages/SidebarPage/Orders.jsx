@@ -1,43 +1,13 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
-// import { MdEdit } from "react-icons/md";
-// import { MdDelete } from "react-icons/md";
-// import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 import { AddDetailsModal } from '../../component/AddNewProduct';
 import { Link } from 'react-router-dom';
 
 
 export const Orders = () => {
-
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
-    ///   Edit modal
-    // const [isEditingModalOpen, setIsEditingModal] = useState(false);
-    // const [editingDetail, setEditingDetail] = useState(null);
-    // const [isEditing, setIsEditing] = useState(false);
-
-
-    // const openEditModal = (detail) => {
-    //     setIsEditingModal(true);
-    //     if (detail) {
-    //         setEditingDetail(detail);
-    //         setIsEditing(true);
-    //     } else {
-    //         setIsEditing(false);
-    //     }
-    // };
-
-    // const closeEditModal = () => {
-    //     setIsEditingModal(false);
-    //     setEditingDetail(null);
-    //     setIsEditing(false);
-    //     console.log("Clicked in closeEditModal")
-    // };
-
-
 
     //// this is for AddDetails
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,28 +48,9 @@ export const Orders = () => {
     }, []);
 
 
-
-    // delete product details by id function
-    // const deleteProductDetailsById = async (e) => {
-    //     try {
-    //         const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${e._id}`);
-    //         if (!res.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         const resData = await res.json();
-    //         console.log(resData);
-    //         console.log("Click on delete button")
-    //     } catch (error) {
-    //         console.error("Error in deleting product by id", error);
-    //     }
-    // }
-
-
-
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Orders</h1>
-
             <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={openModal}>Add</button>
             {
                 loading ? "Loading..........." : (
@@ -135,29 +86,15 @@ export const Orders = () => {
                                         <td className="border border-gray-800 px-4 py-2">{detail.landmark}</td>
                                         <td className="border border-gray-800 px-4 py-2">{new Date(detail.orderDate).toLocaleDateString()}</td>
                                         <td className="border border-gray-800 px-4 py-2">{detail.paymentMode}</td>
-                                        {/* <td className="border border-gray-800 px-4 py-2">
-                                            <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
-                                                <MdEdit onClick={openEditModal} />
-                                                <MdDelete onClick={deleteProductDetailsById} />
-                                            </div>
-                                        </td> */}
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
 
-
                         <AddDetailsModal
                             open={isModalOpen}
                             close={closeModal}
                         />
-
-                        {/* <AddDetailsEditModal
-                            open={isEditingModalOpen}
-                            close={closeEditModal}
-                            isEditing={isEditing}
-                            editingDetail={editingDetail}
-                        /> */}
                     </div>
                 )
             }
