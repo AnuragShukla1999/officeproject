@@ -6,12 +6,15 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast';
 
 
 export const OrdersById = () => {
+
+
+    const naviagte = useNavigate();
 
     const { userData } = useSelector((state) => state.user);
     console.log("userData", userData)
@@ -52,7 +55,7 @@ export const OrdersById = () => {
             const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`, {
                 method: "DELETE"
             });
-            
+
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -63,7 +66,8 @@ export const OrdersById = () => {
             console.log("Product details deleted successfully");
             toast.success("Product Deleted Successfully");
 
-            fetchProductDetailsById();
+            naviagte("/orders")
+
         } catch (error) {
             console.error("Error in deleting product by id", error);
             toast.error('This is an error on Deleting Product!');
