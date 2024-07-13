@@ -14,7 +14,6 @@ import toast from 'react-hot-toast';
 
 export const OrdersById = () => {
 
-
     const naviagte = useNavigate();
 
     const { userData } = useSelector((state) => state.user);
@@ -35,7 +34,6 @@ export const OrdersById = () => {
         if (detail) {
             setEditingDetail(detail);
             setIsEditing(true);
-
             console.log("Clicked on openEditModal")
         } else {
             setIsEditing(false);
@@ -56,24 +54,22 @@ export const OrdersById = () => {
             const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`, {
                 method: "DELETE"
             });
-
             if (!res.ok) {
                 throw new Error('Network response was not ok');
             }
             const resData = await res.json();
             console.log(resData);
 
-
             console.log("Product details deleted successfully");
             toast.success("Product Deleted Successfully");
 
             naviagte("/orders")
-
         } catch (error) {
             console.error("Error in deleting product by id", error);
             toast.error('This is an error on Deleting Product!');
         }
     }
+
 
     /// fetch product Details by id
     const fetchProductDetailsById = async () => {
@@ -86,11 +82,6 @@ export const OrdersById = () => {
             }
             const data = await res.json();
             console.log('Data received:', data);
-            // if (Array.isArray(data)) {
-            //     setProductDetails(data);
-            // } else {
-            //     setProductDetails([]); 
-            // }
 
             if (data.message) {
                 setProductDetails([data.message]);
