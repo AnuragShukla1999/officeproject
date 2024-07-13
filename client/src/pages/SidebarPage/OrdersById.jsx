@@ -7,6 +7,7 @@ import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
+import toast from 'react-hot-toast';
 
 
 export const OrdersById = () => {
@@ -54,8 +55,9 @@ export const OrdersById = () => {
             const resData = await res.json();
             console.log(resData);
 
-            setProductDetails(resData.data)
-            console.log("Click on delete button")
+
+            console.log("Product details deleted successfully");
+            toast.success("Product Deleted Successfully");
         } catch (error) {
             console.error("Error in deleting product by id", error);
         }
