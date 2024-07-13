@@ -28,7 +28,6 @@ export const getProductDetailsById = async (req, res) => {
     try {
         const id = req.params.id;
 
-
         const singleProductDetail = await productModel.findById(id);
 
         if (!singleProductDetail) {
@@ -36,8 +35,6 @@ export const getProductDetailsById = async (req, res) => {
                 message: "Product not found (id wise)"
             })
         }
-
-       // const { password: password, ...rest } = user._doc;
 
         res.status(201).json({
             message: singleProductDetail,
