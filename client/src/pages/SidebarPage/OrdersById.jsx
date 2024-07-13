@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
@@ -46,7 +47,7 @@ export const OrdersById = () => {
 
 
     // delete product details by id function
-    const deleteProductDetailsById = async () => {
+    const deleteProductDetailsById = async (productId) => {
         try {
             const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
             if (!res.ok) {
@@ -58,49 +59,46 @@ export const OrdersById = () => {
 
             console.log("Product details deleted successfully");
             toast.success("Product Deleted Successfully");
+
+            fetchProductDetailsById();
         } catch (error) {
             console.error("Error in deleting product by id", error);
             toast.error('This is an error on Deleting Product!');
         }
     }
 
+    /// fetch product Details by id
+    const fetchProductDetailsById = async () => {
+        try {
+            // const productId = params;
+            const res = await fetch(`http://localhost:7000/api/getproductdetails/${params.productId}`);
+
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await res.json();
+            console.log('Data received:', data); 
+            // if (Array.isArray(data)) {
+            //     setProductDetails(data);
+            // } else {
+            //     setProductDetails([]); 
+            // }
+
+            if (data.message) {
+                setProductDetails([data.message]); 
+            } else {
+                setProductDetails([]);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     // for fetching the product Details Data
-    useEffect(() => {
-        /// fetch product Details by id
-        const fetchProductDetailsById = async () => {
-            try {
-                // const productId = params;
-                const res = await fetch(`http://localhost:7000/api/getproductdetails/${params.productId}`);
-
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await res.json();
-                console.log('Data received:', data); 
-                // if (Array.isArray(data)) {
-                //     setProductDetails(data);
-                // } else {
-                //     setProductDetails([]); 
-                // }
-
-                if (data.message) {
-                    setProductDetails([data.message]); 
-                } else {
-                    setProductDetails([]);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            } finally {
-                setLoading(false);
-            }
-        }
-        
+    useEffect(() => {   
         fetchProductDetailsById();
-
-        deleteProductDetailsById();
-        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.productId]);
 
 
@@ -108,8 +106,6 @@ export const OrdersById = () => {
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Orders</h1>
-
-            {/* <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={openModal}>Add</button> */}
             {
                 loading ? "Loading..........." : (
                     <div className="overflow-x-auto">
@@ -155,13 +151,7 @@ export const OrdersById = () => {
                                 ))}
                             </tbody>
                         </table>
-
-
-
-                        <h1>
-
-                        </h1>
-
+                        
                         <AddDetailsEditModal
                             open={isEditingModalOpen}
                             close={closeEditModal}
