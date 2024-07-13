@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -31,8 +32,8 @@ function App() {
   console.log("userData", userData);
 
 
-  const { productData } = useSelector((state) => state.user);
-  console.log("userData", productData);
+  const { product } = useSelector((state) => state.user);
+  console.log("productData", product);
 
   return (
     <>

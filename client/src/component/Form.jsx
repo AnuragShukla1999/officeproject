@@ -58,6 +58,8 @@ export const Form = () => {
             dispatch(productData(resData))
 
             toast.success("Product Created Successfully");
+
+            setProductDetails("")
         } catch (error) {
             console.log('Error', error)
         }

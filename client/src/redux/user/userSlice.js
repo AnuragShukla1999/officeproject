@@ -5,7 +5,7 @@ const initialState = {
     token: localStorage.getItem('token'),
     isLoggedIn: false,
     userData: null,
-    productData: []
+    product: []
 };
 
 const userSlice = createSlice({
@@ -26,7 +26,7 @@ const userSlice = createSlice({
         },
 
         productData(state, action) {
-            state.productData = action.payload
+            state.product = action.payload
         }
     },
 });

@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { productData } from "../redux/user/userSlice.js";
+
 export const AddDetailsModal = ({ open, close }) => {
 
     const [formData, setFormData] = useState({
@@ -27,6 +31,7 @@ export const AddDetailsModal = ({ open, close }) => {
         pickupLocation: ""
     });
 
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,6 +56,10 @@ export const AddDetailsModal = ({ open, close }) => {
             });
             const resData = await res.json();
             console.log(resData);
+
+            dispatch(productData(resData));
+
+            toast.success("Product Created Successfully");
         } catch (error) {
             console.log('Error', error)
         }
