@@ -5,6 +5,7 @@ const initialState = {
     token: localStorage.getItem('token'),
     isLoggedIn: false,
     userData: null,
+    productData: []
 };
 
 const userSlice = createSlice({
@@ -23,9 +24,13 @@ const userSlice = createSlice({
             state.token = null;
             localStorage.removeItem('token');
         },
+
+        productData(state, action) {
+            state.productData = action.payload
+        }
     },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, productData } = userSlice.actions;
 
 export default userSlice.reducer;

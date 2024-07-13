@@ -74,6 +74,7 @@ export const signin = async (req, res, next) => {
         res.cookie('access token', token).json({
             message: "Sign in successfully",
             token,
+            validUser,
             success: true
         });
 

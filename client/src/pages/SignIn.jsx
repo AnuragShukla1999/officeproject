@@ -33,7 +33,6 @@ export const SignIn = () => {
             const resData = await res.json();
             console.log(resData);
             if (res.ok) {
-                
                 dispatch(login(resData));
                 toast.success("Signed in successfully!");
                 navigate('/home');

@@ -7,7 +7,14 @@ import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 
 import { useParams } from 'react-router-dom';
 
+
+import { useSelector } from 'react-redux'
+
 export const OrdersById = () => {
+
+
+    const { userData } = useSelector((state) => state.user);
+    console.log("userData", userData)
 
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -47,7 +54,6 @@ export const OrdersById = () => {
         const fetchProductDetailsById = async () => {
             try {
                 // const productId = params;
-
                 const res = await fetch(`http://localhost:7000/api/getproductdetails/${params.productId}`);
 
                 if (!res.ok) {
@@ -79,28 +85,28 @@ export const OrdersById = () => {
 
 
         // delete product details by id function
-        const deleteProductDetailsById = async () => {
-            try {
-                const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const resData = await res.json();
-                console.log(resData);
+        // const deleteProductDetailsById = async () => {
+        //     try {
+        //         const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
+        //         if (!res.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         const resData = await res.json();
+        //         console.log(resData);
     
-                setProductDetails(resData.data)
-                console.log("Click on delete button")
-            } catch (error) {
-                console.error("Error in deleting product by id", error);
-            }
-        }
+        //         setProductDetails(resData.data)
+        //         console.log("Click on delete button")
+        //     } catch (error) {
+        //         console.error("Error in deleting product by id", error);
+        //     }
+        // }
 
 
 
         fetchProductDetailsById();
 
 
-        deleteProductDetailsById();
+        // deleteProductDetailsById();
         
     }, [params.productId]);
 
@@ -160,6 +166,12 @@ export const OrdersById = () => {
                                 ))}
                             </tbody>
                         </table>
+
+
+
+                        <h1>
+
+                        </h1>
 
                         <AddDetailsEditModal
                             open={isEditingModalOpen}

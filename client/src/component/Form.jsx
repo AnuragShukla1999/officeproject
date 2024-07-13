@@ -3,6 +3,10 @@ import { FaPlus } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
 import '../utitity/style.css'
+import { useDispatch } from "react-redux";
+
+import toast from "react-hot-toast";
+import { productData } from "../redux/user/userSlice.js";
 
 export const Form = () => {
     const [productDetails, setProductDetails] = useState({
@@ -29,7 +33,8 @@ export const Form = () => {
         pickupLocation: ""
     });
 
-
+    const dispatch = useDispatch();
+    
     const handleChange = (e) => {
         setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
         console.log(e.target.value)
@@ -49,6 +54,10 @@ export const Form = () => {
             });
             const resData = await res.json();
             console.log(resData);
+
+            dispatch(productData(resData))
+
+            toast.success("Product Created Successfully");
         } catch (error) {
             console.log('Error', error)
         }
@@ -57,7 +66,7 @@ export const Form = () => {
 
     return (
         <div className="relative bg-gray-100 overflow:hidden formPage">
-            <div className="h-32 bg-blue-600 sticky ">
+            <div className="h-32 bg-blue-600 sticky">
 
             </div>
 
