@@ -26,6 +26,8 @@ export const OrdersById = () => {
         if (detail) {
             setEditingDetail(detail);
             setIsEditing(true);
+
+            console.log("Clicked on openEditModal")
         } else {
             setIsEditing(false);
         }
@@ -52,8 +54,7 @@ export const OrdersById = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await res.json();
-                console.log('Data received:', data); // Check what data looks like
-
+                console.log('Data received:', data); 
                 // if (Array.isArray(data)) {
                 //     setProductDetails(data);
                 // } else {
@@ -63,9 +64,9 @@ export const OrdersById = () => {
 
                 // Check if data.message exists and set productDetails accordingly
                 if (data.message) {
-                    setProductDetails([data.message]); // Assuming data.message is the object with details
+                    setProductDetails([data.message]); 
                 } else {
-                    setProductDetails([]); // Handle case where data.message is not found
+                    setProductDetails([]);
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -74,27 +75,39 @@ export const OrdersById = () => {
             }
         }
 
+
+
+
+        // delete product details by id function
+        const deleteProductDetailsById = async () => {
+            try {
+                const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const resData = await res.json();
+                console.log(resData);
+    
+                setProductDetails(resData.data)
+                console.log("Click on delete button")
+            } catch (error) {
+                console.error("Error in deleting product by id", error);
+            }
+        }
+
+
+
         fetchProductDetailsById();
+
+
+        deleteProductDetailsById();
+        
     }, [params.productId]);
 
 
 
-    // delete product details by id function
-    const deleteProductDetailsById = async () => {
-        try {
-            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const resData = await res.json();
-            console.log(resData);
 
-            setProductDetails(resData.data)
-            console.log("Click on delete button")
-        } catch (error) {
-            console.error("Error in deleting product by id", error);
-        }
-    }
+
 
 
     return (
@@ -140,7 +153,7 @@ export const OrdersById = () => {
                                         <td className="border border-gray-800 px-4 py-2">
                                             <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
                                                 <MdEdit onClick={openEditModal} />
-                                                <MdDelete onClick={deleteProductDetailsById} />
+                                                <MdDelete onClick={setProductDetails} />
                                             </div>
                                         </td>
                                     </tr>

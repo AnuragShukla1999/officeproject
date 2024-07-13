@@ -184,21 +184,24 @@ export const updateProductDetails = async (req, res) => {
 
 
 
-export const deleteProductDetailsById = async () => {
+export const deleteProductDetailsById = async (req, res) => {
     const productId = req.params.id;
 
     try {
-        const deletedProduct = await productModel.findByIdAndDelete(productId);
+        const singleProductDetails = await productModel.findById(productId);
 
-        if (!deletedProduct) {
+        if (!singleProductDetails) {
             res.status(401).json({
                 message: "product not found"
             })
-        }
+        };
+
+
+        const deleteProductDetailsById = await productModel.findByIdAndDelete(productId);
 
         res.status(200).json({
             message: "Product deleted successfully",
-            deletedProduct
+            deleteProductDetailsById
         });
     } catch (error) {
         console.error(error);
