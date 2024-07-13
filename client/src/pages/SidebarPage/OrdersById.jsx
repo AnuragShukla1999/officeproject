@@ -6,12 +6,10 @@ import { MdDelete } from "react-icons/md";
 import { AddDetailsEditModal } from '../../component/ProdutDetailsEditModal';
 
 import { useParams } from 'react-router-dom';
-
-
 import { useSelector } from 'react-redux'
 
-export const OrdersById = () => {
 
+export const OrdersById = () => {
 
     const { userData } = useSelector((state) => state.user);
     console.log("userData", userData)
@@ -24,9 +22,7 @@ export const OrdersById = () => {
     const [editingDetail, setEditingDetail] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
 
-
     const params = useParams();
-
 
     const openEditModal = (detail) => {
         setIsEditingModal(true);
@@ -48,6 +44,24 @@ export const OrdersById = () => {
     };
 
 
+    // delete product details by id function
+    const deleteProductDetailsById = async () => {
+        try {
+            const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const resData = await res.json();
+            console.log(resData);
+
+            setProductDetails(resData.data)
+            console.log("Click on delete button")
+        } catch (error) {
+            console.error("Error in deleting product by id", error);
+        }
+    }
+
+
     // for fetching the product Details Data
     useEffect(() => {
         /// fetch product Details by id
@@ -64,11 +78,9 @@ export const OrdersById = () => {
                 // if (Array.isArray(data)) {
                 //     setProductDetails(data);
                 // } else {
-                //     setProductDetails([]); // Set empty array or handle differently if data structure is unexpected
+                //     setProductDetails([]); 
                 // }
 
-
-                // Check if data.message exists and set productDetails accordingly
                 if (data.message) {
                     setProductDetails([data.message]); 
                 } else {
@@ -80,39 +92,13 @@ export const OrdersById = () => {
                 setLoading(false);
             }
         }
-
-
-
-
-        // delete product details by id function
-        // const deleteProductDetailsById = async () => {
-        //     try {
-        //         const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${params.productId}`);
-        //         if (!res.ok) {
-        //             throw new Error('Network response was not ok');
-        //         }
-        //         const resData = await res.json();
-        //         console.log(resData);
-    
-        //         setProductDetails(resData.data)
-        //         console.log("Click on delete button")
-        //     } catch (error) {
-        //         console.error("Error in deleting product by id", error);
-        //     }
-        // }
-
-
-
+        
         fetchProductDetailsById();
 
-
-        // deleteProductDetailsById();
+        deleteProductDetailsById();
         
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.productId]);
-
-
-
-
 
 
 
@@ -159,7 +145,7 @@ export const OrdersById = () => {
                                         <td className="border border-gray-800 px-4 py-2">
                                             <div className='flex flex-row gap-5 text-2xl items-center justify-center'>
                                                 <MdEdit onClick={openEditModal} />
-                                                <MdDelete onClick={setProductDetails} />
+                                                <MdDelete onClick={() => deleteProductDetailsById()} />
                                             </div>
                                         </td>
                                     </tr>
