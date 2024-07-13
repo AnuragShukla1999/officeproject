@@ -188,17 +188,7 @@ export const deleteProductDetailsById = async (req, res) => {
     const productId = req.params.id;
 
     try {
-        // const singleProductDetails = await productModel.findById(productId);
-
-        // if (!singleProductDetails) {
-        //     res.status(401).json({
-        //         message: "product not found"
-        //     })
-        // };
-
-
         const deleteProductDetailsById = await productModel.findByIdAndDelete(productId);
-
         res.status(200).json({
             message: "Product deleted successfully",
             deleteProductDetailsById
