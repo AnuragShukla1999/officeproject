@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -19,7 +18,6 @@ import { Profile } from './component/Profile';
 import { Dashboard } from './pages/SidebarPage/Dashboard';
 import { OrdersById } from './pages/SidebarPage/OrdersById';
 
-
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -27,10 +25,8 @@ function App() {
   const isLoggedInUser = localStorage.getItem('token');
   console.log(isLoggedInUser);
 
-
   const { userData } = useSelector((state) => state.user);
   console.log("userData", userData);
-
 
   const { product } = useSelector((state) => state.user);
   console.log("productData", product);
@@ -44,11 +40,9 @@ function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
 
-
           <Route element={<PrivateRoute />}>
             <Route path='/home' element={<Home />} />
           </Route>
-
 
           <Route path='/billing' element={isLoggedInUser ? <Billing /> : <SignIn />} />
           <Route path='/channel' element={isLoggedInUser ? <Channel /> : <SignIn />} />
@@ -60,10 +54,6 @@ function App() {
           <Route path='/reports' element={isLoggedInUser ? <Reports /> : <SignIn />} />
           <Route path='/profile/:id' element={isLoggedInUser ? <Profile /> : <SignIn />} />
           <Route path='/dashboard' element={isLoggedInUser ? <Dashboard /> : <SignIn />} />
-
-          {/* {
-            isLoggedInUser ? <Home/> : <SignIn/>
-          } */}
 
         </Routes>
       </BrowserRouter >

@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { login } from "../redux/user/userSlice.js";
 
+
 export const SignIn = () => {
 
     const [userData, setUserData] = useState({
@@ -22,14 +23,12 @@ export const SignIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const res = await fetch('http://localhost:7000/api/signin', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData)
             })
-
             const resData = await res.json();
             console.log(resData);
             if (res.ok) {
@@ -39,19 +38,16 @@ export const SignIn = () => {
             } else {
                 toast.error("Sign in failed. Please check your credentials.");
             }
-
         } catch (error) {
             console.log('Error', error)
         }
     }
 
-   
 
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Sign in to your account
                     </h2>
@@ -59,7 +55,6 @@ export const SignIn = () => {
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form action="#" method="POST" className="space-y-6">
-
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Email address

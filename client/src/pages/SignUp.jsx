@@ -16,7 +16,6 @@ export const SignUp = () => {
 
     const navigate = useNavigate();
 
-
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
         console.log(e.target.value)
@@ -25,8 +24,6 @@ export const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-
         try {
             setLoading(true)
             const res = await fetch('http://localhost:7000/api/signup', {
@@ -34,10 +31,8 @@ export const SignUp = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData)
             })
-
             const resData = await res.json();
             console.log(resData);
-
             if (res.ok) {
                 toast.success("Sign Up Successfully")
                 setLoading(false)
@@ -48,7 +43,6 @@ export const SignUp = () => {
         }
     }
 
-    // const notify = () => toast('Here is your toast');
 
     return (
         <>
