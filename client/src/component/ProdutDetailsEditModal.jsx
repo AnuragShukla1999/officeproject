@@ -65,6 +65,7 @@ export const AddDetailsEditModal = ({ open, close, isEditing, editingDetail }) =
         } else {
             setFormData(initialFormData);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isEditing, editingDetail]);
 
 
