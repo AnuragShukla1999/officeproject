@@ -22,6 +22,8 @@ export const Profile = () => {
             console.log(data);
             const { name, email } = data;
             setUser({ name, email });
+
+            console.log("USer", user)
         } catch (error) {
             console.error("Error", error);
         }
