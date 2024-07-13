@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect  } from "react"
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux"
 
 
 export const Profile = () => {
-    // eslint-disable-next-line no-unused-vars
     const { userData } = useSelector((state) => state.user);
     console.log(userData)
 
@@ -28,7 +28,7 @@ export const Profile = () => {
 
     useEffect(() => {
         fetchUser();
-    })
+    }, [params.id])
 
     return (
         <div>
