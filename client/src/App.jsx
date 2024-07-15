@@ -52,7 +52,7 @@ function App() {
           <Route path='/ratecalculator' element={isLoggedInUser ? <RateCalculator /> : <SignIn />} />
           <Route path='/remittance' element={isLoggedInUser ? <Remittance /> : <SignIn />} />
           <Route path='/reports' element={isLoggedInUser ? <Reports /> : <SignIn />} />
-          <Route path='/profile/:id' element={isLoggedInUser ? <Profile /> : <SignIn />} />
+          <Route path='/profile/:userId' element={isLoggedInUser ? <Profile /> : <SignIn />} />
           <Route path='/dashboard' element={isLoggedInUser ? <Dashboard /> : <SignIn />} />
 
         </Routes>

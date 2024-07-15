@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useDispatch } from 'react-redux'
 import { logout } from '../redux/user/userSlice.js'
 import { Link, useNavigate } from 'react-router-dom'
+// import { useEffect } from 'react'
 
 
 const navigation = [
@@ -17,6 +19,27 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+
+  // const params = useParams();
+
+  // const fetchUser = async () => {
+  //     try {
+  //         const res = await fetch(`http://localhost:7000/api/user/${params.userId}`);
+  //         if (!res.ok) {
+  //             throw new Error('Failed to fetch user');
+  //         }
+  //         const data = await res.json();
+  //         console.log(data);
+
+  //     } catch (error) {
+  //         console.error("Error", error);
+  //     }
+  // }
+
+  // useEffect(() => {
+  //     fetchUser();
+  // }, [params.id])
+
 
   const dispatch = useDispatch();
 
@@ -96,11 +119,13 @@ export default function Navbar() {
                 transition
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
               >
-                <MenuItem>
-                  <Link to={'/profile'} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
-                    Your Profile
-                  </Link>
-                </MenuItem>
+                {
+                  <MenuItem>
+                    <Link to={`/profile`} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                      Your Profile
+                    </Link>
+                  </MenuItem>
+                }
                 <MenuItem>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                     Settings
