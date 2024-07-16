@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { login } from "../redux/user/userSlice.js";
 
+import { FaGoogle } from "react-icons/fa";
 
 export const SignIn = () => {
 
@@ -98,6 +99,19 @@ export const SignIn = () => {
                                 onClick={handleSubmit}
                             >
                                 Sign In
+                            </button>
+                        </div>
+
+                        <div className="flex flex-row items-center justify-center border-2 border-sky-400">
+                            <div className=" p-4 w-14 rounded-md">
+                                <FaGoogle className="text-rose-500 text-2xl" />
+                            </div>
+                            <button
+                                type="submit"
+                                className="flex items-center w-full h-14 justify-center bg-sky-400 px-3 py-1.5 text-base font-semibold leading-6 text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                onClick={handleSubmit}
+                            >
+                                Sign In with Google
                             </button>
                         </div>
                     </form>
