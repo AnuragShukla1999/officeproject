@@ -103,4 +103,41 @@ export const logout = async (req, res) => {
             success : false,
         })
     }
+};
+
+
+
+
+
+
+
+
+export const google = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const user = await authModel.findOne({ email });
+        if (user) {
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+            res.status(201).cookie('access_token', token, {
+                httpOnly: true,
+            }).json({
+                data: email
+            })
+        } else {
+            const newUser = new authModel({
+                name, email, password
+            });
+            await newUser.save();
+            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+            res.status(201).cookie('access_token', token, {
+                httpOnly: true,
+            }).json({
+                message: "User created through Google"
+            })
+        }
+    } catch (error) {
+        
+    }
 }
