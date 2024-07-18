@@ -23,6 +23,25 @@ export const Orders = () => {
     const [loading, setLoading] = useState(true);
 
 
+    const [selectedProducts, setSelectedProducts] = useState(null);
+    const [selectedSingleProducts, setSelectedSingleProducts] = useState(false);
+
+
+    const onRowEditComplete = (e) => {
+        let _products = [...productDetails];
+        let { newData, index } = e;
+
+        _products[index] = newData;
+
+        setProductDetails(_products);
+    };
+
+
+    const allowEdit = (rowData) => {
+        return rowData.name !== 'Blue Band';
+    };
+
+
     //// this is for AddDetails
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -117,13 +136,15 @@ export const Orders = () => {
 
 
 
-            <div className="card">
-                <DataTable value={productDetails} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
+            <div className="card" >
+                <DataTable value={productDetails} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }} selectionMode={'checkbox'} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id">
+                    <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                     <Column field="orderId" header="Order ID" ></Column>
                     <Column field="productName" header="Product Name" ></Column>
                     <Column field="orderValue" header="Order Value" ></Column>
                     <Column field="fullName" header="Customer Details"></Column>
                     <Column field="physicalWeight" header="Billable Weight"></Column>
+                    <Column rowEditor={allowEdit} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
                 </DataTable>
 
             </div>

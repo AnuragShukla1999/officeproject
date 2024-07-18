@@ -181,14 +181,12 @@ export const Form = () => {
         <>
             <div className="w-full">
                 {/* Consignee Details */}
-                <div>
+                <div className="mt-6 ml-4">
                     <h3> <span className="text-rose-600 text-xl">*</span> All Fields Required</h3>
                 </div>
 
-
                 <form>
                     <div className="m-4 mt-10 ">
-
 
                         <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">1</div>
@@ -234,13 +232,11 @@ export const Form = () => {
 
 
 
-
-
                     <div className="m-4 mt-10">
 
                         <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">2</div>
-                            <h1 className="text-2xl">Constumer Address</h1>
+                            <h1 className="text-2xl font-semibold">Constumer Address</h1>
                         </div>
 
                         <div className="grid grid-cols-4 gap-3">
@@ -304,7 +300,7 @@ export const Form = () => {
                     <div className="m-4 mt-10">
                         <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">3</div>
-                            <h1 className="text-2xl">Order Details</h1>
+                            <h1 className="text-2xl font-semibold">Order Details</h1>
                         </div>
 
                         <div className="grid grid-cols-4 gap-3">
@@ -464,7 +460,7 @@ export const Form = () => {
                     <div className="m-4 mt-10">
                         <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">4</div>
-                            <h1 className="text-2xl">Forwarding Through</h1>
+                            <h1 className="text-2xl font-semibold">Forwarding Through</h1>
                         </div>
 
 
@@ -485,7 +481,7 @@ export const Form = () => {
                     <div className="m-4 mt-10">
                         <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">5</div>
-                            <h1 className="text-2xl">Total Amount</h1>
+                            <h1 className="text-2xl font-semibold">Total Amount</h1>
                         </div>
 
                         <div className="flex flex-col gap-2">
