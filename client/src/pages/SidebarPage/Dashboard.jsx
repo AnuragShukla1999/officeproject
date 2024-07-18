@@ -1,8 +1,11 @@
+import { Form } from "../../component/Form"
 
 
 
 export const Dashboard = () => {
     return (
-        <div>Dashboard</div>
+        <div> 
+             <Form/>
+             </div>
     )
 }

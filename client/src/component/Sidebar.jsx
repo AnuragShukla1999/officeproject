@@ -11,8 +11,9 @@ import { FaRupeeSign } from "react-icons/fa";
 export const Sidebar = () => {
 
     return (
-        <div className="flex flex-col gap-6 pt-8 pb-8 h-screen bg-blue-950 w-28 text-white items-center ">
-            <div>
+        
+        <div className=" grid-cols-1 h-screen bg-blue-950  text-white items-center ">
+            <div className="py-8">
                 <Link to={"/dashboard"} className="flex flex-col items-center justify-center" >
                     <MdDashboard />
                     <h1 className="text-sm font-semibold">
@@ -20,7 +21,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/orders"} className="flex flex-col items-center justify-center" >
                     <IoMdCart />
                     <h1 className="text-sm font-semibold">
@@ -28,7 +29,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/reports"} className="flex flex-col items-center justify-center">
                     <TbReportAnalytics />
                     <h1 className="text-sm font-semibold">
@@ -36,7 +37,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/ndr"} className="flex flex-col items-center justify-center">
                     <FaTruckArrowRight />
                     <h1 className="text-sm font-semibold">
@@ -44,7 +45,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/ratecalculator"} className="flex flex-col items-center justify-center">
                     <FaCalculator />
                     <h1 className="text-sm font-semibold">
@@ -52,7 +53,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/channel"} className="flex flex-col items-center justify-center">
                     <FaPlug />
                     <h1 className="text-sm font-semibold">
@@ -60,7 +61,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/remittance"} className="flex flex-col items-center justify-center">
                     <FaMoneyBill />
                     <h1 className="text-sm font-semibold">
@@ -68,7 +69,7 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div>
+            <div className="py-8">
                 <Link to={"/billing"} className="flex flex-col items-center justify-center">
                     <FaRupeeSign />
                     <h1 className="text-sm font-semibold">
@@ -77,5 +78,7 @@ export const Sidebar = () => {
                 </Link>
             </div>
         </div>
+
+        
     )
 }
