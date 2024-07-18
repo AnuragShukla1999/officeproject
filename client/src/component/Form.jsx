@@ -159,7 +159,7 @@ export const Form = () => {
                                 <input
                                     type="text"
                                     name="completeAddress"
-                                    className=" w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 
                                     required
                                     onChange={handleChange}
@@ -211,36 +211,36 @@ export const Form = () => {
 
 
 
-                    <div className="m-4 mt-10 gap-8 md:w-32">
+                    <div className="m-4 mt-10">
                         <div className="flex flex-row gap-3 items-center ">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">3</div>
                             <h1 className="text-2xl">Order Details</h1>
                         </div>
-                        
-                        <div className="flex flex-row gap-8">
+
+                        <div className="grid grid-cols-4 gap-3">
                             <div className="flex flex-col gap-2">
-                                <label>Order id</label>
+                                <label htmlFor="orderId" className=" text-sm font-medium leading-6 text-gray-900">Order id</label>
                                 <input
                                     type="text"
                                     name="orderId"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label>Order Date</label>
+                                <label htmlFor="orderDate" className="text-sm font-medium leading-6 text-gray-900">Order Date</label>
                                 <input
                                     type="date"
                                     name="orderDate"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className="flex flex-col gap-2 border-1 border-black">
-                                <label>Payment Mode</label>
-                                <select name="paymentMode" onChange={handleChange}>
+                                <label htmlFor="paymentMode" className="text-sm font-medium leading-6 text-gray-900">Payment Mode</label>
+                                <select name="paymentMode" onChange={handleChange} className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                     <option value="cod">COD</option>
                                     <option value="prepaid">Prepaid Card</option>
                                 </select>
@@ -248,19 +248,19 @@ export const Form = () => {
 
 
                             <div className="flex flex-col gap-2">
-                                <label>Product Name</label>
+                                <label htmlFor="productName" className="text-sm font-medium leading-6 text-gray-900">Product Name</label>
                                 <input
                                     type="text"
                                     name="productName"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div className="flex flex-col gap-2">
-                                <label>Category</label>
-                                <select name="category" onChange={handleChange}>
+                                <label htmlFor="category" className="text-sm font-medium leading-6 text-gray-900">Category</label>
+                                <select name="category" onChange={handleChange} className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                     <option value="accessories">Accessories</option>
                                     <option value="fashion and clothing">Fashion & Clothing</option>
                                     <option value="accessories">Beauty and & Stationary</option>
@@ -277,11 +277,11 @@ export const Form = () => {
 
 
                             <div className="flex flex-col gap-2">
-                                <label>Quantity (In Numbers)</label>
+                                <label htmlFor="quantity" className="text-sm font-medium leading-6 text-gray-900">Quantity (In Numbers)</label>
                                 <input
                                     type="number"
                                     name="quantity"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
@@ -289,22 +289,22 @@ export const Form = () => {
 
 
                             <div className="flex flex-col gap-2">
-                                <label>Order Value (In Numbers)</label>
+                                <label htmlFor="orderValue" className="text-sm font-medium leading-6 text-gray-900">Order Value (In Numbers)</label>
                                 <input
                                     type="number"
                                     name="orderValue"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div className="flex flex-col gap-2">
-                                <label>HSN</label>
+                                <label htmlFor="hsn" className="text-sm font-medium leading-6 text-gray-900">HSN</label>
                                 <input
                                     type="text"
                                     name="hsn"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
@@ -322,11 +322,11 @@ export const Form = () => {
 
                         <div className="flex flex-row gap-8 mt-5">
                             <div className="flex flex-col gap-2">
-                                <label>Physical Weight</label>
+                                <label htmlFor="physicalWeight" className="text-sm font-medium leading-6 text-gray-900">Physical Weight</label>
                                 <input
                                     type="text"
                                     name="physicalWeight"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
@@ -334,11 +334,11 @@ export const Form = () => {
 
 
                             <div className="flex flex-col gap-2">
-                                <label>Length</label>
+                                <label htmlFor="length" className="text-sm font-medium leading-6 text-gray-900">Length</label>
                                 <input
                                     type="number"
                                     name="length"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
@@ -346,11 +346,11 @@ export const Form = () => {
 
 
                             <div className="flex flex-col gap-2">
-                                <label>Breadth</label>
+                                <label htmlFor="breadth" className="text-sm font-medium leading-6 text-gray-900">Breadth</label>
                                 <input
                                     type="number"
                                     name="breadth"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
@@ -358,11 +358,11 @@ export const Form = () => {
 
 
                             <div className="flex flex-col gap-2">
-                                <label>Height</label>
+                                <label htmlFor="height" className="text-sm font-medium leading-6 text-gray-900">Height</label>
                                 <input
                                     type="number"
                                     name="height"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
@@ -378,18 +378,18 @@ export const Form = () => {
                         </div>
 
                         <div className="flex flex-row gap-4 mt-5">
-                            <label>Search Pickup Location</label>
+                            <label htmlFor="height" className="text-sm font-medium leading-6 text-gray-900">Search Pickup Location</label>
 
                             <div className="flex flex-row">
                                 <input
                                     type="text"
                                     name="pickupLocation"
-                                    className="border-2 border-gray-500"
+                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     required
                                     onChange={handleChange}
                                 />
 
-                                <div className="border-2 border-black flex items-center justify-center p-1">
+                                <div className="border-0 border-black flex items-center justify-center p-1">
                                     <FaSearch />
                                 </div>
                             </div>
