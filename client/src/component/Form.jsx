@@ -58,9 +58,9 @@ export const Form = () => {
 
             dispatch(productData(resData))
 
-            generatePDF(productDetails);
 
-            handlePrint();
+
+            // handlePrint();
             toast.success("Product Created Successfully");
 
             setProductDetails({
@@ -94,69 +94,87 @@ export const Form = () => {
 
     const generatePDF = (formData) => {
         const doc = new jsPDF();
-        doc.text(`Name: ${formData.name}`, 10, 10);
+        doc.text(`Name: ${formData.fullName}`, 10, 10);
         doc.text(`Email: ${formData.email}`, 10, 20);
+        doc.text(`mobileNo: ${formData.mobileNo}`, 10, 30);
+        doc.text(`completeAddress: ${formData.completeAddress}`, 10, 40);
+        doc.text(`pincode: ${formData.pincode}`, 10, 50);
+        doc.text(`state: ${formData.state}`, 10, 60);
+        doc.text(`city: ${formData.city}`, 10, 70);
+        doc.text(`landmark: ${formData.landmark}`, 10, 80);
+        doc.text(`orderId: ${formData.orderId}`, 10, 90);
+        doc.text(`orderDate: ${formData.orderDate}`, 10, 100);
+        doc.text(`paymentMode: ${formData.paymentMode}`, 10, 110);
+        doc.text(`productName: ${formData.productName}`, 10, 120);
+        doc.text(`quantity: ${formData.quantity}`, 10, 130);
+        doc.text(`orderValue: ${formData.orderValue}`, 10, 140);
+        doc.text(`hsn: ${formData.hsn}`, 10, 150);
+        doc.text(`physicalWeight: ${formData.physicalWeight}`, 10, 160);
+        doc.text(`breadth: ${formData.breadth}`, 10, 170);
+        doc.text(`height: ${formData.height}`, 10, 180);
+        doc.text(`courierservices: ${formData.courierservices}`, 10, 190);
+        doc.text(`amount: ${formData.amount}`, 10, 200);
         doc.save('form-data.pdf');
     };
 
 
+    const handleSubmitPdf = () => {
+        generatePDF(productDetails);
+    }
 
+    //     const printContent = `
+    //         <h1>Product Details:</h1>
+    //         <p><strong>Full Name:</strong> ${productDetails.fullName}</p>
+    //         <p><strong>Mobile No:</strong> ${productDetails.mobileNo}</p>
+    //         <p><strong>Email:</strong> ${productDetails.email}</p>
+    //         <p><strong>Complete Address:</strong> ${productDetails.completeAddress}</p>
+    //         <p><strong>Pincode:</strong> ${productDetails.pincode}</p>
+    //         <p><strong>State:</strong> ${productDetails.state}</p>
+    //         <p><strong>City:</strong> ${productDetails.city}</p>
+    //         <p><strong>Landmark:</strong> ${productDetails.landmark}</p>
+    //         <p><strong>Order ID:</strong> ${productDetails.orderId}</p>
+    //         <p><strong>Order Date:</strong> ${productDetails.orderDate}</p>
+    //         <p><strong>Payment Mode:</strong> ${productDetails.paymentMode}</p>
+    //         <p><strong>Product Name:</strong> ${productDetails.productName}</p>
+    //         <p><strong>Category:</strong> ${productDetails.category}</p>
+    //         <p><strong>Quantity:</strong> ${productDetails.quantity}</p>
+    //         <p><strong>Order Value:</strong> ${productDetails.orderValue}</p>
+    //         <p><strong>HSN:</strong> ${productDetails.hsn}</p>
+    //         <p><strong>Physical Weight:</strong> ${productDetails.physicalWeight}</p>
+    //         <p><strong>Length:</strong> ${productDetails.length}</p>
+    //         <p><strong>Breadth:</strong> ${productDetails.breadth}</p>
+    //         <p><strong>Height:</strong> ${productDetails.height}</p>
+    //         <p><strong>Courier Services:</strong> ${productDetails.courierservices}</p>
+    //         <p><strong>Amount:</strong> ${productDetails.amount}</p>
+    //     `;
 
-
-    const handlePrint = () => {
-        const printContent = `
-            <h1>Product Details:</h1>
-            <p><strong>Full Name:</strong> ${productDetails.fullName}</p>
-            <p><strong>Mobile No:</strong> ${productDetails.mobileNo}</p>
-            <p><strong>Email:</strong> ${productDetails.email}</p>
-            <p><strong>Complete Address:</strong> ${productDetails.completeAddress}</p>
-            <p><strong>Pincode:</strong> ${productDetails.pincode}</p>
-            <p><strong>State:</strong> ${productDetails.state}</p>
-            <p><strong>City:</strong> ${productDetails.city}</p>
-            <p><strong>Landmark:</strong> ${productDetails.landmark}</p>
-            <p><strong>Order ID:</strong> ${productDetails.orderId}</p>
-            <p><strong>Order Date:</strong> ${productDetails.orderDate}</p>
-            <p><strong>Payment Mode:</strong> ${productDetails.paymentMode}</p>
-            <p><strong>Product Name:</strong> ${productDetails.productName}</p>
-            <p><strong>Category:</strong> ${productDetails.category}</p>
-            <p><strong>Quantity:</strong> ${productDetails.quantity}</p>
-            <p><strong>Order Value:</strong> ${productDetails.orderValue}</p>
-            <p><strong>HSN:</strong> ${productDetails.hsn}</p>
-            <p><strong>Physical Weight:</strong> ${productDetails.physicalWeight}</p>
-            <p><strong>Length:</strong> ${productDetails.length}</p>
-            <p><strong>Breadth:</strong> ${productDetails.breadth}</p>
-            <p><strong>Height:</strong> ${productDetails.height}</p>
-            <p><strong>Courier Services:</strong> ${productDetails.courierservices}</p>
-            <p><strong>Amount:</strong> ${productDetails.amount}</p>
-        `;
-
-        const popupWin = window.open('', '_blank', 'width=600,height=600');
-        popupWin.document.open();
-        popupWin.document.write(`
-            <html>
-                <head>
-                    <title>Print Product Details</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            padding: 20px;
-                        }
-                        h1 {
-                            color: #333;
-                        }
-                        p {
-                            margin-bottom: 10px;
-                        }
-                    </style>
-                </head>
-                <body>${printContent}</body>
-            </html>`
-        );
-        popupWin.document.close();
-        popupWin.focus();
-        popupWin.print();
-        popupWin.close();
-    };
+    //     const popupWin = window.open('', '_blank', 'width=600,height=600');
+    //     popupWin.document.open();
+    //     popupWin.document.write(`
+    //         <html>
+    //             <head>
+    //                 <title>Print Product Details</title>
+    //                 <style>
+    //                     body {
+    //                         font-family: Arial, sans-serif;
+    //                         padding: 20px;
+    //                     }
+    //                     h1 {
+    //                         color: #333;
+    //                     }
+    //                     p {
+    //                         margin-bottom: 10px;
+    //                     }
+    //                 </style>
+    //             </head>
+    //             <body>${printContent}</body>
+    //         </html>`
+    //     );
+    //     popupWin.document.close();
+    //     popupWin.focus();
+    //     popupWin.print();
+    //     popupWin.close();
+    // };
 
     return (
 
@@ -167,9 +185,9 @@ export const Form = () => {
                     <h3>*All Fields Required</h3>
                 </div>
 
-                        {/* <button className="bg-sky-800 text-white pr-4 pl-4 rounded-md" onClick={handlePrint}>Print</button> */}
-                <form onSubmit={handleSubmit}>
-                    <div className="m-4 mt-10 "> 
+
+                <form>
+                    <div className="m-4 mt-10 ">
 
 
                         <div className="flex flex-row gap-3 items-center mb-4">
@@ -483,9 +501,11 @@ export const Form = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl">Add Order</button>
+                    <button type="submit" className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
+                    <button className="bg-sky-800 text-white pr-4 pl-4 rounded-md" onClick={handleSubmitPdf}>Print</button>
 
                 </form>
+
             </div>
         </>
     )
