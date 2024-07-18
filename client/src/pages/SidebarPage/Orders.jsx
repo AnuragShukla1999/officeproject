@@ -9,6 +9,15 @@ import { Link } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 
+
+import 'primereact/resources/themes/lara-light-blue/theme.css'
+// import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+
+
+// import 'primereact/resources/themes/mdc-light-deeppurple/theme.css'
+// import 'primeicons/primeicons.css';
+
 export const Orders = () => {
     const [productDetails, setProductDetails] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -106,7 +115,7 @@ export const Orders = () => {
                 }
             </div> */}
 
-    
+
 
             <div className="card">
                 <DataTable value={productDetails} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
@@ -116,21 +125,12 @@ export const Orders = () => {
                     <Column field="fullName" header="Customer Details"></Column>
                     <Column field="physicalWeight" header="Billable Weight"></Column>
                 </DataTable>
+
             </div>
-
-
-
-
-            {/* <div className="card">
-            <DataTable value={productDetails} dataKey="id" tableStyle={{ minWidth: '50rem' }}>
-                <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-                <Column field="orderId" header="Code"></Column>
-                <Column field="productName" header="Name"></Column>
-                <Column field="orderValue" header="Category"></Column>
-                <Column field="fullName" header="Quantity"></Column>
-                <Column field="physicalWeight" header="Quantity"></Column>
-            </DataTable>
-        </div> */}
+            {/* <AddDetailsModal
+                open={isModalOpen}
+                close={closeModal}
+            /> */}
         </>
     );
 };

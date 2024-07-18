@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store.js';
 // import 'primeflex/primeflex.css';
 
+import "primereact/resources/primereact.min.css";
 
 import { PrimeReactProvider } from 'primereact/api';
 

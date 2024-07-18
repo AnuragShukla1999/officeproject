@@ -182,7 +182,7 @@ export const Form = () => {
             <div className="w-full">
                 {/* Consignee Details */}
                 <div>
-                    <h3>*All Fields Required</h3>
+                    <h3> <span className="text-rose-600 text-xl">*</span> All Fields Required</h3>
                 </div>
 
 
@@ -202,7 +202,6 @@ export const Form = () => {
                                     type="text"
                                     name="fullName"
                                     className=" w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-
                                     required
                                     onChange={handleChange}
                                 />
@@ -501,8 +500,8 @@ export const Form = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
-                    <button className="bg-sky-800 text-white pr-4 pl-4 rounded-md" onClick={handleSubmitPdf}>Print</button>
+                    <button className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
+                    <button className="bg-sky-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmitPdf}>Print</button>
 
                 </form>
 
