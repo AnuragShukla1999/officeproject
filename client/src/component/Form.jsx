@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 
+import jsPDF from 'jspdf';
+
 import toast from "react-hot-toast";
 import { productData } from "../redux/user/userSlice.js";
 
@@ -56,14 +58,21 @@ export const Form = () => {
 
             dispatch(productData(resData))
 
+            generatePDF(productDetails);
             toast.success("Product Created Successfully");
 
             setProductDetails("")
         } catch (error) {
             console.log('Error', error)
         }
-    }
+    };
 
+    const generatePDF = (formData) => {
+        const doc = new jsPDF();
+        doc.text(`Name: ${formData.name}`, 10, 10);
+        doc.text(`Email: ${formData.email}`, 10, 20);
+        doc.save('form-data.pdf');
+    };
 
     return (
 
@@ -75,7 +84,6 @@ export const Form = () => {
                 </div>
 
                 <form onSubmit={handleSubmit}>
-
                     <div className="m-4 mt-10 ">
 
                         <div className="flex flex-row gap-3 items-center mb-4">
@@ -117,20 +125,6 @@ export const Form = () => {
 
                                 />
                             </div>
-
-                            {/* <div className="">
-                                <label htmlFor="last-name" className=" text-sm font-medium leading-6 text-gray-900">
-                                    Last name
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="last-name"
-                                        name="last-name"
-                                        type="text"
-                                        className=" w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </div>
-                            </div> */}
                         </div>
 
                     </div>
@@ -404,13 +398,9 @@ export const Form = () => {
                     </div>
 
                     <button type="submit" className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl">Add Order</button>
-                    {/* </div> */}
+
                 </form>
-                {/* </div> */}
-
             </div>
-
-
         </>
     )
 }
