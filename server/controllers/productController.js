@@ -138,7 +138,8 @@ export const updateProductDetails = async (req, res) => {
             length,
             breadth,
             height,
-            pickupLocation
+            courierservices,
+            amount
         } = req.body;
 
 
@@ -163,7 +164,8 @@ export const updateProductDetails = async (req, res) => {
             length,
             breadth,
             height,
-            pickupLocation
+            courierservices,
+            amount
         }, { new: true });
 
 

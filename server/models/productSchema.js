@@ -164,7 +164,10 @@ const productSchema = new mongoose.Schema({
         enum: ['xpressbees', 'dtdc', 'delhivery', 'indiaPost', 'bluedart']
     },
 
-
+    amount: {
+        type: Number,
+        required: true
+    },
 });
 
 
