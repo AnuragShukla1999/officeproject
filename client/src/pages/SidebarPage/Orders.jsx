@@ -55,7 +55,7 @@ export const Orders = () => {
 
     return (
         <>
-            <div className="container mx-auto px-4 py-8">
+            {/* <div className="container mx-auto px-4 py-8">
                 <h1 className="text-2xl font-bold mb-4">Orders</h1>
                 <button className="bg-green-800 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={openModal}>Add</button>
                 {
@@ -104,19 +104,33 @@ export const Orders = () => {
                         </div>
                     )
                 }
-            </div>
+            </div> */}
 
     
 
             <div className="card">
-                <DataTable value={productDetails} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
-                    <Column field="orderId" header="Order ID" style={{ width: '25%' }}></Column>
-                    <Column field="productName" header="Product Name" style={{ width: '25%' }}></Column>
-                    <Column field="orderValue" header="Order Value" style={{ width: '25%' }}></Column>
-                    <Column field="fullName" header="Customer Details" style={{ width: '25%' }}></Column>
-                    <Column field="physicalWeight" header="Billable Weight" style={{ width: '25%' }}></Column>
+                <DataTable value={productDetails} paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
+                    <Column field="orderId" header="Order ID" ></Column>
+                    <Column field="productName" header="Product Name" ></Column>
+                    <Column field="orderValue" header="Order Value" ></Column>
+                    <Column field="fullName" header="Customer Details"></Column>
+                    <Column field="physicalWeight" header="Billable Weight"></Column>
                 </DataTable>
             </div>
+
+
+
+
+            {/* <div className="card">
+            <DataTable value={productDetails} dataKey="id" tableStyle={{ minWidth: '50rem' }}>
+                <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
+                <Column field="orderId" header="Code"></Column>
+                <Column field="productName" header="Name"></Column>
+                <Column field="orderValue" header="Category"></Column>
+                <Column field="fullName" header="Quantity"></Column>
+                <Column field="physicalWeight" header="Quantity"></Column>
+            </DataTable>
+        </div> */}
         </>
     );
 };
