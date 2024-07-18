@@ -159,10 +159,12 @@ const productSchema = new mongoose.Schema({
     },
 
 
-    pickupLocation: {
+    courierservices: {
         type: String,
-        required: true
-    }
+        enum: ['xpressbees', 'dtdc', 'delhivery', 'indiaPost', 'bluedart']
+    },
+
+
 });
 
 

@@ -24,7 +24,8 @@ export const UploadProductDetails = async (req, res) => {
             length,
             breadth,
             height,
-            pickupLocation
+            courierservices,
+            amount
         } = req.body;
 
         const newProduct = new productModel({
@@ -48,7 +49,8 @@ export const UploadProductDetails = async (req, res) => {
             length,
             breadth,
             height,
-            pickupLocation
+            courierservices,
+            amount
         });
 
         const savedProduct = await newProduct.save();

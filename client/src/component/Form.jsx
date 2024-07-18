@@ -27,7 +27,9 @@ export const Form = () => {
         length: "",
         breadth: "",
         height: "",
-        pickupLocation: ""
+        courierservices: "",
+        amount: ""
+
     });
 
     const dispatch = useDispatch();
@@ -370,19 +372,13 @@ export const Form = () => {
 
 
                         <div className="flex flex-col gap-2">
-                            <label htmlFor="category" className="text-sm font-medium leading-6 text-gray-900">courier services</label>
-                            <select name="category" onChange={handleChange} className="w-60 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                <option value="accessories">Accessories</option>
-                                <option value="fashion and clothing">Fashion & Clothing</option>
-                                <option value="accessories">Beauty and & Stationary</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="fmcg">FMCG</option>
-                                <option value="footwear">Footwear</option>
-                                <option value="toys">Toys</option>
-                                <option value="sports equipment">Sports Equipment</option>
-                                <option value="others">Others</option>
-                                <option value="wellness">Wellness</option>
-                                <option value="medicines">Medicines</option>
+                            <label htmlFor="courierservices" className="text-sm font-medium leading-6 text-gray-900">courier services</label>
+                            <select name="courierservices" onChange={handleChange} className="w-60 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <option value="xpressbees">Xpressbees</option>
+                                <option value="dtdc">DTDC Courier Service.</option>
+                                <option value="delhivery">Delhivery</option>
+                                <option value="indiaPost">IndiaPost</option>
+                                <option value="bluedart">Blue Dart Express</option>
                             </select>
                         </div>
 
