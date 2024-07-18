@@ -38,7 +38,11 @@ function App() {
       <BrowserRouter>
         <Toaster />
         
-        <Navbar />
+        <div>
+          {
+            isLoggedInUser ? <Navbar /> : ""
+          }
+        </div>
 
         <div className='grid grid-cols-12'>
 

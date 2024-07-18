@@ -47,7 +47,7 @@ export const SignIn = () => {
             if (res.ok) {
                 dispatch(login(resData));
                 toast.success("Signed in successfully!");
-                navigate('/home');
+                navigate('/dashboard');
             } else {
                 toast.error("Sign in failed. Please check your credentials.");
             }

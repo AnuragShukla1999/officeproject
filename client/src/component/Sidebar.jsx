@@ -12,7 +12,7 @@ export const Sidebar = () => {
 
     return (
         
-        <div className=" grid-cols-1 h-screen bg-blue-950  text-white items-center ">
+        <div className=" grid-cols-1  bg-blue-950  text-white items-center h-[100vh] w-36 fixed" >
             <div className="py-8">
                 <Link to={"/dashboard"} className="flex flex-col items-center justify-center" >
                     <MdDashboard />
