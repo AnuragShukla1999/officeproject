@@ -63,7 +63,30 @@ export const Form = () => {
             window.print();
             toast.success("Product Created Successfully");
 
-            setProductDetails("")
+            setProductDetails({
+                fullName: "",
+                mobileNo: "",
+                email: "",
+                completeAddress: "",
+                pincode: "",
+                state: "",
+                city: "",
+                landmark: "",
+                orderId: "",
+                orderDate: "",
+                paymentMode: "",
+                productName: "",
+                category: "",
+                quantity: "",
+                orderValue: "",
+                hsn: "",
+                physicalWeight: "",
+                length: "",
+                breadth: "",
+                height: "",
+                courierservices: "",
+                amount: ""
+            });
         } catch (error) {
             console.log('Error', error)
         }
