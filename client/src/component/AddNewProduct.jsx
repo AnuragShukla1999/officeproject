@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { productData } from "../redux/user/userSlice.js";
 
-export const AddDetailsModal = ({ open, close }) => {
+export const AddDetailsModal = ({ open, close, addProduct }) => {
 
     const [formData, setFormData] = useState({
         fullName: "",
@@ -16,7 +16,7 @@ export const AddDetailsModal = ({ open, close }) => {
         state: "",
         city: "",
         landmark: "",
-        orderId: "",
+        orderId: null,
         orderDate: "",
         paymentMode: "",
         productName: "",
@@ -57,6 +57,7 @@ export const AddDetailsModal = ({ open, close }) => {
             const resData = await res.json();
             console.log(resData);
 
+            addProduct(resData.data)
             dispatch(productData(resData));
 
             toast.success("Product Created Successfully");

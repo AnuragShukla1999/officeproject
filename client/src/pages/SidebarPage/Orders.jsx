@@ -81,6 +81,14 @@ export const Orders = () => {
     }, []);
 
 
+
+    // function to handle adding product from modal
+    const handleAddProduct = (newProduct) => {
+        setProductDetails([...productDetails, newProduct]);
+        setIsModalOpen(false);
+    }
+
+
     return (
         <>
             <div className="container mx-auto px-4 py-8">
@@ -128,6 +136,7 @@ export const Orders = () => {
                             <AddDetailsModal
                                 open={isModalOpen}
                                 close={closeModal}
+                                addProduct={handleAddProduct}
                             />
                         </div>
                     )
