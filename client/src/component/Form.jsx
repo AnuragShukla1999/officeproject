@@ -60,7 +60,7 @@ export const Form = () => {
 
             generatePDF(productDetails);
 
-            window.print();
+            handlePrint();
             toast.success("Product Created Successfully");
 
             setProductDetails({
@@ -99,6 +99,65 @@ export const Form = () => {
         doc.save('form-data.pdf');
     };
 
+
+
+
+
+    const handlePrint = () => {
+        const printContent = `
+            <h1>Product Details:</h1>
+            <p><strong>Full Name:</strong> ${productDetails.fullName}</p>
+            <p><strong>Mobile No:</strong> ${productDetails.mobileNo}</p>
+            <p><strong>Email:</strong> ${productDetails.email}</p>
+            <p><strong>Complete Address:</strong> ${productDetails.completeAddress}</p>
+            <p><strong>Pincode:</strong> ${productDetails.pincode}</p>
+            <p><strong>State:</strong> ${productDetails.state}</p>
+            <p><strong>City:</strong> ${productDetails.city}</p>
+            <p><strong>Landmark:</strong> ${productDetails.landmark}</p>
+            <p><strong>Order ID:</strong> ${productDetails.orderId}</p>
+            <p><strong>Order Date:</strong> ${productDetails.orderDate}</p>
+            <p><strong>Payment Mode:</strong> ${productDetails.paymentMode}</p>
+            <p><strong>Product Name:</strong> ${productDetails.productName}</p>
+            <p><strong>Category:</strong> ${productDetails.category}</p>
+            <p><strong>Quantity:</strong> ${productDetails.quantity}</p>
+            <p><strong>Order Value:</strong> ${productDetails.orderValue}</p>
+            <p><strong>HSN:</strong> ${productDetails.hsn}</p>
+            <p><strong>Physical Weight:</strong> ${productDetails.physicalWeight}</p>
+            <p><strong>Length:</strong> ${productDetails.length}</p>
+            <p><strong>Breadth:</strong> ${productDetails.breadth}</p>
+            <p><strong>Height:</strong> ${productDetails.height}</p>
+            <p><strong>Courier Services:</strong> ${productDetails.courierservices}</p>
+            <p><strong>Amount:</strong> ${productDetails.amount}</p>
+        `;
+
+        const popupWin = window.open('', '_blank', 'width=600,height=600');
+        popupWin.document.open();
+        popupWin.document.write(`
+            <html>
+                <head>
+                    <title>Print Product Details</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            padding: 20px;
+                        }
+                        h1 {
+                            color: #333;
+                        }
+                        p {
+                            margin-bottom: 10px;
+                        }
+                    </style>
+                </head>
+                <body>${printContent}</body>
+            </html>`
+        );
+        popupWin.document.close();
+        popupWin.focus();
+        popupWin.print();
+        popupWin.close();
+    };
+
     return (
 
         <>
@@ -108,8 +167,10 @@ export const Form = () => {
                     <h3>*All Fields Required</h3>
                 </div>
 
+                        {/* <button className="bg-sky-800 text-white pr-4 pl-4 rounded-md" onClick={handlePrint}>Print</button> */}
                 <form onSubmit={handleSubmit}>
-                    <div className="m-4 mt-10 ">
+                    <div className="m-4 mt-10 "> 
+
 
                         <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">1</div>
