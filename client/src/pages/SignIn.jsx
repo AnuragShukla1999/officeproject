@@ -5,21 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { login } from "../redux/user/userSlice.js";
 
-import { FaGoogle } from "react-icons/fa";
-import { GoogleAuth } from "../component/GoogleAuth.jsx";
+
 
 export const SignIn = () => {
 
-    // for google auth
-    const [isGoogleModalOpen, setIsGoogleModalOpen] = useState(false);
-
-    const openModal = () => {
-        setIsGoogleModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsGoogleModalOpen(false)
-    }
 
     const [userData, setUserData] = useState({
         email: "",
@@ -115,25 +104,6 @@ export const SignIn = () => {
                         </div>
 
                     </form>
-
-
-                    <div className="flex flex-row items-center justify-center border-2 border-sky-400 mt-7">
-                        <div className=" p-4 w-14 rounded-md">
-                            <FaGoogle className="text-rose-500 text-2xl" />
-                        </div>
-                        <button
-                            className="flex items-center w-full h-14 justify-center bg-sky-400 px-3 py-1.5 text-base font-semibold leading-6 text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            onClick={openModal}
-                        >
-                            Sign In with Google
-                        </button>
-                    </div>
-
-
-                    <GoogleAuth
-                        open={isGoogleModalOpen}
-                        close={closeModal}
-                    />
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         <Link to="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">

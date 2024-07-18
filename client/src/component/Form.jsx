@@ -70,12 +70,6 @@ export const Form = () => {
 
         <>
             <div className="w-full">
-
-                {/* <div className=" "> */}
-
-
-                {/* <div className="rounded-2xl z-10 absolute top-20 left-5 bg-transparent "> */}
-
                 {/* Consignee Details */}
                 <div>
                     <h3>*All Fields Required</h3>
@@ -197,7 +191,7 @@ export const Form = () => {
                                 />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label  htmlFor="landmark" className=" text-sm font-medium leading-6 text-gray-900">Famous Landmark</label>
+                                <label htmlFor="landmark" className=" text-sm font-medium leading-6 text-gray-900">Famous Landmark</label>
                                 <input
                                     type="text"
                                     name="landmark"
@@ -371,34 +365,30 @@ export const Form = () => {
                     </div>
 
 
-                    <div className="m-4 mt-10 gap-8">
+                    <div className="m-4 mt-10">
                         <div className="flex flex-row gap-3 items-center ">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">4</div>
-                            <h1 className="text-2xl">Pichup Location</h1>
+                            <h1 className="text-2xl">Forwarding Through</h1>
                         </div>
 
-                        <div className="flex flex-row gap-4 mt-5">
-                            <label htmlFor="height" className="text-sm font-medium leading-6 text-gray-900">Search Pickup Location</label>
 
-                            <div className="flex flex-row">
-                                <input
-                                    type="text"
-                                    name="pickupLocation"
-                                    className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    required
-                                    onChange={handleChange}
-                                />
-
-                                <div className="border-0 border-black flex items-center justify-center p-1">
-                                    <FaSearch />
-                                </div>
-                            </div>
-
-                            <button className="flex flex-row items-center justify-center gap-2 bg-blue-950 text-white p-2 pr-3 pl-3 rounded-full text-sm">
-                                <FaPlus />
-                                Add Warehouse
-                            </button>
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="category" className="text-sm font-medium leading-6 text-gray-900">courier services</label>
+                            <select name="category" onChange={handleChange} className="w-60 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <option value="accessories">Accessories</option>
+                                <option value="fashion and clothing">Fashion & Clothing</option>
+                                <option value="accessories">Beauty and & Stationary</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fmcg">FMCG</option>
+                                <option value="footwear">Footwear</option>
+                                <option value="toys">Toys</option>
+                                <option value="sports equipment">Sports Equipment</option>
+                                <option value="others">Others</option>
+                                <option value="wellness">Wellness</option>
+                                <option value="medicines">Medicines</option>
+                            </select>
                         </div>
+
                     </div>
 
                     <button className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
