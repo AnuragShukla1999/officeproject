@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { IoMdCart } from "react-icons/io";
-import { TbReportAnalytics } from "react-icons/tb";
-import { FaTruckArrowRight } from "react-icons/fa6";
-import { FaCalculator } from "react-icons/fa";
-import { FaPlug } from "react-icons/fa";
-import { FaMoneyBill } from "react-icons/fa";
-import { FaRupeeSign } from "react-icons/fa";
+// import { TbReportAnalytics } from "react-icons/tb";
+// import { FaTruckArrowRight } from "react-icons/fa6";
+// import { FaCalculator } from "react-icons/fa";
+// import { FaPlug } from "react-icons/fa";
+// import { FaMoneyBill } from "react-icons/fa";
+// import { FaRupeeSign } from "react-icons/fa";
 
 export const Sidebar = () => {
 
@@ -29,7 +29,17 @@ export const Sidebar = () => {
                     </h1>
                 </Link>
             </div>
-            <div className="py-8">
+
+
+
+
+
+
+
+
+
+
+            {/* <div className="py-8">
                 <Link to={"/reports"} className="flex flex-col items-center justify-center">
                     <TbReportAnalytics />
                     <h1 className="text-sm font-semibold">
@@ -76,7 +86,7 @@ export const Sidebar = () => {
                         Billing
                     </h1>
                 </Link>
-            </div>
+            </div> */}
         </div>
 
         

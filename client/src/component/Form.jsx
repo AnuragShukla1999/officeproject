@@ -72,7 +72,7 @@ export const Form = () => {
                     <h3>*All Fields Required</h3>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
 
                     <div className="m-4 mt-10 ">
 
@@ -139,7 +139,7 @@ export const Form = () => {
 
                     <div className="m-4 mt-10">
 
-                        <div className="flex flex-row gap-3 items-center ">
+                        <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">2</div>
                             <h1 className="text-2xl">Constumer Address</h1>
                         </div>
@@ -203,7 +203,7 @@ export const Form = () => {
 
 
                     <div className="m-4 mt-10">
-                        <div className="flex flex-row gap-3 items-center ">
+                        <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">3</div>
                             <h1 className="text-2xl">Order Details</h1>
                         </div>
@@ -363,7 +363,7 @@ export const Form = () => {
 
 
                     <div className="m-4 mt-10">
-                        <div className="flex flex-row gap-3 items-center ">
+                        <div className="flex flex-row gap-3 items-center mb-4">
                             <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">4</div>
                             <h1 className="text-2xl">Forwarding Through</h1>
                         </div>
@@ -388,7 +388,26 @@ export const Form = () => {
 
                     </div>
 
-                    <button className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl" onClick={handleSubmit}>Add Order</button>
+
+                    <div className="m-4 mt-10">
+                        <div className="flex flex-row gap-3 items-center mb-4">
+                            <div className="w-6 bg-blue-950 h-6 rounded-xl text-white flex items-center justify-center">5</div>
+                            <h1 className="text-2xl">Total Amount</h1>
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label htmlFor="amount">Amount</label>
+                            <input
+                                type="number"
+                                name="amount"
+                                className="w-60 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" className="bg-blue-950 m-10 p-2 w-28 text-white rounded-lg text-xl">Add Order</button>
                     {/* </div> */}
                 </form>
                 {/* </div> */}

@@ -62,15 +62,18 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard />} />
               </Route>
 
-              <Route path='/billing' element={isLoggedInUser ? <Billing /> : <SignIn />} />
+              <Route path='/orders' element={isLoggedInUser ? <Orders /> : <SignIn />} />
+
+
+
+              {/* <Route path='/billing' element={isLoggedInUser ? <Billing /> : <SignIn />} />
               <Route path='/channel' element={isLoggedInUser ? <Channel /> : <SignIn />} />
               <Route path='/ndr' element={isLoggedInUser ? <NDR /> : <SignIn />} />
-              <Route path='/orders' element={isLoggedInUser ? <Orders /> : <SignIn />} />
               <Route path='/ordersbyid/:productId' element={isLoggedInUser ? <OrdersById /> : <SignIn />} />
               <Route path='/ratecalculator' element={isLoggedInUser ? <RateCalculator /> : <SignIn />} />
               <Route path='/remittance' element={isLoggedInUser ? <Remittance /> : <SignIn />} />
               <Route path='/reports' element={isLoggedInUser ? <Reports /> : <SignIn />} />
-              <Route path='/profile/:userId' element={isLoggedInUser ? <Profile /> : <SignIn />} />
+              <Route path='/profile/:userId' element={isLoggedInUser ? <Profile /> : <SignIn />} /> */}
               {/* <Route path='/dashboard' element={isLoggedInUser ? <Dashboard /> : <SignIn />} /> */}
 
             </Routes>
