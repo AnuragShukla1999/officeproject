@@ -59,6 +59,8 @@ export const Form = () => {
             dispatch(productData(resData))
 
             generatePDF(productDetails);
+
+            window.print();
             toast.success("Product Created Successfully");
 
             setProductDetails("")
