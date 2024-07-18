@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
-
-import '../utitity/style.css'
 import { useDispatch } from "react-redux";
 
 import toast from "react-hot-toast";
