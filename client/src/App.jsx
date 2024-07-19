@@ -47,7 +47,7 @@
 //     <>
 //       <BrowserRouter>
 //         <Toaster />
-        
+
 //         <div>
 //           {
 //             user ? <Navbar /> : ""
@@ -116,7 +116,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { SignUp } from './pages/SignUp';
 import { SignIn } from './pages/SignIn';
-import { PrivateRoute } from './component/PrivateRoute';
+// import { PrivateRoute } from './component/PrivateRoute';
 import { Dashboard } from './pages/SidebarPage/Dashboard';
 import { Orders } from './pages/SidebarPage/Orders';
 import { OrdersById } from './pages/SidebarPage/OrdersById';
@@ -126,17 +126,17 @@ import Navbar from './component/Navbar';
 import { Sidebar } from './component/Sidebar';
 
 function App() {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    return (
-        <>
-            <BrowserRouter>
-                <Toaster />
+  return (
+    <>
+      <BrowserRouter>
+        <Toaster />
 
-                {user && <Navbar />}
-                {user && <Sidebar />}
+        {user && <Navbar />}
+        {user && <Sidebar />}
 
-                <Routes>
+        {/* <Routes>
                     <Route path="/" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
 
@@ -145,10 +145,22 @@ function App() {
                         <Route path='/orders' element={<Orders />} />
                         <Route path='/ordersbyid/:productId' element={<OrdersById />} />
                     </Route>
-                </Routes>
-            </BrowserRouter>
-        </>
-    )
+                </Routes> */}
+
+
+        {/* <Route index element={<Navigate to="/dashboard" />} /> */}
+
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/dashboard" element={user ? <Dashboard /> : <SignIn />} />
+          <Route path="/orders" element={user ? <Orders /> : <SignIn/>} />
+          <Route path="/ordersbyid/:productId" element={user ? <OrdersById /> : <SignIn/>} />
+        </Routes>
+
+      </BrowserRouter>
+    </>
+  )
 }
 
 export default App;

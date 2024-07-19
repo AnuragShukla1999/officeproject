@@ -6,7 +6,6 @@ import { AuthContext } from "./index.js";
 import toast from "react-hot-toast";
 
 
-
 const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [product, setProduct] = useState([]);
