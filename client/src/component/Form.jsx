@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 import jsPDF from 'jspdf';
 
 import toast from "react-hot-toast";
-import { productData } from "../redux/user/userSlice.js";
+// import { productData } from "../redux/user/userSlice.js";
+import { AuthContext } from "../context/index.js";
 
 export const Form = () => {
+
+    const { addProductDetail, setProduct } = useContext(AuthContext);
+
     const [productDetails, setProductDetails] = useState({
         fullName: "",
         mobileNo: "",
@@ -34,11 +38,11 @@ export const Form = () => {
 
     });
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
-        console.log(e.target.value)
+        console.log(e.target.value);
     };
 
     // const handleSubmit = async (e) => {
@@ -93,25 +97,44 @@ export const Form = () => {
     // };
 
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    
+    //     try {
+    //         const res = await fetch('http://localhost:7000/api/productorderdetails', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(productDetails),
+    //             credentials: 'include'
+    //         });
+    
+    //         const resData = await res.json();
+    //         console.log(resData);
+    
+            
+    //         dispatch(productData(resData));
+    
+            
+    //         toast.success('Product Created Successfully');
+    //         setProductDetails({...productDetails}); 
+    
+    //     } catch (error) {
+    //         console.error('Error', error);
+    //     }
+    // };
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         try {
-            const res = await fetch('http://localhost:7000/api/productorderdetails', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(productDetails),
-                credentials: 'include'
-            });
-    
-            const resData = await res.json();
-            console.log(resData);
-    
-            
-            dispatch(productData(resData));
-    
+            const res = await addProductDetail(productDetails);
+            console.log(res);
+
+            setProduct(res)
+
             
             toast.success('Product Created Successfully');
             setProductDetails({...productDetails}); 
@@ -120,6 +143,7 @@ export const Form = () => {
             console.error('Error', error);
         }
     };
+
 
     const generatePDF = (formData) => {
         const doc = new jsPDF();

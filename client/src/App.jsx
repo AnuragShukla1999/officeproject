@@ -21,6 +21,8 @@ import { OrdersById } from './pages/SidebarPage/OrdersById';
 import { useSelector } from 'react-redux';
 import Navbar from './component/Navbar';
 import { Sidebar } from './component/Sidebar';
+import { useContext } from 'react';
+import { AuthContext } from './context';
 
 
 // import 'primeflex/primeflex.css';
@@ -28,14 +30,18 @@ import { Sidebar } from './component/Sidebar';
 
 function App() {
 
-  const isLoggedInUser = localStorage.getItem('token');
-  console.log(isLoggedInUser);
+  // const isLoggedInUser = localStorage.getItem('token');
+  // console.log(isLoggedInUser);
 
-  const { userData } = useSelector((state) => state.user);
-  console.log("userData", userData);
+  // const { userData } = useSelector((state) => state.user);
+  // console.log("userData", userData);
 
-  const { product } = useSelector((state) => state.user);
-  console.log("productData", product);
+  // const { product } = useSelector((state) => state.user);
+  // console.log("productData", product);
+
+
+
+  const { user } = useContext(AuthContext);
 
   return (
     <>
@@ -44,7 +50,7 @@ function App() {
         
         <div>
           {
-            isLoggedInUser ? <Navbar /> : ""
+            user ? <Navbar /> : ""
           }
         </div>
 
@@ -52,7 +58,7 @@ function App() {
 
           <div className='mt-[61px]'>
             {
-              isLoggedInUser ? <Sidebar/> : ""
+              user ? <Sidebar/> : ""
             }
           </div>
 
@@ -66,10 +72,10 @@ function App() {
                 <Route path='/dashboard' element={<Dashboard />} />
               </Route>
 
-              <Route path='/orders' element={isLoggedInUser ? <Orders /> : <SignIn />} />
+              <Route path='/orders' element={user ? <Orders /> : <SignIn />} />
 
 
-              <Route path='/ordersbyid/:productId' element={isLoggedInUser ? <OrdersById /> : <SignIn />} />
+              <Route path='/ordersbyid/:productId' element={user ? <OrdersById /> : <SignIn />} />
 
               {/* <Route path='/billing' element={isLoggedInUser ? <Billing /> : <SignIn />} />
               <Route path='/channel' element={isLoggedInUser ? <Channel /> : <SignIn />} />

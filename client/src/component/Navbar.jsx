@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { useDispatch } from 'react-redux'
-import { logout } from '../redux/user/userSlice.js'
+import { useContext } from 'react';
+// import { useDispatch } from 'react-redux'
+// import { logout } from '../redux/user/userSlice.js'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context';
 // import { useEffect } from 'react'
+
 
 
 const navigation = [
@@ -20,23 +23,28 @@ function classNames(...classes) {
 export default function Navbar() {
 
 
-  const dispatch = useDispatch();
+  const { logout } = useContext(AuthContext)
+
+  // const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      const res = await fetch('http://localhost:7000/api/logout')
+    // try {
+    //   const res = await fetch('http://localhost:7000/api/logout')
 
-      console.log(res)
-      dispatch(logout());
-      navigate('/')
+    //   console.log(res)
+    //   dispatch(logout());
+    //   navigate('/')
 
-    } catch (error) {
-      console.error("Error", error)
-    }
-    dispatch(logout());
-    console.log("Clicked logout button")
+    // } catch (error) {
+    //   console.error("Error", error)
+    // }
+    // dispatch(logout());
+    // console.log("Clicked logout button")
+
+    logout();
+    navigate('/')
   }
 
   return (

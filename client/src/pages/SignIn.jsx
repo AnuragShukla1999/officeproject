@@ -1,13 +1,16 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import toast from "react-hot-toast";
+import React, { useContext, useState } from "react";
+// import toast from "react-hot-toast";
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { login } from "../redux/user/userSlice.js";
+import { AuthContext } from "../context";
+// import { useDispatch } from "react-redux";
+// import { login } from "../redux/user/userSlice.js";
 
 
 
 export const SignIn = () => {
+
+    const { signin, setUser } = useContext(AuthContext);
 
 
     const [userData, setUserData] = useState({
@@ -16,32 +19,48 @@ export const SignIn = () => {
     });
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
         console.log(e.target.value)
     }
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const res = await fetch('http://localhost:7000/api/signin', {
+    //             method: "POST",
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify(userData)
+    //         })
+    //         const resData = await res.json();
+    //         console.log(resData);
+    //         if (res.ok) {
+    //             dispatch(login(resData));
+    //             toast.success("Signed in successfully!");
+    //             navigate('/dashboard');
+    //         } else {
+    //             toast.error("Sign in failed. Please check your credentials.");
+    //         }
+    //     } catch (error) {
+    //         console.log('Error', error)
+    //     }
+    // }
+
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            const res = await fetch('http://localhost:7000/api/signin', {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData)
-            })
-            const resData = await res.json();
-            console.log(resData);
+            const res = await signin(userData);
+            setUser(userData);
             if (res.ok) {
-                dispatch(login(resData));
-                toast.success("Signed in successfully!");
                 navigate('/dashboard');
-            } else {
-                toast.error("Sign in failed. Please check your credentials.");
             }
         } catch (error) {
-            console.log('Error', error)
+            console.error('Signin error:', error);
         }
     }
 
