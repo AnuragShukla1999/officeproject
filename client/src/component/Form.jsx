@@ -41,54 +41,83 @@ export const Form = () => {
         console.log(e.target.value)
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         const res = await fetch('http://localhost:7000/api/productorderdetails', {
+    //             method: "POST",
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(productDetails),
+    //             credentials: 'include'
+    //         });
+    //         const resData = await res.json();
+    //         console.log(resData);
+
+    //         dispatch(productData(resData))
+
+
+
+    //         // handlePrint();
+    //         toast.success("Product Created Successfully");
+
+    //         setProductDetails({
+    //             fullName: "",
+    //             mobileNo: "",
+    //             email: "",
+    //             completeAddress: "",
+    //             pincode: "",
+    //             state: "",
+    //             city: "",
+    //             landmark: "",
+    //             orderId: "",
+    //             orderDate: "",
+    //             paymentMode: "",
+    //             productName: "",
+    //             category: "",
+    //             quantity: "",
+    //             orderValue: "",
+    //             hsn: "",
+    //             physicalWeight: "",
+    //             length: "",
+    //             breadth: "",
+    //             height: "",
+    //             courierservices: "",
+    //             amount: ""
+    //         });
+    //     } catch (error) {
+    //         console.log('Error', error)
+    //     }
+    // };
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
             const res = await fetch('http://localhost:7000/api/productorderdetails', {
-                method: "POST",
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(productDetails),
                 credentials: 'include'
             });
+    
             const resData = await res.json();
             console.log(resData);
-
-            dispatch(productData(resData))
-
-
-
-            // handlePrint();
-            toast.success("Product Created Successfully");
-
-            setProductDetails({
-                fullName: "",
-                mobileNo: "",
-                email: "",
-                completeAddress: "",
-                pincode: "",
-                state: "",
-                city: "",
-                landmark: "",
-                orderId: "",
-                orderDate: "",
-                paymentMode: "",
-                productName: "",
-                category: "",
-                quantity: "",
-                orderValue: "",
-                hsn: "",
-                physicalWeight: "",
-                length: "",
-                breadth: "",
-                height: "",
-                courierservices: "",
-                amount: ""
-            });
+    
+            
+            dispatch(productData(resData));
+    
+            
+            toast.success('Product Created Successfully');
+            setProductDetails({...productDetails}); 
+    
         } catch (error) {
-            console.log('Error', error)
+            console.error('Error', error);
         }
     };
 

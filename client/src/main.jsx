@@ -8,6 +8,8 @@ import store from './redux/store.js';
 // import 'primeflex/primeflex.css';
 
 import "primereact/resources/primereact.min.css";
+import 'primereact/resources/themes/lara-light-blue/theme.css'
+import './flags.css'
 
 import { PrimeReactProvider } from 'primereact/api';
 

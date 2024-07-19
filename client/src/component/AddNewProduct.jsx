@@ -16,7 +16,7 @@ export const AddDetailsModal = ({ open, close, addProduct }) => {
         state: "",
         city: "",
         landmark: "",
-        orderId: null,
+        orderId: "",
         orderDate: "",
         paymentMode: "",
         productName: "",
@@ -28,7 +28,8 @@ export const AddDetailsModal = ({ open, close, addProduct }) => {
         length: "",
         breadth: "",
         height: "",
-        pickupLocation: ""
+        courierservices: "",
+        amount: ""
     });
 
     const dispatch = useDispatch();
@@ -59,6 +60,8 @@ export const AddDetailsModal = ({ open, close, addProduct }) => {
 
             addProduct(resData.data)
             dispatch(productData(resData));
+
+            close();
 
             toast.success("Product Created Successfully");
         } catch (error) {
@@ -356,13 +359,26 @@ export const AddDetailsModal = ({ open, close, addProduct }) => {
 
 
                             <div className="mb-4">
-                                <label htmlFor="orderValue" className="block text-gray-700 text-sm font-bold mb-2">Pickup Location:</label>
+                                <label htmlFor="courierservices" className="block text-gray-700 text-sm font-bold mb-2">courier services</label>
+                                <select name="courierservices" onChange={handleChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                                    <option value="xpressbees">Xpressbees</option>
+                                    <option value="dtdc">DTDC Courier Service.</option>
+                                    <option value="delhivery">Delhivery</option>
+                                    <option value="indiaPost">IndiaPost</option>
+                                    <option value="bluedart">Blue Dart Express</option>
+                                </select>
+                            </div>
+
+
+
+                            <div className="mb-4">
+                                <label htmlFor="amount" className="block text-gray-700 text-sm font-bold mb-2">Total Amount:</label>
 
                                 <input
-                                    type="text"
-                                    id="pickupLocation"
-                                    name="pickupLocation"
-                                    value={formData.pickupLocation}
+                                    type="number"
+                                    id="amount"
+                                    name="amount"
+                                    value={formData.amount}
                                     onChange={handleChange}
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required
                                 />
