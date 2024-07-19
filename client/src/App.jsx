@@ -134,9 +134,14 @@ function App() {
         <Toaster />
 
         {user && <Navbar />}
-        {user && <Sidebar />}
 
-        {/* <Routes>
+
+        <div className='grid grid-cols-12'>
+          <div className='mt-[61px]'>
+            {user && <Sidebar />}
+          </div>
+
+          {/* <Routes>
                     <Route path="/" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
 
@@ -148,15 +153,17 @@ function App() {
                 </Routes> */}
 
 
-        {/* <Route index element={<Navigate to="/dashboard" />} /> */}
-
-        <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={user ? <Dashboard /> : <SignIn />} />
-          <Route path="/orders" element={user ? <Orders /> : <SignIn/>} />
-          <Route path="/ordersbyid/:productId" element={user ? <OrdersById /> : <SignIn/>} />
-        </Routes>
+          {/* <Route index element={<Navigate to="/dashboard" />} /> */}
+          <div className='col-span-11 mt-[61px]'>
+            <Routes>
+              <Route path="/" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/dashboard" element={user ? <Dashboard /> : <SignIn />} />
+              <Route path="/orders" element={user ? <Orders /> : <SignIn />} />
+              <Route path="/ordersbyid/:productId" element={user ? <OrdersById /> : <SignIn />} />
+            </Routes>
+          </div>
+        </div>
 
       </BrowserRouter>
     </>
