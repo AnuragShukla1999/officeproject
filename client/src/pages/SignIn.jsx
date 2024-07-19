@@ -52,15 +52,13 @@ export const SignIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const res = await signin(userData);
-            setUser(userData);
-            if (res.ok) {
-                navigate('/dashboard');
-            }
+            const res = await signin(userData); // Call signin function from context
+            setUser(res); // Set user data received from API response
+            navigate('/dashboard'); // Navigate to Dashboard upon successful signin
         } catch (error) {
             console.error('Signin error:', error);
+            // Handle signin error, e.g., display toast message
         }
     }
 

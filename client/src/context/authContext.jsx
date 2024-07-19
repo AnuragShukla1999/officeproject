@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AuthContext } from "./index.js";
 import toast from "react-hot-toast";
 
@@ -10,6 +10,14 @@ import toast from "react-hot-toast";
 const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [product, setProduct] = useState([]);
+
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
 
 
     const signin = async (userData) => {
@@ -22,6 +30,7 @@ const AuthContextProvider = ({ children }) => {
             const resData = await res.json();
             if (res.ok) {
                 setUser(resData);
+                localStorage.setItem('user', JSON.stringify(resData));
                 toast.success('Signed in successfully!');
             } else {
                 toast.error('Sign in failed. Please check your credentials.');
@@ -35,9 +44,10 @@ const AuthContextProvider = ({ children }) => {
 
     const logout = () => {
         setUser(null);
+        localStorage.removeItem('user');
     };
 
-    
+
     const addProductDetail = async (productDetails) => {
         try {
             const res = await fetch('http://localhost:7000/api/productorderdetails', {
@@ -48,12 +58,12 @@ const AuthContextProvider = ({ children }) => {
                 body: JSON.stringify(productDetails),
                 credentials: 'include'
             });
-    
+
             const resData = await res.json();
             console.log(resData);
-            
+
             toast.success('Product Created Successfully');
-    
+
         } catch (error) {
             console.error('Error', error);
         }
