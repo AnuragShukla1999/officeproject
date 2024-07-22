@@ -3,6 +3,8 @@ import { ListGroup, Dropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 // import PerfectScrollbar from 'react-perfect-scrollbar';
 
+import { IoLogOutOutline } from "react-icons/io5";
+
 import ChatList from './ChatList';
 
 import avatar1 from '../../../../assets/images/user/avatar-1.jpg';
@@ -146,13 +148,13 @@ const NavRight = () => {
                   </Link>
                 </ListGroup.Item> */}
                 <ListGroup.Item as="li" bsPrefix=" ">
-                  <Link to="#" className="dropdown-item">
+                  <Link to="/app/profile" className="dropdown-item">
                     <i className="feather icon-user" /> Profile
                   </Link>
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix=" ">
-                  <Link to="#" className="dropdown-item" onClick={logoutFunction}>
-                    <i className="feather icon-mail" /> Logout
+                  <Link className="dropdown-item" onClick={logoutFunction}>
+                  <IoLogOutOutline /> Logout
                   </Link>
                 </ListGroup.Item>
                 {/* <ListGroup.Item as="li" bsPrefix=" ">

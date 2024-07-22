@@ -97,12 +97,6 @@ const BootstrapTable = () => {
     setDeleteProductsDialog(false);
   };
 
-
-  const addNewProductDetails = async () => {
-
-  }
-
-
   const saveProduct = async () => {
     try {
       const res = await fetch(`http://localhost:7000/api/updateproductdetails/${product._id}`, {
@@ -134,24 +128,10 @@ const BootstrapTable = () => {
   };
 
 
-
-  // useEffect(() => {
-  //   saveProduct();
-  // }, [products])
-
   const confirmDeleteProduct = (product) => {
     setProduct(product);
     setDeleteProductDialog(true);
   };
-
-  // const deleteProduct = () => {
-  //   let _products = products.filter((val) => val.id !== product.id);
-
-  //   setProducts(_products);
-  //   setDeleteProductDialog(false);
-  //   setProduct(emptyProduct);
-  //   toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-  // };
 
 
 
@@ -249,7 +229,7 @@ const BootstrapTable = () => {
 
     return (
       <div className="flex flex-wrap gap-2">
-        <Button label="New" icon="pi pi-plus" severity="success" onClick={openNew} />
+        {/* <Button label="New" icon="pi pi-plus" severity="success" onClick={openNew} /> */}
         <Button
           label="Delete"
           icon="pi pi-trash"

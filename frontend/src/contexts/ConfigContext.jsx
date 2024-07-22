@@ -4,6 +4,7 @@ import React, { createContext, useEffect, useReducer, useState } from 'react';
 import * as actionType from '../store/actions';
 import { CONFIG } from '../config/constant';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   ...CONFIG,
@@ -101,6 +102,8 @@ export const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [product, setProduct] = useState([]);
+
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
