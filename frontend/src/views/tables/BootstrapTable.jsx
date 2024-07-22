@@ -1,5 +1,3 @@
-// import React from 'react';
-// import { Row, Col, Card, Table } from 'react-bootstrap';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { classNames } from 'primereact/utils';
@@ -137,7 +135,7 @@ const BootstrapTable = () => {
 
   const deleteProduct = async () => {
     try {
-      const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${product._id}`, {
+      const res = await fetch(`  /${product._id}`, {
         method: 'DELETE',
       });
 
@@ -153,6 +151,32 @@ const BootstrapTable = () => {
     } catch (error) {
       console.error('Error deleting product:', error);
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to delete product', life: 3000 });
+    }
+  };
+
+
+
+
+
+
+
+
+  const deleteAllProducts = async () => {
+    try {
+      const res = await fetch('http://localhost:7000/api/deleteallproduct', {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to delete all products');
+      }
+
+      setProductDetails([]);
+      toast.current.show({ severity: 'success', summary: 'Successful', detail: 'All Products Deleted', life: 3000 });
+      setDeleteProductsDialog(false);
+    } catch (error) {
+      console.error('Error deleting all products:', error);
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to delete all products', life: 3000 });
     }
   };
 
@@ -198,6 +222,68 @@ const BootstrapTable = () => {
     setSelectedProducts(null);
     toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
   };
+
+
+
+  // const deleteAllProducts = async () => {
+  //   try {
+  //     const res = await fetch('http://localhost:7000/api/deleteallproduct', {
+  //       method: 'DELETE',
+  //     });
+
+  //     if (!res.ok) {
+  //       throw new Error('Failed to delete all products');
+  //     }
+
+  //     setProductDetails([]);
+  //     toast.current.show({ severity: 'success', summary: 'Successful', detail: 'All Products Deleted', life: 3000 });
+  //     setDeleteProductsDialog(false);
+  //   } catch (error) {
+  //     console.error('Error deleting all products:', error);
+  //     toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to delete all products', life: 3000 });
+  //   }
+  // };
+
+
+
+
+
+  const deleteSelectedOrAllProducts = async () => {
+    if (selectedProducts && selectedProducts.length > 0) {
+      // Delete selected products
+      const selectedIds = selectedProducts.map(product => product._id);
+      try {
+        const res = await fetch('http://localhost:7000/api/deleteallproduct', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ids: selectedIds }),
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to delete selected products');
+        }
+
+        const updatedProducts = productDetails.filter(p => !selectedIds.includes(p._id));
+        setProductDetails(updatedProducts);
+        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Selected Products Deleted', life: 3000 });
+        setSelectedProducts(null);
+
+        setDeleteProductsDialog(false);
+
+      } catch (error) {
+        console.error('Error deleting selected products:', error);
+        toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to delete selected products', life: 3000 });
+      }
+    } else {
+      // Delete all products
+      await deleteProducts();
+    }
+  };
+
+
+
 
   const onCategoryChange = (e) => {
     let _product = { ...product };
@@ -310,7 +396,7 @@ const BootstrapTable = () => {
   const deleteProductsDialogFooter = (
     <React.Fragment>
       <Button label="No" icon="pi pi-times" outlined onClick={hideDeleteProductsDialog} />
-      <Button label="Yes" icon="pi pi-check" severity="danger" onClick={deleteSelectedProducts} />
+      <Button label="Yes" icon="pi pi-check" severity="danger" onClick={deleteSelectedOrAllProducts} />
     </React.Fragment>
   );
   return (

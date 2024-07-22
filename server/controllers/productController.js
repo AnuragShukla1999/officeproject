@@ -188,6 +188,24 @@ export const updateProductDetails = async (req, res) => {
 
 
 
+export const deleteAllProduct = async (req, res) => {
+    try {
+        const deleteProduct = await productModel.deleteMany({});
+        res.status(201).json({
+            message: "All Product Deleted Successfully",
+            deleteAllProduct
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
+
+
+
+
 export const deleteProductDetailsById = async (req, res) => {
     const productId = req.params.id;
 

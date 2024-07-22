@@ -34,5 +34,5 @@ app.use('/api', userRouter);
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`database is connnected at ${process.env.PORT}`);
+    console.log(`server is connnected at ${process.env.PORT}`);
 })

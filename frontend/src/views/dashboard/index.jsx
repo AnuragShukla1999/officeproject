@@ -7,7 +7,7 @@ import jsPDF from 'jspdf';
 
 
 const DashDefault = () => {
-  const { addProductDetail, setProduct } = useContext(AuthContext);
+  const { setProduct } = useContext(AuthContext);
 
   const [productDetails, setProductDetails] = useState({
     fullName: '',
@@ -39,42 +39,100 @@ const DashDefault = () => {
     console.log(e.target.value);
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await addProductDetail(productDetails);
+  //     // console.log(res);
+
+  //     setProductDetails(res);
+  //     console.log(res);
+  //     setProduct(res);
+  //     // setProductDetails({ ...productDetails });
+
+  //     if (res.status == 201) {
+  //       setProductDetails({
+  //         fullName: '',
+  //         mobileNo: '',
+  //         email: '',
+  //         completeAddress: '',
+  //         pincode: '',
+  //         state: '',
+  //         city: '',
+  //         landmark: '',
+  //         orderId: '',
+  //         orderDate: '',
+  //         paymentMode: '',
+  //         productName: '',
+  //         category: '',
+  //         quantity: '',
+  //         orderValue: '',
+  //         hsn: '',
+  //         physicalWeight: '',
+  //         length: '',
+  //         breadth: '',
+  //         height: '',
+  //         courierservices: '',
+  //         amount: ''
+  //       });
+  //     }
+
+
+  //     toast.success('Product Created Successfully');
+  //   } catch (error) {
+  //     console.error('Error', error);
+  //   }
+  // };
+
+
+  //  for adding product details
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await addProductDetail(productDetails);
-      // console.log(res);
+      const res = await fetch('http://localhost:7000/api/productorderdetails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productDetails),
+        credentials: 'include'
+      });
+
+      const resData = await res.json();
+      console.log(resData);
 
       setProductDetails(res);
       console.log(res);
       setProduct(res);
-      toast.success('Product Created Successfully');
-      // setProductDetails({ ...productDetails });
 
-      setProductDetails({
-        fullName: '',
-        mobileNo: '',
-        email: '',
-        completeAddress: '',
-        pincode: '',
-        state: '',
-        city: '',
-        landmark: '',
-        orderId: '',
-        orderDate: '',
-        paymentMode: '',
-        productName: '',
-        category: '',
-        quantity: '',
-        orderValue: '',
-        hsn: '',
-        physicalWeight: '',
-        length: '',
-        breadth: '',
-        height: '',
-        courierservices: '',
-        amount: ''
-      });
+      if (res.status == 201) {
+        setProductDetails({
+          fullName: '',
+          mobileNo: '',
+          email: '',
+          completeAddress: '',
+          pincode: '',
+          state: '',
+          city: '',
+          landmark: '',
+          orderId: '',
+          orderDate: '',
+          paymentMode: '',
+          productName: '',
+          category: '',
+          quantity: '',
+          orderValue: '',
+          hsn: '',
+          physicalWeight: '',
+          length: '',
+          breadth: '',
+          height: '',
+          courierservices: '',
+          amount: ''
+        })
+      }
+
+      toast.success('Product Created Successfully');
     } catch (error) {
       console.error('Error', error);
     }
