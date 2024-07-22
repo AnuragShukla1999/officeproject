@@ -15,7 +15,7 @@ const Profile = () => {
         <Col>
           <Card>
             <Card.Body>
-              <Card.Title>User Name</Card.Title>
+              <Card.Title>User Name: </Card.Title>
               {/* <Card.Title>g</Card.Title> */}
               <Card.Text>
                 <strong>Email:</strong> user@example.com
