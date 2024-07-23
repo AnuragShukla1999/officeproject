@@ -137,10 +137,10 @@ const DashDefault = () => {
   };
 
   const fetchLocation = async (e) => {
-    const pincode = e.target.value;
+    // const pincode = e.target.value; 
     try {
       const url = "http://localhost:7000/api/getlocation"
-      const res = await fetch(`${url}/${pincode}`);
+      const res = await fetch(`${url}`);
 
       if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -150,14 +150,14 @@ const DashDefault = () => {
 
 
       console.log(data);
-      console.log(location);
+      // console.log(location);
 
-      if (data && data.length > 0 && data[0].PostOffice) {
-        const postOffices = data[0].PostOffice;
-        setLocation(postOffices);
-        const names = postOffices.map(postOffice => postOffice.Name);
-        console.log(names);
-      }
+      // if (data && data.length > 0 && data[0].PostOffice) {
+      //   const postOffices = data[0].PostOffice;
+      //   setLocation(postOffices);
+      //   const names = postOffices.map(postOffice => postOffice.Name);
+      //   console.log(names);
+      // }
     } catch (error) {
       console.log("Error", error)
     }

@@ -15,7 +15,7 @@ export const getLocation  = async (req, res) => {
         }
 
         res.status(201).json({
-            data: resData
+            data: pinCode
         })
     } catch (error) {
         res.status(500).json({
