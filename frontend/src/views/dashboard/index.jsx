@@ -211,6 +211,7 @@ const DashDefault = () => {
 
 
   const [location, setLocation] = useState([]);
+  const [aaa, setAaa]  = useState([]);
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
 
@@ -236,15 +237,23 @@ const DashDefault = () => {
         }
 
         const data = await res.json();
+        console.log(data.data);
         console.log(data.data.addresses);
 
         // Update location state only if data is received
-        if (data.data && data.data.addresses) {
+        if (data.data) {
           setLocation(data.data.addresses);
+          setAaa(data.data);
+          // setProductDetails({
+          //   ...productDetails,
+          //   state, 
+          //   city
+          // })
         } else {
           setLocation([]);
         }
 
+        console.log(location)
         setIsLoadingLocation(false);
       }
     } catch (error) {
@@ -258,13 +267,13 @@ const DashDefault = () => {
 
   const handleLocationSelect = (e) => {
     const selectedLocation = e.target.value;
-    setProductDetails({ ...productDetails, state: selectedLocation, completeAddress: selectedLocation });
+    setProductDetails({ ...productDetails, state: selectedLocation, completeAddress: selectedLocation, city: e.target.value });
   };
 
 
   const handleManualStateInput = (e) => {
     // Handle manual input of state
-    setProductDetails({ ...productDetails, state: e.target.value, completeAddress: e.target.value });
+    setProductDetails({ ...productDetails, state: e.target.value, completeAddress: e.target.value, city: e.target.value });
   };
 
 
@@ -341,7 +350,7 @@ const DashDefault = () => {
                           ))}
                         </Form.Control>
                       ) : (
-                        <Form.Control type="text" placeholder="Enter Address" disabled />
+                        <Form.Control type="text" placeholder="Enter Address"  />
                       )}
                       {isLoadingLocation && <p>Loading...</p>}
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
@@ -371,7 +380,7 @@ const DashDefault = () => {
                       {isLoadingLocation && <p>Loading...</p>} */}
 
 
-                      {location.length > 0 && !isLoadingLocation ? (
+                      {/* {location.length > 0 && !isLoadingLocation ? (
                         <Form.Control as="select" name="state" onChange={handleLocationSelect}>
                           <option>Select State...</option>
                           {location.map((loc, index) => (
@@ -381,9 +390,12 @@ const DashDefault = () => {
                           ))}
                         </Form.Control>
                       ) : (
-                        <Form.Control type="text" placeholder="Enter state" disabled />
+                        <Form.Control type="text" placeholder="Enter state" />
                       )}
-                      {isLoadingLocation && <p>Loading...</p>}
+                      {isLoadingLocation && <p>Loading...</p>} */}
+
+
+                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleChange} value={aaa.state}  />
 
 
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
@@ -394,7 +406,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>City</Form.Label>
 
-                      {location.length > 0 && !isLoadingLocation ? (
+                      {/* {location.length > 0 && !isLoadingLocation ? (
                         <Form.Control as="select" name="state" onChange={handleLocationSelect}>
                           <option>Select State...</option>
                           {location.map((loc, index) => (
@@ -404,11 +416,11 @@ const DashDefault = () => {
                           ))}
                         </Form.Control>
                       ) : (
-                        <Form.Control type="text" placeholder="Enter state" disabled />
+                        <Form.Control type="text" placeholder="Enter state" />
                       )}
-                      {isLoadingLocation && <p>Loading...</p>}
+                      {isLoadingLocation && <p>Loading...</p>} */}
 
-                      {/* <Form.Control type="text" name="city" placeholder="Enter city" onChange={handleChange} /> */}
+                      <Form.Control type="text" name="city" placeholder="Enter city" onChange={handleChange} value={aaa.city} />
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>

@@ -28,14 +28,6 @@
 import mongoose from "mongoose";
 
 const addressSchema = new mongoose.Schema({
-    city: {
-        type: String,
-        required: true
-    },
-    state: {
-        type: String,
-        required: true
-    },
     locationName: {
         type: String,
         required: true
@@ -49,6 +41,14 @@ const locationSchema = new mongoose.Schema({
     },
     addresses: {
         type: [addressSchema], // Array of addresses
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
         required: true
     }
 }, { timestamps: true });
