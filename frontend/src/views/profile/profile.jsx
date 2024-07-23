@@ -1,12 +1,11 @@
-// src/Profile.js
-
 import { AuthContext } from 'contexts/ConfigContext';
 import React, { useContext } from 'react';
 import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
-// const { user } = useContext(AuthContext);
 
 const Profile = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user.validUser)
 
   // console.log(user)
   return (
@@ -15,15 +14,15 @@ const Profile = () => {
         <Col>
           <Card>
             <Card.Body>
-              <Card.Title>User Name: </Card.Title>
+              <Card.Title>User Name: {user.validUser.name}</Card.Title>
               {/* <Card.Title>g</Card.Title> */}
               <Card.Text>
-                <strong>Email:</strong> user@example.com
+                <strong>Email:</strong> {user.validUser.email}
               </Card.Text>
             </Card.Body>
             <ListGroup variant="flush">
               <ListGroup.Item><strong>Location:</strong> City, Country</ListGroup.Item>
-              <ListGroup.Item><strong>Joined:</strong> January 2023</ListGroup.Item>
+              <ListGroup.Item><strong>Joined:</strong> {user.validUser.updatedAt}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
               <Card.Title>About Me</Card.Title>
@@ -38,6 +37,6 @@ const Profile = () => {
       </Row>
     </Container>
   );
-};
+}; 
 
 export default Profile;

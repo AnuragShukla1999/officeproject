@@ -39,52 +39,6 @@ const DashDefault = () => {
     console.log(e.target.value);
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await addProductDetail(productDetails);
-  //     // console.log(res);
-
-  //     setProductDetails(res);
-  //     console.log(res);
-  //     setProduct(res);
-  //     // setProductDetails({ ...productDetails });
-
-  //     if (res.status == 201) {
-  //       setProductDetails({
-  //         fullName: '',
-  //         mobileNo: '',
-  //         email: '',
-  //         completeAddress: '',
-  //         pincode: '',
-  //         state: '',
-  //         city: '',
-  //         landmark: '',
-  //         orderId: '',
-  //         orderDate: '',
-  //         paymentMode: '',
-  //         productName: '',
-  //         category: '',
-  //         quantity: '',
-  //         orderValue: '',
-  //         hsn: '',
-  //         physicalWeight: '',
-  //         length: '',
-  //         breadth: '',
-  //         height: '',
-  //         courierservices: '',
-  //         amount: ''
-  //       });
-  //     }
-
-
-  //     toast.success('Product Created Successfully');
-  //   } catch (error) {
-  //     console.error('Error', error);
-  //   }
-  // };
-
-
   //  for adding product details
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -170,6 +124,43 @@ const DashDefault = () => {
     if (productDetails.fullName !== '' && productDetails.mobileNo !== '' && productDetails.email !== '' && productDetails.completeAddress !== '' && productDetails.pincode !== '' && productDetails.state !== '' && productDetails.city !== '' && productDetails.landmark !== '' && productDetails.orderId !== '' && productDetails.orderDate !== '' && productDetails.paymentMode !== '' && productDetails.productName !== '' && productDetails.quantity !== '' && productDetails.orderValue !== '' && productDetails.hsn !== '' && productDetails.physicalWeight !== '' && productDetails.breadth !== '' && productDetails.height !== '' && productDetails.courierservices !== '' && productDetails.amount !== '') {
       generatePDF(productDetails);
     }
+  };
+
+
+
+
+  const [location, setLocation] = useState([]);
+
+  const handleChangePincode = (e) => {
+    setLocation({ ...location, [e.target.name]: e.target.value });
+    console.log(e.target.value);
+  };
+
+  const fetchLocation = async (e) => {
+    const pincode = e.target.value;
+    try {
+      const url = "http://localhost:7000/api/getlocation"
+      const res = await fetch(`${url}/${pincode}`);
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      const data = await res.json();
+
+
+      console.log(data);
+      console.log(location);
+
+      if (data && data.length > 0 && data[0].PostOffice) {
+        const postOffices = data[0].PostOffice;
+        setLocation(postOffices);
+        const names = postOffices.map(postOffice => postOffice.Name);
+        console.log(names);
+      }
+    } catch (error) {
+      console.log("Error", error)
+    }
   }
 
   return (
@@ -226,7 +217,7 @@ const DashDefault = () => {
                   <Col md={4}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Pincode</Form.Label>
-                      <Form.Control type="number" name="pincode" placeholder="Enter pincode" onChange={handleChange} />
+                      <Form.Control type="number" name="pincode" placeholder="Enter pincode" onChange={handleChangePincode} onInput={fetchLocation} />
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>
@@ -234,6 +225,24 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
                       <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleChange} />
+                      {/* {location && (
+                        <h6>
+                          {location.map((postOffice, index) => (
+                            <ul key={index}>{postOffice.Name}</ul>
+                          ))}
+                        </h6>
+                      )} */}
+
+                      {location.length > 0 && (
+                        <div>
+                          <h6>Locations:</h6>
+                          <ul>
+                            {location.map((postOffice, index) => (
+                              <li key={index}>{postOffice.Name}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>

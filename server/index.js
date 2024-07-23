@@ -7,7 +7,8 @@ import dbConnection from "./config/db.js";
 
 import authRouter from './routes/authRoute.js'
 import ProductRouter from "./routes/productRoute.js";
-import userRouter from "./routes/userRoute.js"
+import userRouter from "./routes/userRoute.js";
+import locationRouter from './routes/locationRoute.js';
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use('/api', authRouter);
 app.use('/api', ProductRouter);
 app.use('/api', userRouter);
+app.use('/api', locationRouter);
 
 
 app.listen(process.env.PORT, () => {
