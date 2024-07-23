@@ -32,9 +32,9 @@ export const getLocation = async (req, res) => {
 export const createLocation = async (req, res) => {
 
     try {
-        const { pincode, locationName } = req.body;
+        const { pincode, addresses } = req.body;
 
-        const location = new locationModal({ pincode, locationName });
+        const location = new locationModal({ pincode, addresses });
 
         await location.save();
 

@@ -236,11 +236,11 @@ const DashDefault = () => {
         }
 
         const data = await res.json();
-        console.log(data.data.locationName);
+        console.log(data.data.addresses);
 
         // Update location state only if data is received
-        if (data.data && data.data.locationName) {
-          setLocation(data.data.locationName);
+        if (data.data && data.data.addresses) {
+          setLocation(data.data.addresses);
         } else {
           setLocation([]);
         }
@@ -318,7 +318,7 @@ const DashDefault = () => {
                       <Form.Label>Complete Address</Form.Label>
                       {/* <Form.Control type="text" name="completeAddress" placeholder="Enter address" onChange={handleChange} /> */}
 
-                      {location.length > 0 && !isLoadingLocation ? (
+                      {/* {location.length > 0 && !isLoadingLocation ? (
                         <Form.Control as="select" name="completeAddress" onChange={handleLocationSelect}>
                           <option>Select Address...</option>
                           {location.map((loc, index) => (
@@ -327,6 +327,21 @@ const DashDefault = () => {
                         </Form.Control>
                       ) : (
                         <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleManualStateInput} />
+                      )}
+                      {isLoadingLocation && <p>Loading...</p>} */}
+
+
+                      {location.length > 0 && !isLoadingLocation ? (
+                        <Form.Control as="select" name="completeAddress" onChange={handleLocationSelect}>
+                          <option>Select Address...</option>
+                          {location.map((loc, index) => (
+                            <option key={loc._id} value={loc._id}>
+                              {`${loc.city}, ${loc.state} - ${loc.locationName}`}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      ) : (
+                        <Form.Control type="text" placeholder="Enter Address" disabled />
                       )}
                       {isLoadingLocation && <p>Loading...</p>}
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
@@ -343,7 +358,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
 
-                      {location.length > 0 && !isLoadingLocation ? (
+                      {/* {location.length > 0 && !isLoadingLocation ? (
                         <Form.Control as="select" name="state" onChange={handleLocationSelect}>
                           <option>Select location...</option>
                           {location.map((loc, index) => (
@@ -352,6 +367,21 @@ const DashDefault = () => {
                         </Form.Control>
                       ) : (
                         <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleManualStateInput} />
+                      )}
+                      {isLoadingLocation && <p>Loading...</p>} */}
+
+
+                      {location.length > 0 && !isLoadingLocation ? (
+                        <Form.Control as="select" name="state" onChange={handleLocationSelect}>
+                          <option>Select Address...</option>
+                          {location.map((loc, index) => (
+                            <option key={loc._id} value={loc._id}>
+                              {`${loc.locationName}`}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      ) : (
+                        <Form.Control type="text" placeholder="Enter state" disabled />
                       )}
                       {isLoadingLocation && <p>Loading...</p>}
 
