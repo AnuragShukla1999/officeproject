@@ -1,4 +1,4 @@
-import locationModal from "../models/getLocationSchema.js";
+import locationModal from "../models/LocationSchema.js";
 
 
 export const getLocation = async (req, res) => {
