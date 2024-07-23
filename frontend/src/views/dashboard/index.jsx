@@ -2,7 +2,6 @@ import { AuthContext } from 'contexts/ConfigContext';
 import React, { useContext, useEffect, useState } from 'react';
 import { Row, Col, Card, Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-
 import jsPDF from 'jspdf';
 
 
@@ -37,6 +36,11 @@ const DashDefault = () => {
   const handleChange = (e) => {
     setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
     console.log(e.target.value);
+
+    // If the pincode changes manually, reset the location state
+    if (e.target.name === 'pincode') {
+      setLocation([]);
+    }
   };
 
   //  for adding product details
@@ -85,7 +89,6 @@ const DashDefault = () => {
           amount: ''
         })
       }
-
       toast.success('Product Created Successfully');
     } catch (error) {
       console.error('Error', error);
@@ -93,75 +96,178 @@ const DashDefault = () => {
   };
 
 
-  const generatePDF = (formData) => {
+  // const generatePDF = (formData) => {
+  //   const doc = new jsPDF();
+  //   doc.text(`Name: ${formData.fullName}`, 10, 10);
+  //   doc.text(`Email: ${formData.email}`, 10, 20);
+  //   doc.text(`mobileNo: ${formData.mobileNo}`, 10, 30);
+  //   doc.text(`completeAddress: ${formData.completeAddress}`, 10, 40);
+  //   doc.text(`pincode: ${formData.pincode}`, 10, 50);
+  //   doc.text(`state: ${formData.state}`, 10, 60);
+  //   doc.text(`city: ${formData.city}`, 10, 70);
+  //   doc.text(`landmark: ${formData.landmark}`, 10, 80);
+  //   doc.text(`orderId: ${formData.orderId}`, 10, 90);
+  //   doc.text(`orderDate: ${formData.orderDate}`, 10, 100);
+  //   doc.text(`paymentMode: ${formData.paymentMode}`, 10, 110);
+  //   doc.text(`productName: ${formData.productName}`, 10, 120);
+  //   doc.text(`quantity: ${formData.quantity}`, 10, 130);
+  //   doc.text(`orderValue: ${formData.orderValue}`, 10, 140);
+  //   doc.text(`hsn: ${formData.hsn}`, 10, 150);
+  //   doc.text(`physicalWeight: ${formData.physicalWeight}`, 10, 160);
+  //   doc.text(`breadth: ${formData.breadth}`, 10, 170);
+  //   doc.text(`height: ${formData.height}`, 10, 180);
+  //   doc.text(`courierservices: ${formData.courierservices}`, 10, 190);
+  //   doc.text(`amount: ${formData.amount}`, 10, 200);
+  //   doc.save('form-data.pdf');
+  // };
+
+
+  // const handleSubmitPdf = () => {
+
+  //   if (productDetails.fullName !== '' && productDetails.mobileNo !== '' && productDetails.email !== '' && productDetails.completeAddress !== '' && productDetails.pincode !== '' && productDetails.state !== '' && productDetails.city !== '' && productDetails.landmark !== '' && productDetails.orderId !== '' && productDetails.orderDate !== '' && productDetails.paymentMode !== '' && productDetails.productName !== '' && productDetails.quantity !== '' && productDetails.orderValue !== '' && productDetails.hsn !== '' && productDetails.physicalWeight !== '' && productDetails.breadth !== '' && productDetails.height !== '' && productDetails.courierservices !== '' && productDetails.amount !== '') {
+  //     generatePDF(productDetails);
+  //   }
+  // };
+
+
+
+
+
+  const generatePDF = ({
+    fullName,
+    email,
+    mobileNo,
+    completeAddress,
+    pincode,
+    state,
+    city,
+    landmark,
+    orderId,
+    orderDate,
+    paymentMode,
+    productName,
+    quantity,
+    orderValue,
+    hsn,
+    physicalWeight,
+    breadth,
+    height,
+    courierservices,
+    amount
+  }) => {
     const doc = new jsPDF();
-    doc.text(`Name: ${formData.fullName}`, 10, 10);
-    doc.text(`Email: ${formData.email}`, 10, 20);
-    doc.text(`mobileNo: ${formData.mobileNo}`, 10, 30);
-    doc.text(`completeAddress: ${formData.completeAddress}`, 10, 40);
-    doc.text(`pincode: ${formData.pincode}`, 10, 50);
-    doc.text(`state: ${formData.state}`, 10, 60);
-    doc.text(`city: ${formData.city}`, 10, 70);
-    doc.text(`landmark: ${formData.landmark}`, 10, 80);
-    doc.text(`orderId: ${formData.orderId}`, 10, 90);
-    doc.text(`orderDate: ${formData.orderDate}`, 10, 100);
-    doc.text(`paymentMode: ${formData.paymentMode}`, 10, 110);
-    doc.text(`productName: ${formData.productName}`, 10, 120);
-    doc.text(`quantity: ${formData.quantity}`, 10, 130);
-    doc.text(`orderValue: ${formData.orderValue}`, 10, 140);
-    doc.text(`hsn: ${formData.hsn}`, 10, 150);
-    doc.text(`physicalWeight: ${formData.physicalWeight}`, 10, 160);
-    doc.text(`breadth: ${formData.breadth}`, 10, 170);
-    doc.text(`height: ${formData.height}`, 10, 180);
-    doc.text(`courierservices: ${formData.courierservices}`, 10, 190);
-    doc.text(`amount: ${formData.amount}`, 10, 200);
+    let y = 10;
+
+    // Iterate through fields dynamically and print them
+    Object.entries({
+      fullName,
+      email,
+      mobileNo,
+      completeAddress,
+      pincode,
+      state,
+      city,
+      landmark,
+      orderId,
+      orderDate,
+      paymentMode,
+      productName,
+      quantity,
+      orderValue,
+      hsn,
+      physicalWeight,
+      breadth,
+      height,
+      courierservices,
+      amount
+    }).forEach(([label, value]) => {
+      doc.text(`${label}: ${value}`, 10, y);
+      y += 10;
+    });
+
     doc.save('form-data.pdf');
   };
 
-
   const handleSubmitPdf = () => {
+    const requiredFields = [
+      'fullName', 'mobileNo', 'email', 'completeAddress', 'pincode',
+      'state', 'city', 'landmark', 'orderId', 'orderDate', 'paymentMode',
+      'productName', 'quantity', 'orderValue', 'hsn', 'physicalWeight',
+      'breadth', 'height', 'courierservices', 'amount'
+    ];
 
-    if (productDetails.fullName !== '' && productDetails.mobileNo !== '' && productDetails.email !== '' && productDetails.completeAddress !== '' && productDetails.pincode !== '' && productDetails.state !== '' && productDetails.city !== '' && productDetails.landmark !== '' && productDetails.orderId !== '' && productDetails.orderDate !== '' && productDetails.paymentMode !== '' && productDetails.productName !== '' && productDetails.quantity !== '' && productDetails.orderValue !== '' && productDetails.hsn !== '' && productDetails.physicalWeight !== '' && productDetails.breadth !== '' && productDetails.height !== '' && productDetails.courierservices !== '' && productDetails.amount !== '') {
+    // Check if all required fields are present and non-empty
+    if (requiredFields.every(field => productDetails[field] !== '')) {
       generatePDF(productDetails);
+    } else {
+      // Handle case where required fields are missing or empty
+      console.error('Some required fields are missing or empty.');
+      // Optionally, notify the user or handle the error in another way
     }
   };
+
 
 
 
 
   const [location, setLocation] = useState([]);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
-  const handleChangePincode = (e) => {
-    setLocation({ ...location, [e.target.name]: e.target.value });
-    console.log(e.target.value);
-  };
+
+  // const handleChangeLocationData = (e) => {
+  //   setLocationData({ ...locationData, [e.target.name]: e.target.value });
+  // };
+
+  // const handleChangePincode = (e) => {
+  //   setLocation({ ...location, [e.target.name]: e.target.value });
+  //   console.log(e.target.value);
+  // };
 
   const fetchLocation = async (e) => {
-    // const pincode = e.target.value; 
+    const pincode = e.target.value;
     try {
-      const url = "http://localhost:7000/api/getlocation"
-      const res = await fetch(`${url}`);
+      if (pincode.length === 6) {
+        setIsLoadingLocation(true);
+        const url = `http://localhost:7000/api/getlocation/${pincode}`;
+        const res = await fetch(url);
 
-      if (!res.ok) {
-        throw new Error('Failed to fetch data');
+        if (!res.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const data = await res.json();
+        console.log(data.data.locationName);
+
+        // Update location state only if data is received
+        if (data.data && data.data.locationName) {
+          setLocation(data.data.locationName);
+        } else {
+          setLocation([]);
+        }
+
+        setIsLoadingLocation(false);
       }
-
-      const data = await res.json();
-
-
-      console.log(data);
-      // console.log(location);
-
-      // if (data && data.length > 0 && data[0].PostOffice) {
-      //   const postOffices = data[0].PostOffice;
-      //   setLocation(postOffices);
-      //   const names = postOffices.map(postOffice => postOffice.Name);
-      //   console.log(names);
-      // }
     } catch (error) {
-      console.log("Error", error)
+      console.log("Error", error);
+      setIsLoadingLocation(false);
     }
   }
+
+
+
+
+  const handleLocationSelect = (e) => {
+    const selectedLocation = e.target.value;
+    setProductDetails({ ...productDetails, state: selectedLocation });
+  };
+
+
+  const handleManualStateInput = (e) => {
+    // Handle manual input of state
+    setProductDetails({ ...productDetails, state: e.target.value });
+  };
+
+
 
   return (
     <React.Fragment>
@@ -217,32 +323,27 @@ const DashDefault = () => {
                   <Col md={4}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Pincode</Form.Label>
-                      <Form.Control type="number" name="pincode" placeholder="Enter pincode" onChange={handleChangePincode} onInput={fetchLocation} />
+                      <Form.Control type="number" name="pincode" placeholder="Enter pincode" onChange={handleChange} onInput={fetchLocation} />
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>
                   <Col md={4}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
-                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleChange} />
-                      {/* {location && (
-                        <h6>
-                          {location.map((postOffice, index) => (
-                            <ul key={index}>{postOffice.Name}</ul>
-                          ))}
-                        </h6>
-                      )} */}
 
-                      {location.length > 0 && (
-                        <div>
-                          <h6>Locations:</h6>
-                          <ul>
-                            {location.map((postOffice, index) => (
-                              <li key={index}>{postOffice.Name}</li>
-                            ))}
-                          </ul>
-                        </div>
+                      {location.length > 0 && !isLoadingLocation ? (
+                        <Form.Control as="select" name="state" onChange={handleLocationSelect}>
+                          <option>Select location...</option>
+                          {location.map((loc, index) => (
+                            <option key={index} value={loc}>{loc}</option>
+                          ))}
+                        </Form.Control>
+                      ) : (
+                        <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleManualStateInput} />
                       )}
+                      {isLoadingLocation && <p>Loading...</p>}
+
+
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>
@@ -432,10 +533,10 @@ const DashDefault = () => {
         <button className="btn btn-primary" onClick={handleSubmit}>
           Add
         </button>
+      </Form>
         <button className="btn btn-primary" onClick={handleSubmitPdf}>
           Print
         </button>
-      </Form>
     </React.Fragment>
   );
 };

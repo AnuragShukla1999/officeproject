@@ -4,6 +4,6 @@ import { createLocation, getLocation } from '../controllers/getLocationControlle
 const router = express.Router();
 
 router.post('/location', createLocation);
-router.get('/getlocation', getLocation);
+router.get('/getlocation/:pincode', getLocation);
 
 export default router;

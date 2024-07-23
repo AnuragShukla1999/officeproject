@@ -96,6 +96,17 @@ const ConfigProvider = ({ children }) => {
 ConfigProvider.propTypes = {
   children: PropTypes.object
 };
+
+
+
+
+
+
+
+
+
+
+
 // this is for Auth and Product Storage context api
 export const AuthContext = createContext();
 
@@ -139,28 +150,8 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem('user');
   };
 
-  const addProductDetail = async (productDetails) => {
-    try {
-      const res = await fetch('http://localhost:7000/api/productorderdetails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(productDetails),
-        credentials: 'include'
-      });
-
-      const resData = await res.json();
-      console.log(resData);
-
-      // toast.success('Product Created Successfully');
-    } catch (error) {
-      console.error('Error', error);
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ user, setUser, signin, logout, addProductDetail, product, setProduct }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, setUser, signin, logout, product, setProduct }}>{children}</AuthContext.Provider>
   );
 };
 

@@ -22,6 +22,10 @@ const BootstrapTable = () => {
 
   // for fetching the product Details Data
   useEffect(() => {
+    apiCall()
+  }, []);
+
+  const apiCall = () => {
     const fetchDetails = async () => {
       try {
         const res = await fetch('http://localhost:7000/api/getproductdetails');
@@ -41,7 +45,8 @@ const BootstrapTable = () => {
     };
 
     fetchDetails();
-  }, []);
+
+  }
 
 
 
@@ -114,6 +119,7 @@ const BootstrapTable = () => {
       setProductDetails(updatedProducts);
       toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
       setProductDialog(false);
+      apiCall()
     } catch (error) {
       console.error('Error updating product:', error);
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to update product', life: 3000 });

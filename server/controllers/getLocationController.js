@@ -1,11 +1,12 @@
 import locationModal from "../models/getLocationSchema.js";
 
 
-export const getLocation  = async (req, res) => {
+export const getLocation = async (req, res) => {
     // const api_key = "https://api.postalpincode.in/pincode";
 
+    const pincode = req.params.pincode;
+    console.log("Received pincode:", pincode);
     try {
-        const { pincode } = req.body;
         const pinCode = await locationModal.findOne({ pincode })
 
         if (!pinCode) {

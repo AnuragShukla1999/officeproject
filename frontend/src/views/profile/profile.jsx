@@ -5,7 +5,7 @@ import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.validUser)
+  // console.log(user.validUser)
 
   // console.log(user)
   return (
