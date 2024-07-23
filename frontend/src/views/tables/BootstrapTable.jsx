@@ -74,18 +74,18 @@ const BootstrapTable = () => {
 
 
 
-  const addProductDetailsModal = () => {
-    setProduct(emptyProduct);
-    setSubmitted(false);
-    setProductDialog(true);
-  }
+  // const addProductDetailsModal = () => {
+  //   setProduct(emptyProduct);
+  //   setSubmitted(false);
+  //   setProductDialog(true);
+  // }
 
 
-  const openNew = () => {
-    setProduct(emptyProduct);
-    setSubmitted(false);
-    setProductDialog(true);
-  };
+  // const openNew = () => {
+  //   setProduct(emptyProduct);
+  //   setSubmitted(false);
+  //   setProductDialog(true);
+  // };
 
   const hideDialog = () => {
     setSubmitted(false);
@@ -100,7 +100,11 @@ const BootstrapTable = () => {
     setDeleteProductsDialog(false);
   };
 
-  const saveProduct = async () => {
+
+
+
+
+  const saveEditProduct = async () => {
     try {
       const res = await fetch(`http://localhost:7000/api/updateproductdetails/${product._id}`, {
         method: 'PUT',
@@ -126,12 +130,18 @@ const BootstrapTable = () => {
     }
   };
 
+
+
   const editProduct = (product) => {
     setProduct({ ...product });
     setProductDialog(true);
   };
 
 
+
+
+
+ ///  delete functional area
   const confirmDeleteProduct = (product) => {
     setProduct(product);
     setDeleteProductDialog(true);
@@ -167,24 +177,24 @@ const BootstrapTable = () => {
 
 
 
-  const deleteAllProducts = async () => {
-    try {
-      const res = await fetch('http://localhost:7000/api/deleteallproduct', {
-        method: 'DELETE',
-      });
+  // const deleteAllProducts = async () => {
+  //   try {
+  //     const res = await fetch('http://localhost:7000/api/deleteallproduct', {
+  //       method: 'DELETE',
+  //     });
 
-      if (!res.ok) {
-        throw new Error('Failed to delete all products');
-      }
+  //     if (!res.ok) {
+  //       throw new Error('Failed to delete all products');
+  //     }
 
-      setProductDetails([]);
-      toast.current.show({ severity: 'success', summary: 'Successful', detail: 'All Products Deleted', life: 3000 });
-      setDeleteProductsDialog(false);
-    } catch (error) {
-      console.error('Error deleting all products:', error);
-      toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to delete all products', life: 3000 });
-    }
-  };
+  //     setProductDetails([]);
+  //     toast.current.show({ severity: 'success', summary: 'Successful', detail: 'All Products Deleted', life: 3000 });
+  //     setDeleteProductsDialog(false);
+  //   } catch (error) {
+  //     console.error('Error deleting all products:', error);
+  //     toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to delete all products', life: 3000 });
+  //   }
+  // };
 
 
 
@@ -220,14 +230,14 @@ const BootstrapTable = () => {
     setDeleteProductsDialog(true);
   };
 
-  const deleteSelectedProducts = () => {
-    let _products = products.filter((val) => !selectedProducts.includes(val));
+  // const deleteSelectedProducts = () => {
+  //   let _products = products.filter((val) => !selectedProducts.includes(val));
 
-    setProducts(_products);
-    setDeleteProductsDialog(false);
-    setSelectedProducts(null);
-    toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-  };
+  //   setProducts(_products);
+  //   setDeleteProductsDialog(false);
+  //   setSelectedProducts(null);
+  //   toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+  // };
 
 
 
@@ -390,7 +400,7 @@ const BootstrapTable = () => {
   const productDialogFooter = (
     <React.Fragment>
       <Button label="Cancel" icon="pi pi-times" outlined onClick={hideDialog} />
-      <Button label="Save" icon="pi pi-check" onClick={saveProduct} />
+      <Button label="Save" icon="pi pi-check" onClick={saveEditProduct} />
     </React.Fragment>
   );
   const deleteProductDialogFooter = (

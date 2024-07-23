@@ -258,13 +258,13 @@ const DashDefault = () => {
 
   const handleLocationSelect = (e) => {
     const selectedLocation = e.target.value;
-    setProductDetails({ ...productDetails, state: selectedLocation });
+    setProductDetails({ ...productDetails, state: selectedLocation, completeAddress: selectedLocation });
   };
 
 
   const handleManualStateInput = (e) => {
     // Handle manual input of state
-    setProductDetails({ ...productDetails, state: e.target.value });
+    setProductDetails({ ...productDetails, state: e.target.value, completeAddress: e.target.value });
   };
 
 
@@ -316,7 +316,19 @@ const DashDefault = () => {
                   <Col md={4}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Complete Address</Form.Label>
-                      <Form.Control type="text" name="completeAddress" placeholder="Enter address" onChange={handleChange} />
+                      {/* <Form.Control type="text" name="completeAddress" placeholder="Enter address" onChange={handleChange} /> */}
+
+                      {location.length > 0 && !isLoadingLocation ? (
+                        <Form.Control as="select" name="completeAddress" onChange={handleLocationSelect}>
+                          <option>Select Address...</option>
+                          {location.map((loc, index) => (
+                            <option key={index} value={loc}>{loc}</option>
+                          ))}
+                        </Form.Control>
+                      ) : (
+                        <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleManualStateInput} />
+                      )}
+                      {isLoadingLocation && <p>Loading...</p>}
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>
@@ -534,9 +546,9 @@ const DashDefault = () => {
           Add
         </button>
       </Form>
-        <button className="btn btn-primary" onClick={handleSubmitPdf}>
-          Print
-        </button>
+      <button className="btn btn-primary" onClick={handleSubmitPdf}>
+        Print
+      </button>
     </React.Fragment>
   );
 };
