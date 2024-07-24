@@ -14,6 +14,9 @@ import { AuthContext } from 'contexts/ConfigContext';
 // import avatar4 from '../../../../assets/images/user/avatar-4.jpg';
 
 const NavRight = () => {
+
+  const { user } = useContext(AuthContext);
+
   const [listOpen, setListOpen] = useState(false);
 
   const navigate = useNavigate();

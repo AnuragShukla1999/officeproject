@@ -1,45 +1,26 @@
 import { AuthContext } from 'contexts/ConfigContext';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user.validUser)
+  const [userData, setUserData] = useState(null); 
 
-  // console.log(user)
+  useEffect(() => {
+    if (user && user.validUser) {
+      setUserData(user.validUser);
+    }
+  }, [user]);
+
+  if (!userData) {
+    return (
+      <div>Loading...</div> 
+    );
+  }
+
+
   return (
-    // <Container className="mt-4">
-    //   <Row>
-    //     <Col>
-    //       <Card>
-    //         <Card.Body>
-    //           <Card.Title>User Name: {user?.validUser?.name}</Card.Title>
-    //           {/* <Card.Title>g</Card.Title> */}
-    //           <Card.Text>
-    //             <strong>Email:</strong> {user?.validUser?.email}
-    //           </Card.Text>
-    //         </Card.Body>
-    //         <ListGroup variant="flush">
-    //           <ListGroup.Item><strong>Location:</strong> City, Country</ListGroup.Item>
-    //           <ListGroup.Item><strong>Joined:</strong> {user?.validUser?.updatedAt}</ListGroup.Item>
-    //         </ListGroup>
-    //         <Card.Body>
-    //           <Card.Title>About Me</Card.Title>
-    //           <Card.Text>
-    //             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit
-    //             massa vel ligula pulvinar, at hendrerit libero posuere. Nulla facilisi.
-    //             Donec varius libero vitae magna fringilla, vitae malesuada justo rutrum.
-    //           </Card.Text>
-    //         </Card.Body>
-    //       </Card>
-    //     </Col>
-    //   </Row>
-    // </Container>
-
-
-
-
     <section className="vh-100" style={{ backgroundColor: '#f4f5f7' }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
@@ -60,11 +41,11 @@ const Profile = () => {
                     <div className="row pt-1">
                       <div className="col-6 mb-3">
                         <h6>Email</h6>
-                        <p className="text-muted">{user?.validUser?.email}</p>
+                        <p className="text-muted">{userData.email}</p>
                       </div>
                       <div className="col-6 mb-3">
                         <h6>Created At</h6>
-                        <p className="text-muted">{user?.validUser?.createdAt}</p>
+                        <p className="text-muted">{userData.createdAt}</p>
                       </div>
                     </div>
                     <h6>Projects</h6>
