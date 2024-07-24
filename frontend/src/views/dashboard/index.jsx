@@ -206,7 +206,7 @@ const DashDefault = () => {
         }
 
         const data = await res.json();
-        console.log(data.data.state);
+        console.log(data.data);
         console.log(data.data.addresses);
 
         // Update location state only if data is received
@@ -318,7 +318,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
 
-                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state}  />
+                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state == "" ? "" : aaa.state}  />
 
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
