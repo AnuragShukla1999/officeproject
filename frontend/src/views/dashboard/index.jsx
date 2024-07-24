@@ -229,22 +229,20 @@ const DashDefault = () => {
 
 
   const handleLocationSelect = (e) => {
-    const selectedLocation = e.target.value;
-    const selectedAddress = location.find(loc => loc.locationName === selectedLocation);
-  
+    const completeAddress = e.target.value;
 
     setProductDetails({
       ...productDetails,
       state: aaa.state,
       city: aaa.city,
-      completeAddress: selectedAddress
+      completeAddress: completeAddress
     })
   };
   
 
   return (
     <React.Fragment>
-      <Form>
+      <Form ref={formRef}>
         <Row>
           <Col sm={12}>
             <Card>
@@ -318,7 +316,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
 
-                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state == "" ? "" : aaa.state}  />
+                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state}  />
 
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
