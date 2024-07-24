@@ -1,30 +1,3 @@
-// import mongoose from "mongoose";
-
-
-// const getLocationSchema = new mongoose.Schema({
-//     locationName: {
-//         type: Array,
-//         required: true
-//     },
-//     pincode: {
-//         type: Number,
-//         required: true
-//     }
-// },
-//     { timestamps: true }
-// );
-
-
-// const locationModal = mongoose.model('location', getLocationSchema);
-
-// export default locationModal;
-
-
-
-
-
-
-
 import mongoose from "mongoose";
 
 const addressSchema = new mongoose.Schema({
@@ -40,7 +13,7 @@ const locationSchema = new mongoose.Schema({
         required: true
     },
     addresses: {
-        type: [addressSchema], // Array of addresses
+        type: [addressSchema],
         required: true
     },
     city: {

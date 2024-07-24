@@ -1,5 +1,5 @@
 import { AuthContext } from 'contexts/ConfigContext';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Row, Col, Card, Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import jsPDF from 'jspdf';
@@ -7,6 +7,8 @@ import jsPDF from 'jspdf';
 
 const DashDefault = () => {
   const { setProduct } = useContext(AuthContext);
+
+  const formRef = useRef(null);
 
   const [productDetails, setProductDetails] = useState({
     fullName: '',
@@ -59,37 +61,14 @@ const DashDefault = () => {
       const resData = await res.json();
       console.log(resData);
 
-      setProductDetails(res);
       console.log(res);
-      setProduct(res);
-
+      
       if (res.status == 201) {
-        setProductDetails({
-          fullName: '',
-          mobileNo: '',
-          email: '',
-          completeAddress: '',
-          pincode: '',
-          state: '',
-          city: '',
-          landmark: '',
-          orderId: '',
-          orderDate: '',
-          paymentMode: '',
-          productName: '',
-          category: '',
-          quantity: '',
-          orderValue: '',
-          hsn: '',
-          physicalWeight: '',
-          length: '',
-          breadth: '',
-          height: '',
-          courierservices: '',
-          amount: ''
-        })
+        setProductDetails(resData);
+        setProduct(resData);
+        toast.success('Product Created Successfully');
+        formRef.current.reset();
       }
-      toast.success('Product Created Successfully');
     } catch (error) {
       console.error('Error', error);
     }
@@ -209,20 +188,10 @@ const DashDefault = () => {
 
 
 
-
   const [location, setLocation] = useState([]);
   const [aaa, setAaa]  = useState([]);
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
-
-  // const handleChangeLocationData = (e) => {
-  //   setLocationData({ ...locationData, [e.target.name]: e.target.value });
-  // };
-
-  // const handleChangePincode = (e) => {
-  //   setLocation({ ...location, [e.target.name]: e.target.value });
-  //   console.log(e.target.value);
-  // };
 
   const fetchLocation = async (e) => {
     const pincode = e.target.value;
@@ -237,18 +206,13 @@ const DashDefault = () => {
         }
 
         const data = await res.json();
-        console.log(data.data);
+        console.log(data.data.state);
         console.log(data.data.addresses);
 
         // Update location state only if data is received
-        if (data.data) {
+        if (res.ok && data.data) {
           setLocation(data.data.addresses);
           setAaa(data.data);
-          // setProductDetails({
-          //   ...productDetails,
-          //   state, 
-          //   city
-          // })
         } else {
           setLocation([]);
         }
@@ -259,24 +223,24 @@ const DashDefault = () => {
     } catch (error) {
       console.log("Error", error);
       setIsLoadingLocation(false);
+      setProductDetails({ ...productDetails, state: '', city: '' });
     }
   }
 
 
-
-
   const handleLocationSelect = (e) => {
     const selectedLocation = e.target.value;
-    setProductDetails({ ...productDetails, state: selectedLocation, completeAddress: selectedLocation, city: e.target.value });
+    const selectedAddress = location.find(loc => loc.locationName === selectedLocation);
+  
+
+    setProductDetails({
+      ...productDetails,
+      state: aaa.state,
+      city: aaa.city,
+      completeAddress: selectedAddress
+    })
   };
-
-
-  const handleManualStateInput = (e) => {
-    // Handle manual input of state
-    setProductDetails({ ...productDetails, state: e.target.value, completeAddress: e.target.value, city: e.target.value });
-  };
-
-
+  
 
   return (
     <React.Fragment>
@@ -327,24 +291,11 @@ const DashDefault = () => {
                       <Form.Label>Complete Address</Form.Label>
                       {/* <Form.Control type="text" name="completeAddress" placeholder="Enter address" onChange={handleChange} /> */}
 
-                      {/* {location.length > 0 && !isLoadingLocation ? (
-                        <Form.Control as="select" name="completeAddress" onChange={handleLocationSelect}>
-                          <option>Select Address...</option>
-                          {location.map((loc, index) => (
-                            <option key={index} value={loc}>{loc}</option>
-                          ))}
-                        </Form.Control>
-                      ) : (
-                        <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleManualStateInput} />
-                      )}
-                      {isLoadingLocation && <p>Loading...</p>} */}
-
-
                       {location.length > 0 && !isLoadingLocation ? (
                         <Form.Control as="select" name="completeAddress" onChange={handleLocationSelect}>
                           <option>Select Address...</option>
                           {location.map((loc, index) => (
-                            <option key={loc._id} value={loc._id}>
+                            <option key={loc._id} value={loc.locationName}>
                               {`${loc.locationName}`}
                             </option>
                           ))}
@@ -367,36 +318,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
 
-                      {/* {location.length > 0 && !isLoadingLocation ? (
-                        <Form.Control as="select" name="state" onChange={handleLocationSelect}>
-                          <option>Select location...</option>
-                          {location.map((loc, index) => (
-                            <option key={index} value={loc}>{loc}</option>
-                          ))}
-                        </Form.Control>
-                      ) : (
-                        <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleManualStateInput} />
-                      )}
-                      {isLoadingLocation && <p>Loading...</p>} */}
-
-
-                      {/* {location.length > 0 && !isLoadingLocation ? (
-                        <Form.Control as="select" name="state" onChange={handleLocationSelect}>
-                          <option>Select State...</option>
-                          {location.map((loc, index) => (
-                            <option key={loc._id} value={loc._id}>
-                              {`${loc.state}`}
-                            </option>
-                          ))}
-                        </Form.Control>
-                      ) : (
-                        <Form.Control type="text" placeholder="Enter state" />
-                      )}
-                      {isLoadingLocation && <p>Loading...</p>} */}
-
-
-                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleChange} value={aaa.state}  />
-
+                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state}  />
 
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
@@ -406,21 +328,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>City</Form.Label>
 
-                      {/* {location.length > 0 && !isLoadingLocation ? (
-                        <Form.Control as="select" name="state" onChange={handleLocationSelect}>
-                          <option>Select State...</option>
-                          {location.map((loc, index) => (
-                            <option key={loc._id} value={loc._id}>
-                              {`${loc.city}`}
-                            </option>
-                          ))}
-                        </Form.Control>
-                      ) : (
-                        <Form.Control type="text" placeholder="Enter state" />
-                      )}
-                      {isLoadingLocation && <p>Loading...</p>} */}
-
-                      <Form.Control type="text" name="city" placeholder="Enter city" onChange={handleChange} value={aaa.city} />
+                      <Form.Control type="text" name="city" placeholder="Enter city" onChange={handleLocationSelect} value={aaa.city} />
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>
