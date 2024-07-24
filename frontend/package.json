@@ -2,13 +2,16 @@
   "name": "datta-able-react-hook-reactstrap-js",
   "version": "3.0.0",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "start": "vite",
+    "dev": "concurrently \"electron .\" \"cd src && npm start\"",
     "build": "node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "electron": "cross-env BROWSER=none concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "dependencies": {
     "@originjs/vite-plugin-commonjs": "^1.0.3",
@@ -21,6 +24,7 @@
     "bootstrap": "^5.3.3",
     "chance": "^1.1.11",
     "d3": "^7.9.0",
+    "electron-is-dev": "^3.0.1",
     "formik": "^2.4.5",
     "jquery": "^3.7.1",
     "jspdf": "^2.5.1",
@@ -61,6 +65,10 @@
     "@babel/eslint-parser": "^7.24.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-react": "^7.24.7",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^31.2.1",
+    "electron-builder": "^24.13.3",
     "env-cmd": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -74,7 +82,8 @@
     "immutable": "^4.3.5",
     "prettier": "3.2.5",
     "react-error-overlay": "6.0.11",
-    "sass": "^1.75.0"
+    "sass": "^1.75.0",
+    "wait-on": "^7.2.0"
   },
   "packageManager": "yarn@4.1.1"
 }

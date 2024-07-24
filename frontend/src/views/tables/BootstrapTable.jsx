@@ -151,7 +151,7 @@ const BootstrapTable = () => {
 
   const deleteProduct = async () => {
     try {
-      const res = await fetch(`  /${product._id}`, {
+      const res = await fetch(`http://localhost:7000/api/deleteproductdetails/${product._id}`, {
         method: 'DELETE',
       });
 
@@ -436,7 +436,7 @@ const BootstrapTable = () => {
           header={header}
         >
           <Column selectionMode="multiple" exportable={false}></Column>
-          <Column field="completeAddress" header="Order ID" sortable style={{ minWidth: '12rem' }}></Column>
+          <Column field="orderId" header="Order ID" sortable style={{ minWidth: '12rem' }}></Column>
           <Column field="productName" header="Product Name" style={{ minWidth: '16rem' }}></Column>
           <Column field="orderValue" header="Order Value" sortable style={{ minWidth: '10rem' }}></Column>
           <Column field="fullName" header="Customer Details" sortable style={{ minWidth: '10rem' }}></Column>
