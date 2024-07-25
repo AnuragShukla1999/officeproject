@@ -179,9 +179,7 @@ const DashDefault = () => {
     if (requiredFields.every(field => productDetails[field] !== '')) {
       generatePDF(productDetails);
     } else {
-      // Handle case where required fields are missing or empty
       console.error('Some required fields are missing or empty.');
-      // Optionally, notify the user or handle the error in another way
     }
   };
 
@@ -209,16 +207,28 @@ const DashDefault = () => {
         console.log(data.data);
         console.log(data.data.addresses);
 
-        // Update location state only if data is received
         if (res.ok && data.data) {
           setLocation(data.data.addresses);
           setAaa(data.data);
+          setProductDetails({
+            ...productDetails,
+            state: data.data.state, // Assuming data contains state information
+            city: data.data.city // Assuming data contains city information
+          });
         } else {
           setLocation([]);
+          setAaa({});
+          setProductDetails({ ...productDetails, state: '', city: '' });
         }
 
         console.log(location)
         setIsLoadingLocation(false);
+      } else {
+        setProductDetails({
+          ...productDetails,
+          state: '', 
+          city: '' 
+        });
       }
     } catch (error) {
       console.log("Error", error);
@@ -316,7 +326,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>State</Form.Label>
 
-                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state}  />
+                      <Form.Control type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state ? productDetails.state : ''}  /> 
 
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
@@ -326,7 +336,7 @@ const DashDefault = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>City</Form.Label>
 
-                      <Form.Control type="text" name="city" placeholder="Enter city" onChange={handleLocationSelect} value={aaa.city} />
+                      <Form.Control type="text" name="city" placeholder="Enter city" onChange={handleLocationSelect} value={aaa.city ? productDetails.city : ''} />
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>

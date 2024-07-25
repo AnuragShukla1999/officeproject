@@ -11,7 +11,8 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "electron": "cross-env BROWSER=none concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
+    "electron:start": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
+    
   },
   "dependencies": {
     "@originjs/vite-plugin-commonjs": "^1.0.3",

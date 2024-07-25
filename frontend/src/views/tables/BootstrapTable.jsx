@@ -45,10 +45,7 @@ const BootstrapTable = () => {
     };
 
     fetchDetails();
-
   }
-
-
 
 
 
