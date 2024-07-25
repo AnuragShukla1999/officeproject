@@ -491,7 +491,7 @@ const DashDefault = () => {
                   <Col md={4}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Amount</Form.Label>
-                      <Form.Control type="number" name="amount" placeholder="Enter email" onChange={handleChange} />
+                      <Form.Control type="number" name="amount" placeholder="Enter amount" onChange={handleChange} />
                       {/* <Form.Text className="text-muted">We&apos;ll never share your email with anyone else.</Form.Text> */}
                     </Form.Group>
                   </Col>
@@ -500,10 +500,6 @@ const DashDefault = () => {
             </Card>
           </Col>
         </Row>
-
-        {/* <Button variant={primary} className="text-capitalize">
-          {primary}
-        </Button> */}
 
         <button className="btn btn-primary" onClick={handleSubmit}>
           Add
