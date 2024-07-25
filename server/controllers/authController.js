@@ -56,20 +56,11 @@ export const signin = async (req, res, next) => {
 
         if (!validPassword) {
             return res.status(401).json({
-                message : "Wrong password"
+                message: "Wrong password"
             });
         }
 
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-
-        // save user data to JSON file
-        // const userData = {
-        //     id: validUser._id,
-        //     email: validUser.email,
-        // }
-
-
 
         res.cookie('access token', token).json({
             message: "Sign in successfully",
@@ -87,20 +78,20 @@ export const signin = async (req, res, next) => {
 
 
 export const logout = async (req, res) => {
-    try{
+    try {
         res.clearCookie('access_token');
 
         res.json({
-            message : "Logged out successfully",
-            error : false,
-            success : true,
-            data : []
+            message: "Logged out successfully",
+            error: false,
+            success: true,
+            data: []
         })
-    }catch(err){
+    } catch (err) {
         res.json({
-            message : err.message || err,
-            error : true,
-            success : false,
+            message: err.message || err,
+            error: true,
+            success: false,
         })
     }
 };
@@ -141,5 +132,98 @@ export const google = async (req, res) => {
         return res.status(500).json({
             message: error.message
         })
+    }
+}
+
+
+
+
+
+
+
+export const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const user = await authModel.findOne({ email });
+
+        if (!user) {
+            res.status(401).json({
+                message: "User not found"
+            })
+        };
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
+
+        const sendMail = nodemailer.createTransport({
+            service: 'gmail',
+            host: 'smtp.ethereal.email',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'your-smtp-username',
+                pass: 'your-smtp-password'
+            }
+        });
+
+
+        const mailOptions = {
+            from: 'owner gmail',
+            to: email,
+            subject: 'Sending Email using Node.js',
+            text: 'That was easy!'
+        };
+
+        await transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+};
+
+
+
+
+export const updateUser = async (req, res) => {
+    const { name, email } = req.body;
+    
+    try {
+        // const user = await authModel.findOne({ email });
+
+        // if (!user) {
+        //     res.status(401).json({
+        //         message: "Email not exist"
+        //     })
+        // };
+
+
+        const updatedUser = await authModel.findByIdAndUpdate({
+            name,
+            email
+        });
+
+
+        if (!updatedUser) {
+            res.status(401).json({
+                message: "User not found!"
+            })
+        };
+
+
+        await updatedUser.save();
+
+        res.status(201).json({
+            message: "User Updated Successfully",
+            updatedUser
+        });
+    } catch (error) {
+        
     }
 }

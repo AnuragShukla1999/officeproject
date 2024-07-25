@@ -42,7 +42,7 @@ const BootstrapTable = () => {
           console.error('Error fetching data:', data.message);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data: ', error);
       }
     };
 
