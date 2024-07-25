@@ -133,8 +133,9 @@ const AuthContextProvider = ({ children }) => {
       const resData = await res.json();
       console.log(resData);
       if (res.status === 200) {
+        const { validUser } = resData;
         setUser(resData);
-        localStorage.setItem('user', JSON.stringify(resData));
+        localStorage.setItem('user', JSON.stringify(validUser));
         toast.success('Signed in successfully!');
       } else {
         toast.error('Please Check Your email or password');

@@ -4,20 +4,29 @@ import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
-  const [userData, setUserData] = useState(null); 
+  // const { user } = useContext(AuthContext);
+  // const [userData, setUserData] = useState(null); 
 
-  useEffect(() => {
-    if (user && user.validUser) {
-      setUserData(user.validUser);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user && user.validUser) {
+  //     setUserData(user.validUser);
+  //   }
+  // }, [user]);
 
-  if (!userData) {
-    return (
-      <div>Loading...</div> 
-    );
-  }
+  // // console.log(userData.email)
+
+  // if (!userData) {
+  //   return (
+  //     <div>Loading...</div> 
+  //   );
+  // }
+
+  // if (user) {
+  //   setUserData(user.validUser)
+  // }
+
+  const userData = JSON.parse(localStorage.getItem('user'));
+  console.log(userData)
 
 
   return (
@@ -31,7 +40,7 @@ const Profile = () => {
                   style={{ borderTopLeftRadius: '.5rem', borderBottomLeftRadius: '.5rem' }}>
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                     alt="Avatar" className="img-fluid my-5" style={{ width: '80px' }} />
-                  <h5>{user?.validUser?.name}</h5>
+                  <h5>{userData?.name}</h5>
                   
                 </div>
                 <div className="col-md-8">
