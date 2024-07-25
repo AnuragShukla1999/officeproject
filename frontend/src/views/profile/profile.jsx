@@ -4,26 +4,6 @@ import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 
 
 const Profile = () => {
-  // const { user } = useContext(AuthContext);
-  // const [userData, setUserData] = useState(null); 
-
-  // useEffect(() => {
-  //   if (user && user.validUser) {
-  //     setUserData(user.validUser);
-  //   }
-  // }, [user]);
-
-  // // console.log(userData.email)
-
-  // if (!userData) {
-  //   return (
-  //     <div>Loading...</div> 
-  //   );
-  // }
-
-  // if (user) {
-  //   setUserData(user.validUser)
-  // }
 
   const userData = JSON.parse(localStorage.getItem('user'));
   console.log(userData)
@@ -53,8 +33,8 @@ const Profile = () => {
                         <p className="text-muted">{userData.email}</p>
                       </div>
                       <div className="col-6 mb-3">
-                        <h6>Created At</h6>
-                        <p className="text-muted">{userData.createdAt}</p>
+                        <h6>Name </h6>
+                        <p className="text-muted">{userData.name}</p>
                       </div>
                     </div>
                     <h6>Projects</h6>

@@ -17,6 +17,8 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 // import { Tag } from 'primereact/tag';
 
+// import axios from 'axios';
+
 const BootstrapTable = () => {
   const [productDetails, setProductDetails] = useState([]);
 

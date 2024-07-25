@@ -13,7 +13,6 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "electron:start": "electron ."
-    
   },
   "dependencies": {
     "@originjs/vite-plugin-commonjs": "^1.0.3",
@@ -23,6 +22,7 @@
     "@testing-library/react": "^15.0.2",
     "@testing-library/user-event": "^14.5.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "chance": "^1.1.11",
     "d3": "^7.9.0",
