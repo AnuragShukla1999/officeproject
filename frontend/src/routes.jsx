@@ -24,12 +24,12 @@ export const renderRoutes = (routes = []) => (
                 {route.requiresAuth ? (
                   <AuthGuard>
                     <Layout>
-                      {route.routes ? renderRoutes(route.routes) : <Element />}
+                      {route.routes ? renderRoutes(route.routes) : <Element/>}
                     </Layout>
                   </AuthGuard>
                 ) : (
                   <Layout>
-                    {route.routes ? renderRoutes(route.routes) : <Element />}
+                    {route.routes ? renderRoutes(route.routes) : <Element/>}
                   </Layout>
                 )}
               </Guard>
