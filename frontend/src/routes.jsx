@@ -5,6 +5,7 @@ import Loader from './components/Loader/Loader';
 import AdminLayout from './layouts/AdminLayout';
 
 import { BASE_URL } from './config/constant';
+import AuthGuard from 'AuthGuard';
 
 export const renderRoutes = (routes = []) => (
   <Suspense fallback={<Loader />}>
@@ -20,7 +21,17 @@ export const renderRoutes = (routes = []) => (
             path={route.path}
             element={
               <Guard>
-                <Layout>{route.routes ? renderRoutes(route.routes) : <Element props={true} />}</Layout>
+                {route.requiresAuth ? (
+                  <AuthGuard>
+                    <Layout>
+                      {route.routes ? renderRoutes(route.routes) : <Element />}
+                    </Layout>
+                  </AuthGuard>
+                ) : (
+                  <Layout>
+                    {route.routes ? renderRoutes(route.routes) : <Element />}
+                  </Layout>
+                )}
               </Guard>
             }
           />
@@ -34,21 +45,25 @@ const routes = [
   {
     exact: 'true',
     path: '/login',
-    element: lazy(() => import('./views/auth/signin/SignIn1'))
+    element: lazy(() => import('./views/auth/signin/SignIn1')),
+    requiresAuth: false,
   },
   {
     exact: 'true',
     path: '/auth/signin-1',
-    element: lazy(() => import('./views/auth/signin/SignIn1'))
+    element: lazy(() => import('./views/auth/signin/SignIn1')),
+    requiresAuth: false,
   },
   {
     exact: 'true',
     path: '/auth/signup-1',
-    element: lazy(() => import('./views/auth/signup/SignUp1'))
+    element: lazy(() => import('./views/auth/signup/SignUp1')),
+    requiresAuth: false,
   },
   {
     path: '*',
     layout: AdminLayout,
+    requiresAuth: true,
     routes: [
       {
         exact: 'true',
