@@ -514,10 +514,11 @@ const DashDefault = () => {
         <button className="btn btn-primary" onClick={handleSubmit}>
           Add
         </button>
-      </Form>
       <button className="btn btn-primary" onClick={handleSubmitPdf}>
         Print
       </button>
+      </Form>
+      
     </React.Fragment>
   );
 };

@@ -2,7 +2,8 @@
   "name": "datta-able-react-hook-reactstrap-js",
   "version": "3.0.0",
   "private": true,
-  "main": "main.js",
+  "main": "main.mjs",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "dev": "concurrently \"electron .\" \"cd src && npm start\"",
@@ -11,7 +12,7 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "electron:start": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
+    "electron:start": "electron ."
     
   },
   "dependencies": {

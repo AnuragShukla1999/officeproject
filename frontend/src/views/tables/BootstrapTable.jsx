@@ -199,7 +199,7 @@ const BootstrapTable = () => {
     let index = -1;
 
     for (let i = 0; i < products.length; i++) {
-      if (products[i].id === id) {
+      if (products[i]._id === id) {
         index = i;
         break;
       }
@@ -291,7 +291,7 @@ const BootstrapTable = () => {
       }
     } else {
       // Delete all products
-      await deleteProducts();
+      await deleteProduct();
     }
   };
 

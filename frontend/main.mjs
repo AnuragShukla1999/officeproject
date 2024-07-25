@@ -1,5 +1,5 @@
-
 import { app, BrowserWindow } from 'electron';
+
 // import { fileURLToPath } from 'url';
 // import path from 'path';
 
@@ -18,7 +18,8 @@ function createWindow() {
   // const indexPath = path.join(__dirname, 'index.html');
   // win.loadURL(`file://${indexPath}`); // Replace with your React app URL
 
-  win.loadURL(`http://localhost:3000`)
+  win.loadURL(`http://localhost:3000/admin-templates/login`)
+  console.log('Loading React app...');
 
   // Open the DevTools (optional)
   // win.webContents.openDevTools();
