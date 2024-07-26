@@ -28,6 +28,13 @@ const Signin1 = () => {
               <AuthLogin />
 
               <p className="mb-0 text-muted">
+                Forgot Password{' '}
+                <NavLink to="/auth/forgotpassword" className="f-w-400">
+                  forgot
+                </NavLink>
+              </p>
+
+              <p className="mb-0 text-muted">
                 Don't have an account?{' '}
                 <NavLink to="/auth/signup-1" className="f-w-400">
                   Signup

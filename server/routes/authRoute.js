@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/signup', signup);
 router.post('/signin', signin);
 router.get('/logout', logout);
-router.put('/updateuser', updateUser);
+router.put('/updateuser/:id', updateUser);
 
 
 router.post('/google', google);

@@ -61,6 +61,12 @@ const routes = [
     requiresAuth: false,
   },
   {
+    exact: 'true',
+    path: '/auth/forgotpassword',
+    element: lazy(() => import('./views/auth/ForgotPassword')),
+    requiresAuth: false,
+  },
+  {
     path: '*',
     layout: AdminLayout,
     requiresAuth: true,

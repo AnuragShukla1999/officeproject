@@ -197,31 +197,16 @@ export const updateUser = async (req, res) => {
     const { name, email } = req.body;
     
     try {
-        // const user = await authModel.findOne({ email });
-
-        // if (!user) {
-        //     res.status(401).json({
-        //         message: "Email not exist"
-        //     })
-        // };
-
-
-        const userID = await authModel.findById
-
-
-        const updatedUser = await authModel.findByIdAndUpdate({
+        const updatedUser = await authModel.findByIdAndUpdate(userId, {
             name,
             email
         });
-
 
         if (!updatedUser) {
             res.status(401).json({
                 message: "User not found!"
             })
         };
-
-
         await updatedUser.save();
 
         res.status(201).json({
@@ -229,6 +214,8 @@ export const updateUser = async (req, res) => {
             updatedUser
         });
     } catch (error) {
-        
+        res.status(500).json({
+            message: error.message
+        })
     }
 }
