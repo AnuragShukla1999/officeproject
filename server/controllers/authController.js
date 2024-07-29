@@ -153,7 +153,7 @@ export const forgotPassword = async (req, res) => {
             })
         };
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
         const sendMail = nodemailer.createTransport({
             service: 'gmail',
@@ -168,7 +168,7 @@ export const forgotPassword = async (req, res) => {
 
 
         const mailOptions = {
-            from: 'owner gmail',
+            from: 'shuklaanurag310@gmail.com',
             to: email,
             subject: 'Sending Email using Node.js',
             text: 'That was easy!'
