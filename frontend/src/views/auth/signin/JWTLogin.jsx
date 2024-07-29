@@ -3,8 +3,8 @@ import { Row, Col, Alert, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from 'contexts/ConfigContext';
 import toast from 'react-hot-toast';
+import { AuthContext } from 'contexts/ConfigContext';
 
 const JWTLogin = () => {
   const { signin, setUser } = useContext(AuthContext);

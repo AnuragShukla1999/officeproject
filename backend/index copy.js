@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import dbConnection from "./config/db.js";
 
 import authRouter from './routes/authRoute.js'
-import ProductRouter from './routes/productRoute.js';
+import ProductRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
 import locationRouter from './routes/locationRoute.js';
 

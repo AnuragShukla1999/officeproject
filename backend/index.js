@@ -5,10 +5,10 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dbConnection from "./config/db.js";
 
-import authRouter from './routes/authRoute.js'
-import ProductRouter from './routes/productRoute.js';
+import authRouter from './routes/authRoute.js';
 import userRouter from "./routes/userRoute.js";
 import locationRouter from './routes/locationRoute.js';
+import ProductRouter from './routes/productRoute.js'
 
 dotenv.config();
 

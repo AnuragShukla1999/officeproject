@@ -268,7 +268,7 @@ const BootstrapTable = () => {
       // Delete selected products
       const selectedIds = selectedProducts.map(product => product._id);
       try {
-        const res = await fetch('http://localhost:7000/api/deleteallproduct', {
+        const res = await fetch('http://localhost:6000/api/deleteallproduct', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
