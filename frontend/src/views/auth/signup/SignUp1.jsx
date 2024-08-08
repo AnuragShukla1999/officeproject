@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import Breadcrumb from '../../../layouts/AdminLayout/Breadcrumb';
+import { AuthContext } from 'contexts/ConfigContext';
 
 const SignUp1 = () => {
 
+  const { setUser } = useContext(AuthContext);
   const [userData, setUserData] = useState({
     name: '',
     email: '',
