@@ -18,10 +18,29 @@ const app = express();
 
 // app.use(cors());
 
+// app.use(cors({
+//     origin: 'http://localhost:3000', 
+//     credentials: true, 
+// }));
+
+
+// Define allowed origins
+const allowedOrigins = ['https://officeproject-1.onrender.com'];
+
+// Apply CORS middleware
 app.use(cors({
-    origin: 'http://localhost:3000', 
-    credentials: true, 
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
 }));
+
+
 
 app.use(bodyParser.json());
 app.use(express.json());
