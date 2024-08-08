@@ -22,7 +22,7 @@ const JWTLogin = () => {
     if (userData.email.trim() === '' || userData.password.trim() === '') {
       setUserData({
         ...userData,
-        touched: true // Mark the input as touched by the user
+        touched: true 
       });
     }
   };

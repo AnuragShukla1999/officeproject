@@ -49,7 +49,7 @@ const DashDefault = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:7000/api/productorderdetails', {
+      const res = await fetch('https://officeproject.onrender.com/api/productorderdetails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -196,7 +196,7 @@ const DashDefault = () => {
     try {
       if (pincode.length === 6) {
         setIsLoadingLocation(true);
-        const url = `http://localhost:7000/api/getlocation/${pincode}`;
+        const url = `https://officeproject.onrender.com/api/getlocation/${pincode}`;
         const res = await fetch(url);
 
         if (!res.ok) {
@@ -212,8 +212,8 @@ const DashDefault = () => {
           setAaa(data.data);
           setProductDetails({
             ...productDetails,
-            state: data.data.state, // Assuming data contains state information
-            city: data.data.city // Assuming data contains city information
+            state: data.data.state,
+            city: data.data.city 
           });
         } else {
           setLocation([]);
