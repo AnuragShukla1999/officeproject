@@ -11,7 +11,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   padding: 20px;
-  
 }
 
 .card-header {
@@ -81,4 +80,16 @@
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 520px) {
+  body {
+    background-color: lightgreen;
+  }
 }
