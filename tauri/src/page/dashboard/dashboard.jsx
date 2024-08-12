@@ -195,7 +195,14 @@ const DashDefault = () => {
     <div className="container">
       <form ref={formRef}>
         <div className="card">
-          <div className="card-header">Consignee Details</div>
+          <div className="card-header">
+            <div>
+              <span>1</span>
+            </div>
+            <div>
+              <h1>Consignee Details</h1>
+            </div>
+          </div>
           <div className="card-body">
             <div className="form-group">
               <label>Customer Full Name</label>
@@ -213,7 +220,10 @@ const DashDefault = () => {
         </div>
 
         <div className="card">
-          <div className="card-header">Customer Address</div>
+          <div className="card-header">
+            <span>2</span>
+            <h1>Customer Address</h1>
+          </div>
           <div className="card-body">
             <div className="form-group">
               <label>Complete Address</label>
@@ -251,7 +261,10 @@ const DashDefault = () => {
         </div>
 
         <div className="card">
-          <div className="card-header">Order Details</div>
+          <div className="card-header">
+            <span>3</span>
+            <h1>Order Details</h1>
+          </div>
           <div className="card-body">
             <div className="form-group">
               <label>Order ID</label>
@@ -272,7 +285,10 @@ const DashDefault = () => {
         </div>
 
         <div className="card">
-          <div className="card-header">Product Details</div>
+          <div className="card-header">
+            <span>4</span>
+            <h1>Product Details</h1>
+          </div>
           <div className="card-body">
             <div className="form-group">
               <label>Product Name</label>
