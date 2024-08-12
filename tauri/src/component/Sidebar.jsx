@@ -9,6 +9,10 @@ import { BiAnalyse, BiSearch } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
+
+
+import { FaTableList } from "react-icons/fa6";
+
 import '../styles/Sidebar.css'
 
 const Sidebar = ({ closeSidebar }) => {
@@ -34,67 +38,7 @@ const Sidebar = ({ closeSidebar }) => {
         {
             path: "/table",
             name: "Table",
-            icon: <FaUser />,
-        },
-        {
-            path: "/messages",
-            name: "Messages",
-            icon: <MdMessage />,
-        },
-        {
-            path: "/analytics",
-            name: "Analytics",
-            icon: <BiAnalyse />,
-        },
-        {
-            path: "/file-manager",
-            name: "File Manager",
-            icon: <AiTwotoneFileExclamation />,
-            subRoutes: [
-                {
-                    path: "/settings/profile",
-                    name: "Profile ",
-                    icon: <FaUser />,
-                },
-                {
-                    path: "/settings/2fa",
-                    name: "2FA",
-                    icon: <FaLock />,
-                },
-                {
-                    path: "/settings/billing",
-                    name: "Billing",
-                    icon: <FaMoneyBill />,
-                },
-            ],
-        },
-        {
-            path: "/order",
-            name: "Order",
-            icon: <BsCartCheck />,
-        },
-        {
-            path: "/settings",
-            name: "Settings",
-            icon: <BiCog />,
-            exact: true,
-            subRoutes: [
-                {
-                    path: "/settings/profile",
-                    name: "Profile ",
-                    icon: <FaUser />,
-                },
-                {
-                    path: "/settings/2fa",
-                    name: "2FA",
-                    icon: <FaLock />,
-                },
-                {
-                    path: "/settings/billing",
-                    name: "Billing",
-                    icon: <FaMoneyBill />,
-                },
-            ],
+            icon: <FaTableList />,
         },
         {
             path: "/saved",
@@ -107,16 +51,17 @@ const Sidebar = ({ closeSidebar }) => {
         <div className={`sidebar ${closeSidebar ? 'visible' : 'hidden'}`}>
             <div className='sidebar-header'>
                 <div className='sidebar-profile'>
-                    <CgProfile className='text-3xl' />
+                    <CgProfile />
                     <div>
-                        <span>Hello</span>
                         <button>Sign in</button>
                     </div>
                 </div>
 
-                <button onClick={closeSidebar} className='sidebar-close-button'>
-                    <FaWindowClose />
-                </button>
+                <div>
+                    <button onClick={closeSidebar} className='sidebar-close-button'>
+                        <FaWindowClose />
+                    </button>
+                </div>
             </div>
 
             <ul className='sidebar-menu'>
@@ -126,7 +71,7 @@ const Sidebar = ({ closeSidebar }) => {
                             <Link
                                 to={route.path}
                                 className='sidebar-menu-link'
-                                onClick={handleClick} // Close sidebar on click
+                                onClick={handleClick} 
                             >
                                 <div className='text-xl'>{route.icon}</div>
                                 <span>{route.name}</span>
@@ -145,7 +90,7 @@ const Sidebar = ({ closeSidebar }) => {
                                         <Link
                                             to={subRoute.path}
                                             className='sidebar-submenu-link'
-                                            onClick={handleClick} // Close sidebar on click
+                                            onClick={handleClick}
                                         >
                                             <div className='text-base'>{subRoute.icon}</div>
                                             <span>{subRoute.name}</span>
