@@ -1,0 +1,151 @@
+/* Navbar.css */
+
+/* Existing styles */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #e2e8f0; /* Tailwind's gray-200 */
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.navbar-logo img {
+    width: 8rem;
+    height: auto;
+}
+
+.navbar-logo h4 {
+    color: #000;
+    font-weight: 800; /* Tailwind's font-extrabold */
+}
+
+.navbar-logo .logo-highlight {
+    color: #f59e0b; /* Tailwind's yellow-500 */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 1rem;
+}
+
+.search-input {
+    border: 2px solid #d1d5db; /* Tailwind's gray-300 */
+    border-radius: 9999px; /* Tailwind's rounded-full */
+    width: 100%;
+    max-width: 24rem; /* Tailwind's max-w-md */
+    height: 2.5rem; /* Tailwind's h-10 */
+    padding: 0 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+    border-color: #3b82f6; /* Tailwind's blue-500 */
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Tailwind's ring-2 */
+}
+
+.search-button {
+    width: 4rem; /* Tailwind's w-16 */
+    height: 2.5rem; /* Tailwind's h-10 */
+    background-color: #dc2626; /* Tailwind's red-600 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px; /* Tailwind's rounded-full */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-button:hover {
+    background-color: #b91c1c; /* Tailwind's red-700 */
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-profile {
+    cursor: pointer;
+}
+
+.user-profile:hover {
+    color: #d1d5db; /* Tailwind's gray-400 */
+}
+
+/* New CSS for React Icons */
+
+.navbar-logo svg {
+    color: #000; /* Default color for logo icon */
+    font-size: 2rem; /* Adjust size as needed */
+}
+
+.search-button svg {
+    color: #fff; /* Color for search icon */
+    font-size: 1.25rem; /* Adjust size as needed */
+}
+
+.user-profile svg {
+    color: #000; /* Color for profile icon */
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+
+/* Optional: Add hover effect for icons */
+.navbar-logo svg:hover,
+.search-button svg:hover,
+.user-profile svg:hover {
+    color: #3b82f6; /* Example hover color */
+}
+
+
+
+
+
+
+
+
+.user-profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-menu {
+    display: block; 
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+    width: 150px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-menu-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+}
+
+.user-menu-item:hover {
+    background-color: #f0f0f0;
+}

@@ -1,0 +1,29 @@
+
+import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Signin from './page/auth/Signin';
+import Signup from './page/auth/Signup';
+import DashDefault from './page/dashboard/dashboard';
+import BootstrapTable from './page/table/Table';
+
+
+import Navbar from './component/Navbar';
+
+function App() {
+
+  const userLoggedIn = localStorage.getItem('user');
+
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Signin />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/dashboard' element={userLoggedIn ? <DashDefault /> : <Navigate to="/" />} />
+        <Route path='/table' element={userLoggedIn ? <BootstrapTable /> : <Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
