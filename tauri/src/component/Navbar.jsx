@@ -47,38 +47,22 @@ const Navbar = () => {
                     <h4 className='logo-highlight'>LO<span className='logo-highlight'>GO</span>HERE</h4>
                 </Link>
             </div>
-
-            <div className='search-bar'>
-                <input
-                    type="text"
-                    className='search-input'
-                    placeholder='Search products...'
-                />
-                <div className='search-button'>
-                    <FaSearch />
+            <div className='user-actions'>
+                <div className='user-profile' onClick={toggleUserMenu}>
+                    <CgProfile />
                 </div>
-            </div>
 
-            {
-                userLoggedIn && (
-                    <div className='user-actions'>
-                        <div className='user-profile' onClick={toggleUserMenu}>
-                            <CgProfile />
+                {openUserMenu && (
+                    <div className='user-menu'>
+                        <Link to="/user-profile" className='user-menu-item' onClick={() => setOpenUserMenu(false)}>
+                            User Profile
+                        </Link>
+                        <div className='user-menu-item' onClick={handleLogout}>
+                            Logout
                         </div>
-
-                        {openUserMenu && (
-                            <div className='user-menu'>
-                                <Link to="/user-profile" className='user-menu-item' onClick={() => setOpenUserMenu(false)}>
-                                    User Profile
-                                </Link>
-                                <div className='user-menu-item' onClick={handleLogout}>
-                                    Logout
-                                </div>
-                            </div>
-                        )}
                     </div>
-                )
-            }
+                )}
+            </div>
 
             {openSidebar && (
                 <Sidebar closeSidebar={closeSidebar} />

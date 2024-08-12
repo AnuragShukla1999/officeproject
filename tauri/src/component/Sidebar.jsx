@@ -3,12 +3,8 @@ import { CgProfile } from "react-icons/cg";
 import { FaWindowClose } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { BiAnalyse, BiSearch } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
-import { BsCartCheck } from "react-icons/bs";
+import { FaHome } from "react-icons/fa";
+import { AiFillHeart } from "react-icons/ai";
 
 
 import { FaTableList } from "react-icons/fa6";
@@ -50,13 +46,6 @@ const Sidebar = ({ closeSidebar }) => {
     return (
         <div className={`sidebar ${closeSidebar ? 'visible' : 'hidden'}`}>
             <div className='sidebar-header'>
-                <div className='sidebar-profile'>
-                    <CgProfile />
-                    <div>
-                        <button>Sign in</button>
-                    </div>
-                </div>
-
                 <div>
                     <button onClick={closeSidebar} className='sidebar-close-button'>
                         <FaWindowClose />
@@ -64,14 +53,15 @@ const Sidebar = ({ closeSidebar }) => {
                 </div>
             </div>
 
+
             <ul className='sidebar-menu'>
                 {routes.map((route) => (
                     <li key={route.path} className='sidebar-menu-item'>
-                        <div className='flex items-center justify-between'>
+                        <div className=''>
                             <Link
                                 to={route.path}
                                 className='sidebar-menu-link'
-                                onClick={handleClick} 
+                                onClick={handleClick}
                             >
                                 <div className='text-xl'>{route.icon}</div>
                                 <span>{route.name}</span>

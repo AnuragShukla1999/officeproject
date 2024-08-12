@@ -6,7 +6,7 @@ import Signup from './page/auth/Signup';
 import DashDefault from './page/dashboard/dashboard';
 import BootstrapTable from './page/table/Table';
 
-
+import { ToastContainer } from 'react-toastify';
 import Navbar from './component/Navbar';
 
 function App() {
@@ -15,7 +15,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <ToastContainer />
+      <Navbar/>
       <Routes>
         <Route path='/' element={<Signin />} />
         <Route path='/signup' element={<Signup />} />
