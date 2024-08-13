@@ -36,7 +36,7 @@ const Sidebar = () => {
             <Link to='/dashboard' className='sidebar-header'>
                 LOGO
             </Link>
-            <hr />
+            <hr className='hr-line' />
 
             <ul className='sidebar-menu'>
                 {routes.map((route) => (

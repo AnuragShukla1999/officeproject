@@ -1,8 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
-import Sidebar from './Sidebar';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { AuthContext } from '../context/ConfigContext';
 
@@ -12,11 +10,16 @@ const Navbar = () => {
 
     const { logout } = useContext(AuthContext);
 
+    
+
     // const userLoggedIn = localStorage.getItem('user');
 
 
     // const [openSidebar, setOpenSidebar] = useState(false);
     const [openUserMenu, setOpenUserMenu] = useState(false);
+
+
+    const userMenuRef = useRef(null);
 
     // const toggleSideBar = () => {
     //     setOpenSidebar(prev => !prev);
@@ -39,17 +42,35 @@ const Navbar = () => {
         setOpenUserMenu(false)
     };
 
+
+
+    const handleClickOutside = (event) => {
+        if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+            setOpenUserMenu(false);
+        }
+    };
+
+    useEffect(() => {
+        // Attach the event listener
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className='navbar'>
             <div className='navbar-logo'>
             </div>
             <div className='user-actions'>
                 <div className='user-profile' onClick={toggleUserMenu}>
-                    <CgProfile className='icon'/>
+                    <CgProfile className='icon' />
                 </div>
 
                 {openUserMenu && (
-                    <div className='user-menu'>
+                    <div className='user-menu' ref={userMenuRef}>
                         <div className='user-menu-item' onClick={handleLogout}>
                             Logout
                         </div>

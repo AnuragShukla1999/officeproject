@@ -65,16 +65,7 @@
 
 @media screen and (max-width: 700px) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 13%;
-    height: 100%;
-    background-color: #0d2a3b;
-    color: #fff;
-    z-index: 10;
-    box-shadow: 0 4px 6px rgba(3, 0, 7, 0.1);
-    transition: transform 0.8s ease-in-out;
   }
 
 
@@ -88,7 +79,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  
     padding: 0px;
     margin-top: 60px;
   }
@@ -115,6 +105,11 @@
 
   .sidebar-menu-link span {
     display: none;
+  }
+
+
+  .hr-line {
+    width: 100%;
   }
 }
 
