@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { CgProfile } from "react-icons/cg";
-import { FaWindowClose } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
@@ -41,15 +39,15 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
-            <div className='sidebar-header'>
+            <Link to='/dashboard' className='sidebar-header'>
                 LOGO
-            </div>
+            </Link>
 
 
             <ul className='sidebar-menu'>
                 {routes.map((route) => (
                     <li key={route.path} className='sidebar-menu-item'>
-                        <div className=''>
+                        <div className='sidebar-menu-item-div'>
                             <Link
                                 to={route.path}
                                 className='sidebar-menu-link'
