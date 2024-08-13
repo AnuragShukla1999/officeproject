@@ -33,14 +33,45 @@ const DashDefault = () => {
     amount: ''
   });
 
-  const handleChange = (e) => {
-    setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
-    if (e.target.name === 'pincode') {
-      setLocation([]);
-    };
+  // const handleChange = (e) => {
+  //   setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+  //   if (e.target.name === 'pincode') {
+  //     setLocation([]);
+  //   };
 
-    console.log(e.target.value)
+  //   console.log(e.target.value)
+  // };
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Handle pincode change separately
+    if (name === 'pincode') {
+      setProductDetails(prev => ({
+        ...prev,
+        [name]: value
+      }));
+      fetchLocation(value);
+      if (value.length < 6) {
+        setLocation([]);
+        setAaa({});
+        setProductDetails(prev => ({
+          ...prev,
+          state: '',
+          city: ''
+        }));
+      }
+    } else {
+      // Handle other fields
+      setProductDetails(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -196,12 +227,57 @@ const DashDefault = () => {
   };
 
 
+  // const [location, setLocation] = useState([]);
+  // const [aaa, setAaa] = useState([]);
+  // const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+
+  // const fetchLocation = async (e) => {
+  //   const pincode = e.target.value;
+  //   try {
+  //     if (pincode.length === 6) {
+  //       setIsLoadingLocation(true);
+  //       const url = `http://localhost:7000/api/getlocation/${pincode}`;
+  //       const res = await fetch(url);
+
+  //       if (!res.ok) {
+  //         throw new Error('Failed to fetch data');
+  //       }
+
+  //       const data = await res.json();
+  //       if (res.ok && data.data) {
+  //         setLocation(data.data.addresses);
+  //         setAaa(data.data);
+  //         setProductDetails({
+  //           ...productDetails,
+  //           state: data.data.state,
+  //           city: data.data.city
+  //         });
+  //       } else {
+  //         setLocation([]);
+  //         setAaa({});
+  //         setProductDetails({ ...productDetails, state: '', city: '' });
+  //       }
+  //       setIsLoadingLocation(false);
+  //     } else {
+  //       setProductDetails({
+  //         ...productDetails,
+  //         state: '',
+  //         city: ''
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log("Error", error);
+  //     setIsLoadingLocation(false);
+  //     setProductDetails({ ...productDetails, state: '', city: '' });
+  //   }
+  // }
+
+
   const [location, setLocation] = useState([]);
-  const [aaa, setAaa] = useState([]);
+  const [aaa, setAaa] = useState({});
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
-  const fetchLocation = async (e) => {
-    const pincode = e.target.value;
+  const fetchLocation = async (pincode) => {
     try {
       if (pincode.length === 6) {
         setIsLoadingLocation(true);
@@ -213,43 +289,62 @@ const DashDefault = () => {
         }
 
         const data = await res.json();
-        if (res.ok && data.data) {
+        if (data.data) {
           setLocation(data.data.addresses);
           setAaa(data.data);
-          setProductDetails({
-            ...productDetails,
+          setProductDetails(prev => ({
+            ...prev,
             state: data.data.state,
             city: data.data.city
-          });
+          }));
         } else {
           setLocation([]);
           setAaa({});
-          setProductDetails({ ...productDetails, state: '', city: '' });
+          setProductDetails(prev => ({
+            ...prev,
+            state: '',
+            city: ''
+          }));
         }
         setIsLoadingLocation(false);
       } else {
-        setProductDetails({
-          ...productDetails,
+        setProductDetails(prev => ({
+          ...prev,
           state: '',
           city: ''
-        });
+        }));
       }
     } catch (error) {
       console.log("Error", error);
       setIsLoadingLocation(false);
-      setProductDetails({ ...productDetails, state: '', city: '' });
+      setProductDetails(prev => ({
+        ...prev,
+        state: '',
+        city: ''
+      }));
     }
   }
 
+  // const handleLocationSelect = (e) => {
+  //   const completeAddress = e.target.value;
+
+  //   setProductDetails({
+  //     ...productDetails,
+  //     state: aaa.state,
+  //     city: aaa.city,
+  //     completeAddress: completeAddress
+  //   })
+  // };
+
+
   const handleLocationSelect = (e) => {
     const completeAddress = e.target.value;
-
-    setProductDetails({
-      ...productDetails,
-      state: aaa.state,
-      city: aaa.city,
-      completeAddress: completeAddress
-    })
+    setProductDetails(prev => ({
+      ...prev,
+      completeAddress: completeAddress,
+      state: aaa.state || productDetails.state, // Keep manual input if available
+      city: aaa.city || productDetails.city    // Keep manual input if available
+    }));
   };
 
   return (
@@ -308,11 +403,11 @@ const DashDefault = () => {
             </div>
             <div className="form-group">
               <label>State</label>
-              <input type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={aaa.state ? productDetails.state : ''} />
+              <input type="text" name="state" placeholder="Enter state" onChange={handleLocationSelect} value={productDetails.state} />
             </div>
             <div className="form-group">
               <label>City</label>
-              <input type="text" name="city" placeholder="Enter city" onChange={handleLocationSelect} value={aaa.city ? productDetails.city : ''} />
+              <input type="text" name="city" placeholder="Enter city" onChange={handleLocationSelect} value={productDetails.city} />
             </div>
             <div className="form-group">
               <label>Landmark</label>
