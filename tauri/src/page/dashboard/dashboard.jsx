@@ -192,7 +192,6 @@ const DashDefault = () => {
   };
 
   return (
-    <div className='div.content'>
     <div className="container">
       <form ref={formRef}>
         <div className="card">
@@ -362,7 +361,6 @@ const DashDefault = () => {
         <button className="btn" type="submit" onClick={handleSubmit}>Submit</button>
         <button className="btn" type="button" onClick={handleSubmitPdf}>Generate PDF</button>
       </form>
-    </div>
     </div>
   );
 };
