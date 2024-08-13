@@ -42,8 +42,6 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div className='navbar-logo'>
-              
-             
             </div>
             <div className='user-actions'>
                 <div className='user-profile' onClick={toggleUserMenu}>
@@ -52,19 +50,12 @@ const Navbar = () => {
 
                 {openUserMenu && (
                     <div className='user-menu'>
-                        <Link to="/user-profile" className='user-menu-item' onClick={() => setOpenUserMenu(false)}>
-                            User Profile
-                        </Link>
                         <div className='user-menu-item' onClick={handleLogout}>
                             Logout
                         </div>
                     </div>
                 )}
             </div>
-
-            {/* {openSidebar && (
-                <Sidebar closeSidebar={closeSidebar} />
-            )} */}
         </div>
     );
 }

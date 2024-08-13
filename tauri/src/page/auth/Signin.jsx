@@ -69,50 +69,52 @@ const Signin = () => {
 
 
     return (
-        <div className="signin-container">
-            <div className="signin-header">
-                <h1>Sign In</h1>
-            </div>
+        <div className="signin">
+            <div className="signin-container">
+                <div className="signin-header">
+                    <h1>Sign In</h1>
+                </div>
 
-            <div className="signin-field">
-                <label htmlFor="email">Email</label>
-                <input
-                    name="email"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    type="email"
-                />
-                {userData.touched && userData.email.trim() === "" && (
-                    <small className="text-danger form-text">Please provide email</small>
-                )}
-            </div>
+                <div className="signin-field">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        name="email"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        type="email"
+                    />
+                    {userData.touched && userData.email.trim() === "" && (
+                        <small className="text-danger form-text">Please provide email</small>
+                    )}
+                </div>
 
-            <div className="signin-field">
-                <label htmlFor="password">Password</label>
-                <input
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    type="password"
-                />
-                {userData.touched && userData.password.trim() === "" && (
-                    <small className="text-danger form-text">Please provide password</small>
-                )}
-            </div>
+                <div className="signin-field">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        name="password"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        type="password"
+                    />
+                    {userData.touched && userData.password.trim() === "" && (
+                        <small className="text-danger form-text">Please provide password</small>
+                    )}
+                </div>
 
-            <button className="signin-button" onClick={handleSubmit}>
-                {
-                    loading ? "Loading..." : "Signin"
-                }
-            </button>
+                <button className="signin-button" onClick={handleSubmit}>
+                    {
+                        loading ? "Loading..." : "Signin"
+                    }
+                </button>
 
-            <div className="signin-footer">
-                <p>
-                    Don't have an account?{' '}
-                    <Link to="/signup">
-                        Signup
-                    </Link>
-                </p>
+                <div className="signin-footer">
+                    <p>
+                        Don't have an account?{' '}
+                        <Link to="/signup">
+                            Signup
+                        </Link>
+                    </p>
+                </div>
             </div>
         </div>
     )

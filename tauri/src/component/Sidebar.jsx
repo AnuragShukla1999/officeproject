@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
-import { AiFillHeart } from "react-icons/ai";
 
 
 import { FaTableList } from "react-icons/fa6";
@@ -37,7 +36,7 @@ const Sidebar = () => {
             <Link to='/dashboard' className='sidebar-header'>
                 LOGO
             </Link>
-
+            <hr />
 
             <ul className='sidebar-menu'>
                 {routes.map((route) => (
@@ -48,7 +47,7 @@ const Sidebar = () => {
                                 className='sidebar-menu-link'
                             >
                                 <div>{route.icon}</div>
-                                <span>{route.name}</span>
+                                <span className='link-span'>{route.name}</span>
                             </Link>
                             {route.subRoutes && (
                                 <MdKeyboardArrowDown
