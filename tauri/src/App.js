@@ -7,7 +7,7 @@ import DashDefault from './page/dashboard/dashboard';
 import BootstrapTable from './page/table/Table';
 
 import { ToastContainer } from 'react-toastify';
-import Navbar from './component/Navbar';
+import Layout from './component/Layout';
 
 function App() {
 
@@ -16,12 +16,14 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      <Navbar/>
       <Routes>
         <Route path='/' element={<Signin />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/dashboard' element={userLoggedIn ? <DashDefault /> : <Navigate to="/" />} />
-        <Route path='/table' element={userLoggedIn ? <BootstrapTable /> : <Navigate to="/" />} />
+
+        <Route element={<Layout />}>
+          <Route path='/dashboard' element={userLoggedIn ? <DashDefault /> : <Navigate to="/" />} />
+          <Route path='/table' element={userLoggedIn ? <BootstrapTable /> : <Navigate to="/" />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

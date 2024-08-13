@@ -21,9 +21,9 @@ const Sidebar = ({ closeSidebar }) => {
         }));
     };
 
-    const handleClick = () => {
-        closeSidebar();
-    };
+    // const handleClick = () => {
+    //     closeSidebar();
+    // };
 
     const routes = [
         {
@@ -44,14 +44,14 @@ const Sidebar = ({ closeSidebar }) => {
     ];
 
     return (
-        <div className={`sidebar ${closeSidebar ? 'visible' : 'hidden'}`}>
-            <div className='sidebar-header'>
+        <div className="sidebar">
+            {/* <div className='sidebar-header'>
                 <div>
                     <button onClick={closeSidebar} className='sidebar-close-button'>
                         <FaWindowClose />
                     </button>
                 </div>
-            </div>
+            </div> */}
 
 
             <ul className='sidebar-menu'>
@@ -61,7 +61,6 @@ const Sidebar = ({ closeSidebar }) => {
                             <Link
                                 to={route.path}
                                 className='sidebar-menu-link'
-                                onClick={handleClick}
                             >
                                 <div className='text-xl'>{route.icon}</div>
                                 <span>{route.name}</span>
@@ -80,7 +79,6 @@ const Sidebar = ({ closeSidebar }) => {
                                         <Link
                                             to={subRoute.path}
                                             className='sidebar-submenu-link'
-                                            onClick={handleClick}
                                         >
                                             <div className='text-base'>{subRoute.icon}</div>
                                             <span>{subRoute.name}</span>

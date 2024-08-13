@@ -1,9 +1,6 @@
 
 
-.container {
-  width: 80%;
-  margin: 20px auto;
-}
+
 
 .card {
   border: 1px solid #ddd;
@@ -59,10 +56,11 @@
 .form-group input,
 .form-group select {
   width: 380px;
-  height: 45px;
-  padding: 8px;
+  height: 42px;
+  padding: 8px 20px;
   border: 0.8px solid #ddd;
-  border-radius: 10px;
+  border-radius: 12px;
+  font-size: 13px;
 }
 
 .btn {

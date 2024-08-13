@@ -1,6 +1,4 @@
-/* Signup.css */
 
-/* General container styling */
 .signup-container {
     max-width: 450px;
     margin: auto;
@@ -11,7 +9,7 @@
     background-color: #fff;
 }
 
-/* Header styling */
+
 .signup-header {
     text-align: center;
     margin-bottom: 20px;
@@ -23,7 +21,7 @@
     color: #333;
 }
 
-/* Form field styling */
+
 .signup-field {
     margin-bottom: 15px;
 }
@@ -44,7 +42,7 @@
     box-sizing: border-box;
 }
 
-/* Button styling */
+
 .signup-button {
     width: 100%;
     padding: 10px;
@@ -61,7 +59,7 @@
     background-color: #0056b3;
 }
 
-/* Footer link styling */
+
 .signup-footer {
     text-align: center;
     margin-top: 20px;

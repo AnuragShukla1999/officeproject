@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 16rem;
+    width: 10%;
     height: 100%;
     background-color: #0d2a3b;
     color: #fff;
@@ -145,3 +145,5 @@
 .arrow-down.rotate {
     transform: rotate(180deg);
 }
+
+

@@ -1,13 +1,11 @@
-/* Navbar.css */
-
-/* Existing styles */
+/* 
 
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    background-color: #e2e8f0; /* Tailwind's gray-200 */
+    background-color: #e2e8f0; 
     color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -26,11 +24,11 @@
 
 .navbar-logo h4 {
     color: #000;
-    font-weight: 800; /* Tailwind's font-extrabold */
+    font-weight: 800;
 }
 
 .navbar-logo .logo-highlight {
-    color: #f59e0b; /* Tailwind's yellow-500 */
+    color: #f59e0b;
 }
 
 .search-bar {
@@ -41,36 +39,35 @@
 }
 
 .search-input {
-    border: 2px solid #d1d5db; /* Tailwind's gray-300 */
-    border-radius: 9999px; /* Tailwind's rounded-full */
+    border: 2px solid #d1d5db;
+    border-radius: 9999px;
     width: 100%;
-    max-width: 24rem; /* Tailwind's max-w-md */
-    height: 2.5rem; /* Tailwind's h-10 */
+    max-width: 24rem;
+    height: 2.5rem;
     padding: 0 1rem;
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .search-input:focus {
-    border-color: #3b82f6; /* Tailwind's blue-500 */
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* Tailwind's ring-2 */
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
 .search-button {
-    width: 4rem; /* Tailwind's w-16 */
-    height: 2.5rem; /* Tailwind's h-10 */
-    background-color: #dc2626; /* Tailwind's red-600 */
+    width: 4rem;
+    height: 2.5rem;
+    background-color: #dc2626;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 9999px; /* Tailwind's rounded-full */
+    border-radius: 9999px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .search-button:hover {
-    background-color: #b91c1c; /* Tailwind's red-700 */
-}
+    background-color: #b91c1c;
 
 .user-actions {
     display: flex;
@@ -83,31 +80,31 @@
 }
 
 .user-profile:hover {
-    color: #d1d5db; /* Tailwind's gray-400 */
+    color: #d1d5db;
 }
 
 /* New CSS for React Icons */
 
-.navbar-logo svg {
-    color: #000; /* Default color for logo icon */
-    font-size: 2rem; /* Adjust size as needed */
+/* .navbar-logo svg {
+    color: #000;
+    font-size: 2rem; 
 }
 
 .search-button svg {
-    color: #fff; /* Color for search icon */
-    font-size: 1.25rem; /* Adjust size as needed */
+    color: #fff; 
+    font-size: 1.25rem;
 }
 
 .user-profile svg {
-    color: #000; /* Color for profile icon */
-    font-size: 1.5rem; /* Adjust size as needed */
-}
+    color: #000; 
+    font-size: 1.5rem;
+} */
 
 /* Optional: Add hover effect for icons */
-.navbar-logo svg:hover,
+/* .navbar-logo svg:hover,
 .search-button svg:hover,
 .user-profile svg:hover {
-    color: #3b82f6; /* Example hover color */
+    color: #3b82f6;
 }
 
 
@@ -124,21 +121,95 @@
 
 .user-menu {
     position: absolute;
-    top: 100%; /* Position it below the profile icon */
+    top: 100%;
     right: 0;
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure it appears above other content */
-    width: 150px; /* Adjust as needed */
+    z-index: 1000;
+    width: 150px;
 }
 
 .user-menu-item {
     padding: 10px 15px;
     cursor: pointer;
-    text-align: center; /* Center align text */
+    text-align: center;
 }
 
 .user-menu-item:hover {
     background-color: #f0f0f0;
+} */ 
+
+
+
+
+
+
+.navbar{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 80px;
+    background-color:#0d2a3b;
 }
+
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-logo .icon-bar {
+    font-size: 24px;
+    color: black;
+}
+
+
+
+.navbar-logo link h4 { 
+    text-decoration: none;
+    color: white;
+}
+
+
+/* .icon-bar h4 {
+    text-decoration: none;
+} */
+
+
+.icon {
+    font-size: 30px;
+};
+
+
+
+.logo-highlight {
+    color: azure;
+}
+
+
+/* .user-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30px;
+    position: fixed;
+    border: 2px solid red;
+    background-color: blue;
+} */
+
+
+/* .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border: 2px solid red;
+}
+
+.user-profile {
+    cursor: pointer;
+} */
