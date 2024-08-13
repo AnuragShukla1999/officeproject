@@ -72,15 +72,6 @@
     margin-bottom: 27px;
   }
 
-  .sidebar-menu {
-    list-style-type: none;
-    margin-top: 60px;
-  }
-
-  .sidebar-menu-link:hover {
-    background-color: #00338b;
-  }
-
   .sidebar-menu-link span {
     display: none;
   }
@@ -103,14 +94,6 @@
   .sidebar-menu-link .link-span {
     display: none;
   }
-
-  .sidebar-menu-link:hover {
-    background-color: #ff1111;
-  }
-
-  .sidebar-menu-link .link-span {
-    border: 2px solid red;
-  }
 }
 
 @media screen and (max-width: 1300px) and (min-width: 1001px) {
@@ -122,41 +105,9 @@
     font-size: 20px;
     margin-bottom: 21px;
   }
-
-  .sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.6rem;
-    padding: 0px;
-    margin-top: 60px;
-  }
-
-  .sidebar-menu-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.125rem;
-    font-weight: 500;
-    padding: 0.5rem;
-    border-radius: 0.675rem;
-    color: #ffff;
-    height: 50px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-  }
-
-  .sidebar-menu-link:hover {
-    background-color: #ff1111;
-  }
-
+  
   .sidebar-menu-link .link-span {
-    display: none;
-    border: 2px solid red;
-  }
-
-  .sidebar-menu-link.link-span {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
