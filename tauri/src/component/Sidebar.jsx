@@ -29,12 +29,7 @@ const Sidebar = () => {
             path: "/table",
             name: "Table",
             icon: <FaTableList />,
-        },
-        {
-            path: "/saved",
-            name: "Saved",
-            icon: <AiFillHeart />,
-        },
+        }
     ];
 
     return (

@@ -32,12 +32,12 @@ const Navbar = () => {
         console.log("User menu toggled");
     };
 
-    // const handleLogout = () => {
-    //     console.log("Logout clicked");
-    //     logout();
-    //     navigate('/');
-    //     setOpenUserMenu(false)
-    // };
+    const handleLogout = () => {
+        console.log("Logout clicked");
+        logout();
+        navigate('/');
+        setOpenUserMenu(false)
+    };
 
     return (
         <div className='navbar'>
@@ -55,7 +55,7 @@ const Navbar = () => {
                         <Link to="/user-profile" className='user-menu-item' onClick={() => setOpenUserMenu(false)}>
                             User Profile
                         </Link>
-                        <div className='user-menu-item'>
+                        <div className='user-menu-item' onClick={handleLogout}>
                             Logout
                         </div>
                     </div>
