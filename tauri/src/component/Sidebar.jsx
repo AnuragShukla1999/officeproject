@@ -11,7 +11,7 @@ import { FaTableList } from "react-icons/fa6";
 
 import '../styles/Sidebar.css'
 
-const Sidebar = ({ closeSidebar }) => {
+const Sidebar = () => {
     const [openSubRoutes, setOpenSubRoutes] = useState({});
 
     const toggleSubRoutes = (path) => {
@@ -20,10 +20,6 @@ const Sidebar = ({ closeSidebar }) => {
             [path]: !prev[path]
         }));
     };
-
-    // const handleClick = () => {
-    //     closeSidebar();
-    // };
 
     const routes = [
         {
@@ -45,13 +41,9 @@ const Sidebar = ({ closeSidebar }) => {
 
     return (
         <div className="sidebar">
-            {/* <div className='sidebar-header'>
-                <div>
-                    <button onClick={closeSidebar} className='sidebar-close-button'>
-                        <FaWindowClose />
-                    </button>
-                </div>
-            </div> */}
+            <div className='sidebar-header'>
+                LOGO
+            </div>
 
 
             <ul className='sidebar-menu'>
@@ -62,7 +54,7 @@ const Sidebar = ({ closeSidebar }) => {
                                 to={route.path}
                                 className='sidebar-menu-link'
                             >
-                                <div className='text-xl'>{route.icon}</div>
+                                <div>{route.icon}</div>
                                 <span>{route.name}</span>
                             </Link>
                             {route.subRoutes && (
